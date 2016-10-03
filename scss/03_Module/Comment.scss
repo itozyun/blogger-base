@@ -1,0 +1,75 @@
+/* [module] Comment, Comment form
+ *  出現位置は #lB .lMi 下で固定
+ *
+ *  div.mC
+ *  div.mF
+--------------------------------------------------------------------------------------*/
+/* //_{#ie55- */
+.mF {
+	display : none;
+}
+/* //_}#ie55- */
+
+.mC {
+	margin         : 2em 0 4em;
+}
+
+.mF {
+	margin         : 2% 0 0;
+}
+
+.mF .btn {
+	line-height    : 1;
+    padding        : 1em 0.5em;
+}
+
+.mC h3 {
+	margin-bottom : 0;
+}
+
+.mC h3, .mC div {
+	margin-left  : 3%;
+}
+.mC p {
+	@include clearfix;
+	
+	margin-left  : 5%;
+	margin-right : 5%;
+}
+.mC div { color : $COLOR_BdM_casual_text; }
+.mC p a { @include hideUnderLineOnHover }
+
+.mF iframe {
+	width       : 100%;
+/* //_{^@ie6 */
+	height      : 400px;
+/* //_}^@ie6 */
+/* //_{@ie6 */
+	height      : 430px;
+	margin-left : -18px;
+/* //_}@ie6 */
+}
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.mC h3, .mF h3 {
+		text-align : center;
+	}
+}
+/* //_>bottom30 */
+
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.mF {
+		display : none;
+	}
+}
+/* //_>bottom50 */
+

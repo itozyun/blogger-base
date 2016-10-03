@@ -1,0 +1,26 @@
+
+/** //_{+simpleHeader **/
+	#lH .lM, #lH .lS {
+		padding : 1em 0;
+	}
+
+	/* //_<bottom20 */
+	/*  Tablet
+	--------------------------------------------------------------------------------------*/
+	@media print, handheld, only screen and (max-width: 950px) {
+		#lH .lM {
+			padding : 1em 0 0;
+		}
+	}
+	/* //_>bottom20 */
+
+	/* //_<bottom50 */
+	/*  Print
+	--------------------------------------------------------------------------------------*/
+	@media print {
+		#lH {
+			font-size   : 0.875em;
+		}
+	}
+	/* //_>bottom50 */
+/** //_}+simpleHeader **/

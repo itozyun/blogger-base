@@ -1,0 +1,22 @@
+/* [module] Jump
+ *  出現位置は #lB .lMi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+.mJ {
+	line-height : 1.8;
+	text-align  : right;
+}
+.mJ .btn {
+	display     : inline-block;
+	height      : 1.8em;
+	padding     : 0 1em;
+	margin-left : 1em;
+}
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.mJ { display : none; }
+}
+/* //_>bottom50 */

@@ -1,0 +1,68 @@
+/* [module] Pager large
+ *  出現位置は #lB .lMi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+.mNl {
+	position      : relative;
+	height        : 2.5em;
+    margin        : 4em 0 0;
+    text-align    : center;
+}
+	.mNl div {
+		position : absolute;
+		top      : 0;
+	    width    : 32%;
+	}
+	.mNn { left  : 0; }
+	.mNt { left  : 34%; }
+	.mNp { right : 0; }
+
+		.mNl a {
+			@include noUnderLineAlways;
+			
+		    display         : block;
+		    height          : 1em;
+			/* //_{@ie5win,@ie55 */
+			height          : 2.5em;
+			/* //_}@ie5win,@ie55 */
+		    line-height     : 1;
+		    padding         : 0.75em 0;
+		    /* http://tacamy.hatenablog.com/entry/2014/02/19/141948 */
+			overflow        : hidden;
+			white-space     : nowrap;
+			text-overflow   : ellipsis;
+		}
+
+		.mNl a {
+			background : $COLOR_BdM_casual_fill;
+		}
+		.mNl a:hover {
+			background : $COLOR_BdM_flip_fill;
+			color      : $COLOR_BdM_flip_text;
+		}
+
+/* //_{#can-mq */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	.mNl a {
+		background : $COLOR_WTC_casual_fill;
+	} 
+	.mNl a:hover {
+		background : $COLOR_WTC_flip_fill;
+		color      : $COLOR_WTC_flip_text !important;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.mNl {
+		display : none;
+	}
+}
+/* //_>bottom50 */

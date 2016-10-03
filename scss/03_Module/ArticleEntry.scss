@@ -1,0 +1,101 @@
+/* [module] Post Entry
+ *  出現位置は #lB .lMi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+
+.mE {
+    padding     : 1em 0;
+    line-height : 1.4;
+}
+
+    .mEd {
+        font-size     : 1.25em;
+        font-weight   : bold;
+        color         : $COLOR_BdM_casual_text;
+        padding       : 0 0 0.16em;
+    }
+
+    .mE h2 {
+        @include h2-main-content;
+
+        margin        : 0;
+        padding       : 0;
+        text-align    : left;
+    }
+    .mE h2 a {
+        display      : block;
+        border-width : .08em 0 0;
+        border-style : solid;
+        padding      : 0.2em 0 0;
+    }
+    .mE h2 a:link {
+        border-color : $COLOR_BdM_link;
+    }
+    .mE h2 a:link:hover {
+        border-color : $COLOR_BdM_hover;
+    }
+    .mE h2 a:visited {
+        border-color : $COLOR_BdM_text;
+    }
+    .mE h2 a:visited:hover {
+        border-color : $COLOR_BdM_visited_hover;
+    }
+
+    .mEl {
+        font-size   : 1.25em;
+        font-weight : bold;
+        margin      : 0.4em 0 0.5em 1em;
+        
+        word-break  : break-all;
+    }
+
+	.mE .mB {
+        margin-left   : 1.5em;
+		margin-top    : 0;
+		margin-bottom : 0;
+	}
+
+	/* //_<bottom20 */
+	/*  Tablet
+	--------------------------------------------------------------------------------------*/
+	@media print, handheld, only screen and (max-width: 950px) {
+    /* //_{+from-h2-at-post */
+        .mE h2 {
+            text-align    : left;
+        }
+    /* //_}+from-h2-at-post */
+
+    /* //_{+from-h1-at-post */
+        .mE h1 {
+            text-align    : left;
+        }
+    /* //_}+from-h1-at-post */
+	}
+	/* //_>bottom20 */
+
+/* //_{#can-mq */
+/* //_<bottom10 */
+/*  Full HD
+--------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 96em) {
+	.mE .mB {
+		-webkit-column-count : 1;
+		   -moz-column-count : 1;
+		        column-count : 1;
+	}
+}
+/* //_>bottom10 */
+
+
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+    .mEl,
+    .mE .mB {
+        margin-left   : 0;
+	}
+}
+/* //_>bottom30 */
+
+/* //_}#can-mq */

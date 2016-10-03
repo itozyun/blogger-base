@@ -1,0 +1,58 @@
+/* [module] Featured Post
+ *  出現位置は  [#lB|#lF] [.lMi|.lSi] 下
+ *
+--------------------------------------------------------------------------------------*/
+.FeaturedPost .box {
+	@include stackableModule;
+	margin : 0.8em 0.5em 0;
+}
+	.FeaturedPost h3 {
+		font-size : 1.1em;
+		padding   : 0;
+		margin    : 0 0 0.4em;
+	}
+	.FeaturedPost p {
+		line-height : 1.4;
+	}
+
+
+/*  layout Main
+--------------------------------------------------------------------------------------*/
+	.lM .FeaturedPost h3 {
+		font-size : 1.5em;
+	}
+
+/* //_{#can-mq */
+/*  Full HD
+--------------------------------------------------------------------------------------*/
+/* //_<bottom10 */
+@media only screen and (min-width: 96em) {
+	.lM1 .FeaturedPost .box {
+		margin-top : 2em;
+	}
+		.lM1 .FeaturedPost h3 {
+			font-size : 1.5em;
+		}
+		.lM1 .FeaturedPost p {
+			padding-top : 0.3em;
+			line-height : 1.8;
+		}
+}
+/* //_>bottom10 */
+
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.FeaturedPost h3 {
+		text-align : center;
+	}
+	.FeaturedPost .box img { /* .box は .box img より詳細度を上げるため */
+		display   : block;
+		float     : none;
+		margin    : 0 auto 1em;
+		max-width : 100%;
+	}
+}
+/* //_>bottom30 */
+/* //_}#can-mq */

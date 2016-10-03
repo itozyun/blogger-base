@@ -1,0 +1,54 @@
+/* [module] BlogArchive
+ *  出現位置は [#lB|#lF] [.lMi|.lSi] 下
+ *
+--------------------------------------------------------------------------------------*/
+.BlogArchive {
+	@include stackableModule;
+}
+	.BlogArchive div {
+		margin      : 1em 1em 0 3.5em;
+		text-indent : -3em;
+	}
+
+	.lS .BlogArchive div,
+	#lF .BlogArchive div {
+		margin      : 0.6em 0.5em 0 3.5em;
+	}
+		.BlogArchive a {
+			@include noUnderLineAlways;
+			
+			border-width : 0 0 1px;
+			border-style : solid;
+			margin-left  : 1em;
+		}
+		.lS .BlogArchive a,
+		#lF .BlogArchive a {
+			margin-left  : 0;
+		}
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.lS .BlogArchive div,
+	#lF .BlogArchive div {
+		display       : inline;
+		margin        : 0;
+		padding-right : 1em;
+		text-indent   : 0;
+	}
+}
+/* //_>bottom30 */
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.lS .BlogArchive,
+	#lF .BlogArchive {
+		display : none;
+	}
+}
+/* //_>bottom50 */

@@ -1,0 +1,51 @@
+/* [module] BlogArchive
+ *  出現位置は [#lB|#lF] [.lMi|.lSi] 下
+ *
+--------------------------------------------------------------------------------------*/
+.Label {
+	@include stackableModule;
+}
+
+	.Label a {
+		@include noUnderLineAlways;
+		
+	/* //_{@modern,@ie9,@ie8 */
+		display      : inline-block;
+	/* //_}@modern,@ie9,@ie8 */
+
+	/* //_{#ie7-win */
+		height       : 1.8em;
+	/* //_}#ie7-win */
+
+		margin       : 1em 0.5em 0;
+		border-width : 0 0 1px;
+		border-style : solid;
+	}
+
+	#lF .Label a {
+		margin       : 0.6em 0.5em 0;
+	}
+
+/* //_{#can-mq */
+
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	#lF .Label a {
+		margin : 0 1em 0em 0;
+	}
+}
+/* //_>bottom30 */
+
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	#lF .Label {
+		display : none;
+	}
+}
+/* //_>bottom50 */

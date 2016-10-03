@@ -1,0 +1,56 @@
+/* [module] Header
+ *  出現位置は #lH .lMi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+
+/** //_{+simpleHeader **/
+
+/*  [module] Header
+--------------------------------------------------------------------------------------*/
+.Header h1 {
+	display     : inline;
+	font-size   : 1.5em;
+	line-height : 1;
+	padding     : 0;
+	margin      : 0 0.5em 0 0;
+}
+
+/* //_{#can-mq */
+/* //_<bottom10 */
+/*  Full HD
+--------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 96em) {
+	.Header {
+		text-align : center;
+	}
+}
+/* //_>bottom10 */
+/* //_}#can-mq */
+
+/* //_<bottom20 */
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@media print, handheld, only screen and (max-width: 950px) {
+	.Header {
+	    text-align : center;
+	}
+		.Header h1 {
+			font-size   : 1.2em;
+		}
+}
+/* //_>bottom20 */
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.Header h1 {
+		display    : block;
+		margin     : 0 0 0.5em;
+	}
+}
+/* //_>bottom30 */
+/* //_}#can-mq */
+
+/** //_}+simpleHeader **/
