@@ -3,52 +3,81 @@
  *
 --------------------------------------------------------------------------------------*/
 .BlogArchive {
+	@include clearfix;
 	@include stackableModule;
 }
-	.BlogArchive div {
-		margin      : 1em 1em 0 3.5em;
-		text-indent : -3em;
+	.BlogArchive dl {
+		margin      : 1em 1em 0;
 	}
+	.lS .BlogArchive dl,
+	#lF .BlogArchive dl {
+		margin      : 0.6em 0.5em 0;
+	}
+		.BlogArchive dt {
+			display : block;
+			float   : left;
+			clear   : left;
+		}
+		.BlogArchive dd {
+			margin-left : 4em;
+			color       : $COLOR_BdM_fill; /* , を消す */
+		}
+		.fillbg .BlogArchive dd {
+			color      : $COLOR_FtM_fill; /* , を消す */
+		}
+			.BlogArchive a {
+				@include noUnderLineAlways;
+				
+			/* //_{@modern,@ie9,@ie8 */
+				display      : inline-block;
+				margin       : 0 0 1em;
+			/* //_}@modern,@ie9,@ie8 */
 
-	.lS .BlogArchive div,
-	#lF .BlogArchive div {
-		margin      : 0.6em 0.5em 0 3.5em;
-	}
-		.BlogArchive a {
-			@include noUnderLineAlways;
-			
-			border-width : 0 0 1px;
-			border-style : solid;
-			margin-left  : 1em;
-		}
-		.lS .BlogArchive a,
-		#lF .BlogArchive a {
-			margin-left  : 0;
-		}
+				border-width : 0 0 1px;
+				border-style : solid;
+			}
+			.lS .BlogArchive a,
+			#lF .BlogArchive a {
+			/* //_{@modern,@ie9,@ie8 */
+				margin : 0 0 0.6em;
+			/* //_}@modern,@ie9,@ie8 */
+
+			/* //_{#ie7-win */
+				height : 2.4em;
+			/* //_}#ie7-win */
+			}
 
 /* //_{#can-mq */
 /* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-	.lS .BlogArchive div,
-	#lF .BlogArchive div {
-		display       : inline;
-		margin        : 0;
-		padding-right : 1em;
-		text-indent   : 0;
+	.BlogArchive dl {
+		margin      : 1em 0.5em 0;
 	}
+		.lS .BlogArchive dt,
+		#lF .BlogArchive dt {
+			display       : inline;
+			padding-right : 1em;
+		}
+			.lS .BlogArchive dd,
+			#lF .BlogArchive dd {
+				margin-left : 0.5em;
+			}
 }
 /* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	.lS .BlogArchive dl,
+	#lF .BlogArchive dl {
+		margin : 0.6em 0 0;
+	}
+		.BlogArchive dd {
+			color : $COLOR_WTC_fill; /* , を消す */
+		}
+}
+/* //_>bottom40 */
 /* //_}#can-mq */
 
-/* //_<bottom50 */
-/*  Print
---------------------------------------------------------------------------------------*/
-@media print {
-	.lS .BlogArchive,
-	#lF .BlogArchive {
-		display : none;
-	}
-}
-/* //_>bottom50 */

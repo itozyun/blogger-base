@@ -1,0 +1,12 @@
+/* [module] Article Description
+ *  出現位置は #lE .lSi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+.ADesc {
+    @include stackableModule;
+}
+
+.ADesc p {
+    margin : 0;
+    color  : $COLOR_FtM_casual_text;
+}

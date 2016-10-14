@@ -326,7 +326,7 @@ $PHONE_H_SPACE       : 1%;
 	
 		/* //_{@ie9 */
 		svg {
-			overflow: hidden;
+			overflow : hidden;
 		}
 		/* //_}@ie9 */
 
@@ -358,7 +358,7 @@ $PHONE_H_SPACE       : 1%;
 		/* http://e2designer.seesaa.net/article/152168876.html */
 		/* http://perishablepress.com/press/2010/06/01/wrapping-content/ */
 		/* http://stackoverflow.com/questions/3247358/css-how-do-i-wrap-text-with-no-whitespace-inside-a-td */
-		pre {
+		@mixin pre-wrap {
 			white-space : pre;           /* CSS 2.0 */
 		/* //_{@modern */
 			white-space : -pre-wrap;     /* Opera 4-6 */
@@ -371,6 +371,10 @@ $PHONE_H_SPACE       : 1%;
 			/* white-space : pre-line;      CSS 3.0 */
 			word-wrap   : break-word;    /* IE 5.5+ */
 			word-break  : break-all;
+		}
+
+		pre {
+			@include pre-wrap;
 		}
 		
 		/* remember to highlight inserts somehow! */
@@ -513,6 +517,28 @@ $PHONE_H_SPACE       : 1%;
 		border-bottom : 1px dotted;
 		cursor        : help;
 	}
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	dd {
+		margin-left : 1em;
+	}
+}
+/* //_>bottom30 */
+
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	dd {
+		margin-left : 0.5em;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
 
 /* //_<bottom50 */
 /*  Print
@@ -1358,8 +1384,14 @@ body {
 	}
 		.lM, .lS {
 			float   : none;
-			width   : auto;
+		/* //_{^@ie9 */
 			display : block;
+			width   : auto;
+		/* //_}^@ie9 */
+		/* //_{@ie9 */
+			display : table; /* 親要素にmarginが継承されてしまうためArticleBodyの塗りが ie9,WP7.8 で乱れる. */
+			width   : 100%; /* auto は不可 */
+		/* //_}@ie9 */
 		}
 			.lMi, .lSi, .lXi {
 				padding-left  : $TABLET_H_SPACE;
@@ -1619,6 +1651,9 @@ body {
     padding-bottom : 1em;
 }
 
+#lE .lW {
+    padding-bottom : 2.5em;
+}
 #lE .lM, #lE .lSi {
     padding-bottom : 0;
 }
@@ -1646,13 +1681,13 @@ body {
  *  div.mB
 --------------------------------------------------------------------------------------*/
 .mB {
+    margin-top    : 3.5em;
 	margin-bottom : 2em;
-    margin-top : 2em;
 }
 
 .mB a { @include hideUnderLineOnHover }
 
-.mB a:visited { color : $COLOR_BdM_visited; }
+.mB a:visited       { color : $COLOR_BdM_visited; }
 .mB a:visited:hover { color : $COLOR_BdM_visited_hover; }
 
 p, pre, dl, ul, ol {
@@ -1925,29 +1960,31 @@ table {
  *
  *  div.mH
  *    h1 | h2
+ *    div
  *    +ArticleLabels
  *    +SocialButtons
 --------------------------------------------------------------------------------------*/
-.mH {
-	line-height    : 1.4;
-	padding-bottom : 1em;
-}
+	.mH {
+		color  : $COLOR_FtM_casual_text;
+	}
 
-	/* //_{+from-h2-at-post */
-		.mH h2 {
-			@include h2-main-content;
+/* //_{+from-h2-at-post */
+	.mH h2 {
+		@include h2-main-content;
 
-			text-align : left;
-		}
-	/* //_}+from-h2-at-post */
+		color      : $COLOR_FtM_text;
+		text-align : left;
+	}
+/* //_}+from-h2-at-post */
 
-	/* //_{+from-h1-at-post */
-		.mH h1 {
-			@include h1-main-content;
+/* //_{+from-h1-at-post */
+	.mH h1 {
+		@include h1-main-content;
 
-			text-align : left;
-		}
-	/* //_}+from-h1-at-post */
+		color      : $COLOR_FtM_text;
+		text-align : left;
+	}
+/* //_}+from-h1-at-post */
 
 /* //_{#can-mq */
 /* //_<bottom10 */
@@ -1979,6 +2016,19 @@ table {
 }
 /* //_>bottom20 */
 
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.mH {
+		text-align : center;
+	}
+}
+/* //_>bottom30 */
+/* //_}#can-mq */
+
+
 /* =====================================================================================
  * //_{+ArticleLabels
  *
@@ -1986,8 +2036,6 @@ table {
  *   a
 --------------------------------------------------------------------------------------*/
 .mHl {
-	@include clearfix;
-
 	margin-top : 0.5em;
 	color      : $COLOR_FtM_fill; /* , を消す */
 }
@@ -2001,7 +2049,7 @@ table {
 			height      : 2em;
 			line-height : 2;
 			padding     : 0 1em;
-			margin      : 0.5em 0;
+			margin      : 0.5em 0 1em;
 
 			background : $COLOR_FtM_casual_fill;
 			color      : $COLOR_FtM_link;
@@ -2021,9 +2069,13 @@ table {
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
+	.mHl {
+		line-height : 0;
+	}
 	.mHl a {
 		display     : block;
 	    text-align  : center;
+		margin      : 0.5em 0;
 	}
 }
 /* //_>bottom30 */
@@ -2066,16 +2118,20 @@ table {
  * .mSB
  *   a
 --------------------------------------------------------------------------------------*/
+.mSB {
+	margin-top : 0.5em;
+	color      : $COLOR_FtM_fill; /* , を消す */
+}
+
     .mSB a {
         @include noUnderLineAlways;
 
         display     : inline-block;
-        height      : 1.8em;
-		line-height : 1.8;
+		height      : 2em;
+		line-height : 2;
         padding     : 0 1em;
-        margin      : 0 0.3em 1em 0;
+        margin      : 0.5em 0 1em 0;
         cursor      : pointer;
-        text-align  : center;
     }
 
 #lE {
@@ -2123,6 +2179,21 @@ table {
         color      : $COLOR_FtM_flip_text;
     }
 }
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.mSB {
+		line-height : 0;
+	}
+	.mSB a {
+		margin      : 0.5em 0;
+	}
+}
+/* //_>bottom30 */
+/* //_}#can-mq */
 
 /* //_<bottom50 */
 /*  Print
@@ -2458,6 +2529,10 @@ table {
 		}
 
 	.mLts { @include linkCommon_watch; }
+
+		.mLts span, .mLts p {
+			color      : $COLOR_WTC_text;
+		}
 }
 /* //_>bottom40 */
 
@@ -2617,6 +2692,16 @@ table {
 
 
 /* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.mB blockquote {
+		margin  : 0.5em;
+		padding : 0.5em;
+	}
+}
+/* //_>bottom30 */
 
 /* //_<bottom40 */
 /*  Watch
@@ -2657,6 +2742,10 @@ table {
 	
 	margin      : 0 1em;
 }
+blockquote .box {
+	margin-top  : 1em;
+}
+
 .box img,
 .box embed,
 .box object,
@@ -2862,13 +2951,14 @@ table {
 /*  links
 --------------------------------------------------------------------------------------*/
 .links {
-	@extend pre;
+	@include pre-wrap;
 
-	margin      : 1em 2em;
+	margin : 1em 2em;
 }
 
 	.links a {
 		padding-left : 1em;
+		line-height  : 1.2;
 
 		/* //_{@modern,@ie9,@ie8 */
 		position     : relative;
@@ -2912,6 +3002,7 @@ table {
 	.links {
 		margin-left  : 1em;
 		margin-right : 0.5em;
+		line-height  : 3;
 	}
 }
 /* //_>bottom30 */

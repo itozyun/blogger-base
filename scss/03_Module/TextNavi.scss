@@ -1,13 +1,18 @@
 /* [module] Pager small
- *  出現位置は #lB .lMi 下で固定
+ *  出現位置は (#lB|#lE) .lMi 下で固定
  *
 --------------------------------------------------------------------------------------*/
 .mNs {
-	padding-top   : 1em;
-	text-align    : right;
+	padding-top : 1em;
+	text-align  : right;
+	color       : $COLOR_BdM_fill; /* , を消す */
 }
 
-.item .mNs {
+.fillbg .mNs {
+	color       : $COLOR_FtM_fill; /* , を消す */
+}
+
+#lE .mNs {
 	margin-bottom : 1em;
 }
 

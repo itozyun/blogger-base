@@ -6,46 +6,66 @@
 	@include stackableModule;
 }
 
-	.Label a {
-		@include noUnderLineAlways;
-		
-	/* //_{@modern,@ie9,@ie8 */
-		display      : inline-block;
-	/* //_}@modern,@ie9,@ie8 */
-
-	/* //_{#ie7-win */
-		height       : 1.8em;
-	/* //_}#ie7-win */
-
-		margin       : 1em 0.5em 0;
-		border-width : 0 0 1px;
-		border-style : solid;
+	.Label div {
+		margin : 1em 1em 0;
+		color  : $COLOR_BdM_fill; /* , を消す */
+	}
+	.fillbg .Label div {
+		color  : $COLOR_FtM_fill; /* , を消す */
+	}
+	.lS .Label div,
+	#lF .Label div {
+		margin : 0.6em 0.5em 0;
 	}
 
-	#lF .Label a {
-		margin       : 0.6em 0.5em 0;
-	}
+		.Label a {
+			@include noUnderLineAlways;
+			
+		/* //_{@modern,@ie9,@ie8 */
+			display      : inline-block;
+			margin       : 0 0 1em;
+		/* //_}@modern,@ie9,@ie8 */
 
+		/* //_{#ie7-win */
+			height       : 2.8em;
+		/* //_}#ie7-win */
+
+			border-width : 0 0 1px;
+			border-style : solid;
+		}
+		.lS .Label a,
+		#lF .Label a {
+		/* //_{@modern,@ie9,@ie8 */
+			margin : 0 0 0.6em;
+		/* //_}@modern,@ie9,@ie8 */
+
+		/* //_{#ie7-win */
+			height : 2.4em;
+		/* //_}#ie7-win */
+		}
 /* //_{#can-mq */
 
 /* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-	#lF .Label a {
-		margin : 0 1em 0em 0;
+	.Label div {
+		margin : 1em 0.5em 0;
 	}
 }
 /* //_>bottom30 */
-
-/* //_}#can-mq */
-
-/* //_<bottom50 */
-/*  Print
+/* //_<bottom40 */
+/*  Watch
 --------------------------------------------------------------------------------------*/
-@media print {
-	#lF .Label {
-		display : none;
+@media handheld, only screen and (max-width: 240px) {
+	.lS .Label div,
+	#lF .Label div {
+		margin : 0.6em 0 0;
+	}
+	.Label div {
+		color  : $COLOR_WTC_fill; /* , を消す */
 	}
 }
-/* //_>bottom50 */
+/* //_>bottom40 */
+/* //_}#can-mq */
+

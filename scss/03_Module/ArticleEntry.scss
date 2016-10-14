@@ -15,29 +15,28 @@
         padding       : 0 0 0.16em;
     }
 
-    .mE h2 {
-        @include h2-main-content;
-
+    .mE h3 {
+        font-size     : 2em;
         margin        : 0;
         padding       : 0;
         text-align    : left;
     }
-    .mE h2 a {
+    .mE h3 a {
         display      : block;
         border-width : .08em 0 0;
         border-style : solid;
         padding      : 0.2em 0 0;
     }
-    .mE h2 a:link {
+    .mE h3 a:link {
         border-color : $COLOR_BdM_link;
     }
-    .mE h2 a:link:hover {
+    .mE h3 a:link:hover {
         border-color : $COLOR_BdM_hover;
     }
-    .mE h2 a:visited {
+    .mE h3 a:visited {
         border-color : $COLOR_BdM_text;
     }
-    .mE h2 a:visited:hover {
+    .mE h3 a:visited:hover {
         border-color : $COLOR_BdM_visited_hover;
     }
 
@@ -59,17 +58,17 @@
 	/*  Tablet
 	--------------------------------------------------------------------------------------*/
 	@media print, handheld, only screen and (max-width: 950px) {
-    /* //_{+from-h2-at-post */
-        .mE h2 {
-            text-align    : left;
+        .mEd, .mEl {
+            font-size     : 1em;
         }
-    /* //_}+from-h2-at-post */
 
-    /* //_{+from-h1-at-post */
-        .mE h1 {
-            text-align    : left;
+        .mE h3 {
+            font-size  : 1.5em;
+            text-align : left;
         }
-    /* //_}+from-h1-at-post */
+        .mE h3 a {
+            border-width : .12em 0 0;
+        }
 	}
 	/* //_>bottom20 */
 
@@ -91,7 +90,9 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-    .mEl,
+    .mE h2 {
+        text-align : left;
+    }
     .mE .mB {
         margin-left   : 0;
 	}

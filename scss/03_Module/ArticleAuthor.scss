@@ -1,5 +1,5 @@
-/* [module] Post Author
- *  出現位置は #lB (#lE) .lMi 下で固定
+/* [module] Article Author
+ *  出現位置は #lE .lSi 下で固定
  *
 --------------------------------------------------------------------------------------*/
 
@@ -8,21 +8,9 @@
 	@include stackableModule;
 }
 .mA img {
-	float       : right;
-	margin      : 0 0 1em 1em;
+	float       : left;
+	margin      : 0 1em 1em 0;
 }
-
-/* //_<bottom20 */
-/*  Tablet
---------------------------------------------------------------------------------------*/
-@media print, handheld, only screen and (max-width: 950px) {
-	.mA img {
-		float  : left;
-		margin : 0 1em 1em 0;
-	}
-}
-/* //_>bottom20 */
-
 
 /* //_{@modern */
 /* //_<bottom30 */
@@ -30,7 +18,7 @@
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
 	.mA img {
-		margin : 0 0.5em 0.5em 0;
+		margin : 0 0.5em 0 0;
 	}
 }
 /* //_>bottom30 */
