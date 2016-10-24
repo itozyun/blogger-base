@@ -1883,6 +1883,9 @@ table {
 		}
 	/* //_}+from-h1-at-post */
 
+	.mB a:visited       { color : $COLOR_WTC_visited; }
+	.mB a:visited:hover { color : $COLOR_WTC_visited_hover; }
+
 	p, pre, dl, ul, ol {
 		margin-left  : 0;
 		margin-right : 0;
@@ -2049,7 +2052,7 @@ table {
 			height      : 2em;
 			line-height : 2;
 			padding     : 0 1em;
-			margin      : 0.5em 0 1em;
+			margin      : 0 0 0.5em;
 
 			background : $COLOR_FtM_casual_fill;
 			color      : $COLOR_FtM_link;
@@ -2079,21 +2082,6 @@ table {
 	}
 }
 /* //_>bottom30 */
-
-/* //_<bottom40 */
-/*  Watch
---------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
-	.mHl a, .mHl a:visited {
-		background : $COLOR_WTC_casual_fill;
-		color      : $COLOR_WTC_text !important;
-	}
-	.mHl a:hover {
-		background : $COLOR_WTC_flip_fill;
-		color      : $COLOR_WTC_flip_text !important;
-	}
-}
-/* //_>bottom40 */
 /* //_}#can-mq */
 
 /* //_<bottom50 */
@@ -2130,7 +2118,7 @@ table {
 		height      : 2em;
 		line-height : 2;
         padding     : 0 1em;
-        margin      : 0.5em 0 1em 0;
+        margin      : 0 0 0.5em;
         cursor      : pointer;
     }
 
@@ -2575,10 +2563,16 @@ table {
 	    right       : 0;
 	}
 
+/* //_{+coloredHeader */
 .mS, .mSt {
 	background : $COLOR_HdS_casual_fill;
 }
-
+/* //_}+coloredHeader */
+/* //_{^+coloredHeader */
+.mS, .mSt {
+	background : $COLOR_BdS_casual_fill;
+}
+/* //_}^+coloredHeader */
 
 /* //_{#ie7-win */
 .mS * {
