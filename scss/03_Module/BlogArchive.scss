@@ -19,7 +19,7 @@
 			clear   : left;
 		}
 		.BlogArchive dd {
-			margin-left : 4em;
+			margin-left : 3em;
 			color       : $COLOR_BdM_fill; /* , を消す */
 		}
 		.fillbg .BlogArchive dd {
@@ -48,6 +48,22 @@
 			}
 
 /* //_{#can-mq */
+/* //_<bottom25 */
+/*  Phablet
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 740px) {
+	.lM2 .BlogArchive dt {
+		float   : right;
+		clear   : right;
+	}
+	.lM2 .BlogArchive dd {
+		margin-left  : 0;
+		margin-right : 3em;
+		text-align   : right;
+	}
+}
+/* //_>bottom25 */
+
 /* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
@@ -58,11 +74,14 @@
 		.lS .BlogArchive dt,
 		#lF .BlogArchive dt {
 			display       : inline;
+			float         : left; 
 			padding-right : 1em;
 		}
 			.lS .BlogArchive dd,
 			#lF .BlogArchive dd {
-				margin-left : 0.5em;
+				margin-left  : 0.5em;
+				margin-right : 0;
+				text-align   : left;
 			}
 }
 /* //_>bottom30 */

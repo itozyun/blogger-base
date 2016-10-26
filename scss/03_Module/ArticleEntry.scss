@@ -1,72 +1,106 @@
-/* [module] Post Entry
+/* [module] Article Entry
  *  出現位置は #lB .lMi 下で固定
  *
+ * .AEntry
+ *   a.AEntry-date
+ *     div
+ *   .AEntry-title
+ *     h3
+ *     .AEntry-label
+ *   .body
+ *   .AEntry-jump
+ *     .btn
+ *     .btn
 --------------------------------------------------------------------------------------*/
 
-.mE {
+.AEntry {
+    @include clearfix;
+
     padding     : 1em 0;
     line-height : 1.4;
 }
+    .AEntry-date {
+        @include noUnderLineAlways;
 
-    .mEd {
-        font-size     : 1.25em;
-        font-weight   : bold;
-        color         : $COLOR_BdM_casual_text;
-        padding       : 0 0 0.16em;
+        display : block;
+    }
+        .AEntry-date div {
+            font-size    : 1.25em;
+            font-weight  : bold;
+            padding      : 0 0 0.16em;
+            border-width : 0 0 0.14em;
+            border-style : solid;
+        }
+        .AEntry-date:link div {
+            border-color : $COLOR_BdM_link;
+        }
+        .AEntry-date:link:hover div {
+            border-color : $COLOR_BdM_hover;
+        }
+        .AEntry-date:visited div {
+            border-color : $COLOR_BdM_text;
+        }
+        .AEntry-date:visited:hover div {
+            border-color : $COLOR_BdM_visited_hover;
+        }
+
+        .AEntry h3 {
+            font-size     : 2em;
+            margin        : 0;
+            padding       : 0.1em 0 0;
+            text-align    : left;
+        }
+
+        .AEntry-label {
+            font-size   : 1.25em;
+            font-weight : bold;
+            margin      : 0.4em 0 0.5em 1em;
+            
+            word-break  : break-all;
+        }
+
+        .AEntry .mB {
+            margin-left   : 0.25em;
+            margin-top    : 0;
+            margin-bottom : 0;
+        }
+
+/* [module] Jump
+ *  出現位置は #lB .lMi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+.AEntry-jump {
+	line-height : 1.8;
+	text-align  : right;
+}
+    .AEntry-jump .btn {
+        display     : inline-block;
+        height      : 1.8em;
+        padding     : 0 1em;
+        margin-left : 1em;
     }
 
-    .mE h3 {
-        font-size     : 2em;
-        margin        : 0;
-        padding       : 0;
-        text-align    : left;
-    }
-    .mE h3 a {
-        display      : block;
-        border-width : .08em 0 0;
-        border-style : solid;
-        padding      : 0.2em 0 0;
-    }
-    .mE h3 a:link {
-        border-color : $COLOR_BdM_link;
-    }
-    .mE h3 a:link:hover {
-        border-color : $COLOR_BdM_hover;
-    }
-    .mE h3 a:visited {
-        border-color : $COLOR_BdM_text;
-    }
-    .mE h3 a:visited:hover {
-        border-color : $COLOR_BdM_visited_hover;
-    }
-
-    .mEl {
-        font-size   : 1.25em;
-        font-weight : bold;
-        margin      : 0.4em 0 0.5em 1em;
-        
-        word-break  : break-all;
-    }
-
-	.mE .mB {
-        margin-left   : 1.5em;
-		margin-top    : 0;
-		margin-bottom : 0;
-	}
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.AEntry-jump { display : none; }
+}
+/* //_>bottom50 */
 
 	/* //_<bottom20 */
 	/*  Tablet
 	--------------------------------------------------------------------------------------*/
 	@media print, handheld, only screen and (max-width: 950px) {
-        .mEd, .mEl {
+        .AEntry-date div, .AEntry-label {
             font-size     : 1em;
         }
 
-        .mE h3 {
+        .AEntry h3 {
             font-size  : 1.5em;
             text-align : left;
         }
-        .mE h3 a {
+        .AEntry h3 a {
             border-width : .12em 0 0;
         }
 	}
@@ -77,11 +111,37 @@
 /*  Full HD
 --------------------------------------------------------------------------------------*/
 @media only screen and (min-width: 96em) {
-	.mE .mB {
+	.AEntry .mB {
 		-webkit-column-count : 1;
 		   -moz-column-count : 1;
 		        column-count : 1;
 	}
+
+    .AEntry-title {
+        width : 45%;
+        float : left;
+    }
+    .AEntry-label {
+        margin : 0.4em 0 0;
+    }
+    .AEntry .mB {
+        width       : 45%;
+        float       : left;
+        margin-left : 0;
+        margin-top  : 0.5em;
+    }
+    .AEntry-jump {
+        width : 10%;
+        float : right;
+    }
+        .AEntry-jump .btn {
+            margin-left : 0;
+            margin-top  : 0.5em;
+            width       : 80%;
+            height      : auto;
+            padding     : 10%;
+        }
+
 }
 /* //_>bottom10 */
 
@@ -90,10 +150,10 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-    .mE h2 {
+    .AEntry h2 {
         text-align : left;
     }
-    .mE .mB {
+    .AEntry .mB {
         margin-left   : 0;
 	}
 }

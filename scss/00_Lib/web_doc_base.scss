@@ -156,7 +156,7 @@ $WQXGA_COLUMN_GAP_EM     : 2.6em;
 $WQXGA_MAX_WIDTH_EM      : 150em;
 
 $TABLET_H_SPACE      : 6%;
-$FABLET_H_SPACE      : 3%;
+$PHABLET_H_SPACE     : 3%;
 $PHONE_H_SPACE       : 1%;
 
 @charset "utf-8";
@@ -866,8 +866,8 @@ a:link {
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	a:link    { color : $COLOR_PRT_link; }
-	a:visited { color : $COLOR_PRT_visited; }
+	a:link   , .fillbg a:link   , .fillbg .lM a:link    { color : $COLOR_PRT_link; }
+	a:visited, .fillbg a:visited, .fillbg .lM a:visited { color : $COLOR_PRT_visited; }
 }
 /* //_>bottom50 */
 
@@ -982,12 +982,14 @@ h2:after {
 /* //_{#can-mq */
 
 /* //_<bottom25 */
-/*  Tablet small
+/*  Phablet
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
+	.lM2 h2,
 	.lS2 h2 {
 		text-align : right;
 	}
+	.lM2 h2:after,
 	.lS2 h2:after {
 		left  : auto;
 		right : 0;
@@ -1142,7 +1144,7 @@ hr {
 --------------------------------------------------------------------------------------*/
 body {
 	background  : $COLOR_FtS_fill;
-	color       : $COLOR_FtM_text;
+	color       : $COLOR_FtS_text;
 }
 
 /* //_{^+coloredHeader */
@@ -1153,14 +1155,21 @@ body {
 	color      : $COLOR_BdM_text;
 }
 
-	#lB .lS, #lB .lSi {
+	#lB .lS
+	/* //_{#ie7-win */
+	, #lB .lSi
+	/* //_}#ie7-win */
+	{
 		background : $COLOR_BdS_fill;
+		color      : $COLOR_BdS_text;
 	}
-	#lF {
+	.fillbg {
 		background : $COLOR_FtM_fill;
+		color      : $COLOR_FtM_text;
 	}
-	#lF .lS, #lF .lO {
+	.fillbg .lS, .fillbg .lO {
 		background : $COLOR_FtS_fill;
+		color      : $COLOR_FtS_text;
 	}
 
 /* //_{+coloredHeader */
@@ -1178,13 +1187,8 @@ body {
 	}
 /* //_}+coloredHeader */
 
-	#lE {
-		background : $COLOR_FtM_fill;
-		color      : $COLOR_FtM_text;
-	}
 	#lE .lS, #lE .lSi {
 		background : none;
-		color      : $COLOR_FtM_text;
 	}
 
 /*  wrapper
@@ -1389,8 +1393,9 @@ body {
 			width   : auto;
 		/* //_}^@ie9 */
 		/* //_{@ie9 */
-			display : table; /* 親要素にmarginが継承されてしまうためArticleBodyの塗りが ie9,WP7.8 で乱れる. */
-			width   : 100%; /* auto は不可 */
+			display      : table; /* 親要素にmarginが継承されてしまうためArticleBodyの塗りが ie9,WP7.8 で乱れる. */
+			width        : 100%;  /* auto は不可 */
+			table-layout : fixed; /* display:table にすると max-width が効かなくなる, fixed で改善する https://goo.gl/BmuNfG */
 		/* //_}@ie9 */
 		}
 			.lMi, .lSi, .lXi {
@@ -1402,12 +1407,12 @@ body {
 
 /* //_{#can-mq */
 /* //_<bottom25 */
-/*  Fablet
+/*  PHABLET
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
 	.lMi, .lSi, .lXi {
-		padding-left  : $FABLET_H_SPACE;
-		padding-right : $FABLET_H_SPACE;
+		padding-left  : $PHABLET_H_SPACE;
+		padding-right : $PHABLET_H_SPACE;
 	}
 }
 /* //_>bottom25 */
@@ -1451,7 +1456,12 @@ body {
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	body, #lH, #lE, #lB, #lF .lX {
+	body, #lH, #lE, #lB,
+	.fillbg, .fillbg .lS, .fillbg .lO
+/* //_{+coloredHeader */
+	, #lH .lO, #lH, #lH .lS
+/* //_}+coloredHeader */
+	 {
 		background : $COLOR_PRT_fill;
 		color      : $COLOR_PRT_text;
 	}
@@ -1515,26 +1525,26 @@ body {
 /* //_}@ie5win */
 
 
-/* //_{#can-mq */
-    [data-lmc] {
-        @include clearfix;
-    }
-
-/* //_<bottom10 */
-/*  Full HD
---------------------------------------------------------------------------------------*/
-@media only screen and (min-width: 96em) {
-        .lM1 {
-            float : left;
-            width : 50% - $WSXGA_COLUMN_GAP_PCT / $WSXGA_MAIN_COLUMN_RATIO;
-        }
-        .lM2 {
-            float : right;
-            width : 50% - $WSXGA_COLUMN_GAP_PCT / $WSXGA_MAIN_COLUMN_RATIO;
-        }
+/* //_{@ie8,@ie9,@modern */
+[data-lmc] {
+    @include clearfix;
 }
-/* //_>bottom10 */
-/* //_}#can-mq */
+/* //_}@ie8,@ie9,@modern */
+
+/* //_{#ie7-win */
+#lF .lMi {
+    @include clearfix;
+}
+/* //_}#ie7-win */
+    .lM1 {
+        float : left;
+        width : 50% - 100% * ($PC_COLUMN_GAP_RATIO / ( $PC_MAIN_COLUMN_RATIO - $PC_COLUMN_GAP_RATIO * 2 )) / 2;
+    }
+    .lM2 {
+        float : right;
+        width : 50% - 100% * ($PC_COLUMN_GAP_RATIO / ( $PC_MAIN_COLUMN_RATIO - $PC_COLUMN_GAP_RATIO * 2 )) / 2;
+    }
+ 
 /* //_{#can-mq */
 [data-lsc] {
 	@include clearfix;
@@ -1566,15 +1576,20 @@ body {
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 950px) {
 /* 2column */
+	[data-lmc],
 	[data-lsc] {
-		padding : 0 0 2em;
-		border-top   : 1px solid $COLOR_BdS_casual_fill;
+		padding    : 0 0 2em;
 	}
+	[data-lsc] {
+		border-top : 1px solid $COLOR_BdS_casual_fill;
+	}
+		.lM1,
 		.lS1 {
 			float       : left;
 			width       : 50% - $TABLET_H_SPACE * 1.5;
 			margin-left : $TABLET_H_SPACE;
 		}
+		.lM2,
 		.lS2 {
 			float        : right;
 			width        : 50% - $TABLET_H_SPACE * 1.5;
@@ -1584,19 +1599,22 @@ body {
 /* //_>bottom21 */
 
 /* //_<bottom25 */
-/*  Tablet small
+/*  Phablet
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
+	[data-lmc],
 	[data-lsc] {
 		padding : 0 0 2em;
 	}
+		.lM1,
 		.lS1 {
-			width       : 50% - $FABLET_H_SPACE * 1.5;
-			margin-left : $FABLET_H_SPACE;
+			width       : 50% - $PHABLET_H_SPACE * 1.5;
+			margin-left : $PHABLET_H_SPACE;
 		}
+		.lM2,
 		.lS2 {
-			width        : 50% - $FABLET_H_SPACE * 1.5;
-			margin-right : $FABLET_H_SPACE;
+			width        : 50% - $PHABLET_H_SPACE * 1.5;
+			margin-right : $PHABLET_H_SPACE;
 		}
 }
 /* //_>bottom25 */
@@ -1606,6 +1624,7 @@ body {
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
 /* clear 2column */
+	.lM1, .lM2,
 	.lS1, .lS2 {
 		float        : none;
 		width        : auto;
@@ -1804,20 +1823,20 @@ table {
 
 /* //_{#can-mq */
 /* //_<bottom25 */
-/*  Fablet
+/*  PHABLET
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
 	/* //_{+from-h2-at-post */
 		.mB h3 {
-			padding-left  : $FABLET_H_SPACE/2;
-			padding-right : $FABLET_H_SPACE/2;
+			padding-left  : $PHABLET_H_SPACE/2;
+			padding-right : $PHABLET_H_SPACE/2;
 		}
 	/* //_}+from-h2-at-post */
 
 	/* //_{+from-h1-at-post */
 		.mB h2 {
-			padding-left  : $FABLET_H_SPACE/2;
-			padding-right : $FABLET_H_SPACE/2;
+			padding-left  : $PHABLET_H_SPACE/2;
+			padding-right : $PHABLET_H_SPACE/2;
 		}
 	/* //_}+from-h1-at-post */
 }
@@ -2031,6 +2050,32 @@ table {
 /* //_>bottom30 */
 /* //_}#can-mq */
 
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.mH {
+		color  : $COLOR_PRT_text;
+	}
+/* //_{+from-h2-at-post */
+	.mH h2 {
+		color  : $COLOR_PRT_text;
+	}
+/* //_}+from-h2-at-post */
+
+/* //_{+from-h1-at-post */
+	.mH h1 {
+		color  : $COLOR_PRT_text;
+	}
+/* //_}+from-h1-at-post */
+	.AHead-cita:after {
+		content   : " ("attr(href)") ";
+		font-size : 0.875em;
+		color     : $COLOR_PRT_link;
+	}
+}
+/* //_>bottom50 */
+
 
 /* =====================================================================================
  * //_{+ArticleLabels
@@ -2075,11 +2120,11 @@ table {
 	.mHl {
 		line-height : 0;
 	}
-	.mHl a {
-		display     : block;
-	    text-align  : center;
-		margin      : 0.5em 0;
-	}
+		.mHl a {
+			display     : block;
+			text-align  : center;
+			margin      : 0.5em 0;
+		}
 }
 /* //_>bottom30 */
 /* //_}#can-mq */
@@ -2095,105 +2140,15 @@ table {
 			padding    : 0;
 			background : none;
 		}
+		.mHl a:link {
+			color : $COLOR_PRT_link;
+		}
+		.mHl a:visited {
+			color : $COLOR_PRT_visited;
+		}
 }
 /* //_>bottom50 */
 /* //_}+ArticleLabels */
-
-
-/* =====================================================================================
- * //_{+SocialButtons
- * 
- * .mSB
- *   a
---------------------------------------------------------------------------------------*/
-.mSB {
-	margin-top : 0.5em;
-	color      : $COLOR_FtM_fill; /* , を消す */
-}
-
-    .mSB a {
-        @include noUnderLineAlways;
-
-        display     : inline-block;
-		height      : 2em;
-		line-height : 2;
-        padding     : 0 1em;
-        margin      : 0 0 0.5em;
-        cursor      : pointer;
-    }
-
-#lE {
-    .tw {
-        background : #1B95E0;
-        color      : #1B95E0;
-    }
-    .fb {
-        background : #3B5999;
-        color      : #3B5999;
-    }
-    .gp {
-        background : #dd4b39;
-        color      : #dd4b39;
-    }
-    .hb {
-        background : #008FDE;
-        color      : #008FDE;
-    }
-    .pt {
-        background : #BD081C;
-        color      : #BD081C;
-    }
-    .pk {
-        background : #EE4056;
-        color      : #EE4056;
-    }
-    .ln {
-        background : #00C300;
-        color      : #00C300;
-    }
-
-    .mSB a:link {
-        color      : #fff;
-    }
-    .mSB a:visited {
-        background : $COLOR_FtM_fill;
-    }
-    .mSB a:hover {
-        background : $COLOR_FtM_fill;
-        color      : $COLOR_ACCENT;
-    }
-    .mSB a:active:hover, .mSB a:focus:hover {
-        background : $COLOR_FtM_flip_fill;
-        color      : $COLOR_FtM_flip_text;
-    }
-}
-
-/* //_{#can-mq */
-/* //_<bottom30 */
-/*  Phone
---------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
-	.mSB {
-		line-height : 0;
-	}
-	.mSB a {
-		margin      : 0.5em 0;
-	}
-}
-/* //_>bottom30 */
-/* //_}#can-mq */
-
-/* //_<bottom50 */
-/*  Print
---------------------------------------------------------------------------------------*/
-@media print {
-	.mSB {
-        display : none;
-    }
-}
-/* //_>bottom50 */
-
-/* //_}+SocialButtons */
 
 /* [module] Attribution
  *  出現位置は #lF .lX 下で固定
@@ -2279,9 +2234,10 @@ table {
 /* //_{#can-mq */
 
 /* //_<bottom25 */
-/*  Tablet small
+/*  Phablet
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
+	.lM2 .mL,
 	.lS2 .mL {
 		text-align : right;
 	}
@@ -2598,6 +2554,247 @@ table {
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
+/* =====================================================================================
+ * //_{+SocialButtons
+ */
+
+/* [module] SocialButtons
+ *  出現位置は #lB .lMi 下で固定
+ *
+ * .SocialButtons
+ *   a
+--------------------------------------------------------------------------------------*/
+.SocialButtons {
+    margin        : 4em 0;
+    padding       : 1em 0 0.5em;
+	border-width  : 1px 0;
+	border-style  : solid;
+	border-color  : $COLOR_BdM_casual_fill;
+	color         : $COLOR_BdM_fill; /* , を消す */
+    text-align    : right;
+}
+
+    .SocialButtons a {
+        @include noUnderLineAlways;
+
+        display     : inline-block;
+		height      : 2em;
+		line-height : 2;
+        padding     : 0 1em;
+        margin      : 0 0 0.5em;
+        cursor      : pointer;
+    }
+
+.SocialButtons {
+    .tw {
+        background : #1B95E0;
+        color      : #1B95E0;
+    }
+    .fb {
+        background : #3B5999;
+        color      : #3B5999;
+    }
+    .gp {
+        background : #dd4b39;
+        color      : #dd4b39;
+    }
+    .hb {
+        background : #008FDE;
+        color      : #008FDE;
+    }
+    .pt {
+        background : #BD081C;
+        color      : #BD081C;
+    }
+    .pk {
+        background : #EE4056;
+        color      : #EE4056;
+    }
+    .ln {
+        background : #00C300;
+        color      : #00C300;
+    }
+}
+    .SocialButtons a:link {
+        color      : #fff;
+    }
+    .SocialButtons a:visited {
+        background : $COLOR_BdM_fill;
+    }
+    .SocialButtons a:hover {
+        background : $COLOR_BdM_fill;
+        color      : $COLOR_ACCENT;
+    }
+    .SocialButtons a:active:hover, .SocialButtons a:focus:hover {
+        background : $COLOR_BdM_flip_fill;
+        color      : $COLOR_BdM_flip_text;
+    }
+
+/* //_{#can-mq */
+/* //_<bottom21 */
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 950px) {
+	.SocialButtons {
+		text-align : center;
+	}
+}
+/* //_>bottom21 */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.SocialButtons {
+		line-height : 0;
+	}
+	.SocialButtons a {
+		margin      : 0.5em 0;
+	}
+}
+/* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch 
+-------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	.SocialButtons {
+        color        : $COLOR_WTC_fill; /* , を消す */
+		border-color : $COLOR_WTC_casual_fill;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.SocialButtons {
+        display : none;
+    }
+}
+/* //_>bottom50 */
+
+/* //_}+SocialButtons */
+
+.Subscribe {
+	@include stackableModule;
+}
+
+	.Subscribe div {
+		margin : 1em 1em 0;
+		color  : $COLOR_BdM_fill; /* , を消す */
+	}
+        .fillbg .Subscribe div {
+            color  : $COLOR_FtS_fill; /* , を消す */
+        }
+        .lS .Subscribe div {
+            text-align : right;
+        }
+        .lS .Subscribe div,
+        #lF .Subscribe div {
+            margin : 0.6em 0.5em 0;
+        }
+
+        .Subscribe a {
+            @include noUnderLineAlways;
+
+            display     : inline-block;
+            height      : 2em;
+            line-height : 2;
+            padding     : 0 1em;
+            margin      : 0 0 0.5em;
+            cursor      : pointer;
+        }
+
+#lF {
+    .atom {
+        background : #DD6502;
+        color      : #DD6502;
+    }
+    .rss {
+        background : #DD8902;
+        color      : #DD8902;
+    }
+    .ldr {
+        background : #FF6565;
+        color      : #FF6565;
+    }
+    .nv {
+        background : #0EBB00;
+        color      : #0EBB00;
+    }
+    .fl {
+        background : #53BB45;
+        color      : #53BB45;
+    }
+    .stm {
+        background : #8BC53F;
+        color      : #8BC53F;
+    }
+    /* .bl {
+        background : #008ACE;
+        color      : #008ACE;
+    } */
+    .fs {
+        background : #333;
+        color      : #333;
+    }
+    .bb {
+        background : #008ACE;
+        color      : #008ACE;
+    }
+
+    .Subscribe a:link {
+        color      : #fff;
+    }
+    .Subscribe a:visited {
+        background : $COLOR_FtS_fill;
+    }
+    .Subscribe a:hover {
+        background : $COLOR_FtS_fill;
+        color      : $COLOR_ACCENT;
+    }
+    .Subscribe a:active:hover, .Subscribe a:focus:hover {
+        background : $COLOR_FtS_flip_fill;
+        color      : $COLOR_FtS_flip_text;
+    }
+}
+/* //_{#can-mq */
+
+/* //_<bottom21 */
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 950px) {
+    #lF .lS .Subscribe div {
+        text-align : left;
+    }
+}
+/* //_>bottom21 */
+
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.Subscribe {
+		line-height : 0;
+	}
+	.Subscribe a {
+		margin : 0.5em 0;
+	}
+}
+/* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	.Subscribe div {
+        margin : 0.6em 0 0;
+		color  : $COLOR_WTC_fill; /* , を消す */
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
+
 /* //_{+aa */
 .aa {
 	speak       : none;
