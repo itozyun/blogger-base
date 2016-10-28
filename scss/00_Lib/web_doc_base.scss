@@ -84,7 +84,7 @@ $COLOR_BdS_visited_hover : $COLOR_BdM_visited_hover !default;
 $COLOR_FtM_fill          : #1a1a1a !default;
 $COLOR_FtM_text          : #fff !default;
 $COLOR_FtM_casual_fill   : #2a2a2a !default;
-$COLOR_FtM_casual_text   : #999 !default;
+$COLOR_FtM_casual_text   : #bbb !default;
 $COLOR_FtM_flip_fill     : $COLOR_FtM_text !default;
 $COLOR_FtM_flip_text     : $COLOR_FtM_fill !default;
 $COLOR_FtM_accent        : $COLOR_ACCENT !default;
@@ -2571,63 +2571,72 @@ table {
 	border-style  : solid;
 	border-color  : $COLOR_BdM_casual_fill;
 	color         : $COLOR_BdM_fill; /* , を消す */
-    text-align    : right;
 }
 
     .SocialButtons a {
         @include noUnderLineAlways;
 
-        display     : inline-block;
-		height      : 2em;
-		line-height : 2;
-        padding     : 0 1em;
-        margin      : 0 0 0.5em;
-        cursor      : pointer;
+        display      : inline-block;
+		height       : 2em;
+		line-height  : 2;
+        padding      : 0 1em;
+        border-width : 1px;
+        border-style : solid;
+        margin       : 0 0 0.5em;
+        cursor       : pointer;
     }
 
 .SocialButtons {
     .tw {
-        background : #1B95E0;
-        color      : #1B95E0;
+        background   : #1B95E0;
+        border-color : #1B95E0;
+        color        : #1B95E0;
     }
     .fb {
-        background : #3B5999;
-        color      : #3B5999;
+        background   : #3B5999;
+        border-color : #3B5999;
+        color        : #3B5999;
     }
     .gp {
-        background : #dd4b39;
-        color      : #dd4b39;
+        background   : #dd4b39;
+        border-color : #dd4b39;
+        color        : #dd4b39;
     }
     .hb {
-        background : #008FDE;
-        color      : #008FDE;
+        background   : #008FDE;
+        border-color : #008FDE;
+        color        : #008FDE;
     }
     .pt {
-        background : #BD081C;
-        color      : #BD081C;
+        background   : #BD081C;
+        border-color : #BD081C;
+        color        : #BD081C;
     }
     .pk {
-        background : #EE4056;
-        color      : #EE4056;
+        background   : #EE4056;
+        border-color : #EE4056;
+        color        : #EE4056;
     }
+    /*
     .ln {
         background : #00C300;
+        border-color : #1B95E0;
         color      : #00C300;
-    }
+    } */
 }
     .SocialButtons a:link {
-        color      : #fff;
+        background : $COLOR_BdM_fill;
     }
     .SocialButtons a:visited {
-        background : $COLOR_BdM_fill;
+        color      : #fff;
     }
+
     .SocialButtons a:hover {
-        background : $COLOR_BdM_fill;
-        color      : $COLOR_ACCENT;
+        background : $COLOR_ACCENT;
+        color      : #fff;
     }
-    .SocialButtons a:active:hover, .SocialButtons a:focus:hover {
-        background : $COLOR_BdM_flip_fill;
-        color      : $COLOR_BdM_flip_text;
+    .SocialButtons a:active, .SocialButtons a:focus {
+        border-color : $COLOR_BdM_text;
     }
 
 /* //_{#can-mq */
@@ -2676,17 +2685,21 @@ table {
 
 /* //_}+SocialButtons */
 
+/* [module] Subscribe
+ *  出現位置は #lF .lSi 下で固定
+ *
+ * .Subscribe
+ *   div
+ *     a
+--------------------------------------------------------------------------------------*/
 .Subscribe {
 	@include stackableModule;
 }
 
 	.Subscribe div {
 		margin : 1em 1em 0;
-		color  : $COLOR_BdM_fill; /* , を消す */
+		color  : $COLOR_FtS_fill; /* , を消す */
 	}
-        .fillbg .Subscribe div {
-            color  : $COLOR_FtS_fill; /* , を消す */
-        }
         .lS .Subscribe div {
             text-align : right;
         }
@@ -2698,43 +2711,51 @@ table {
         .Subscribe a {
             @include noUnderLineAlways;
 
-            display     : inline-block;
-            height      : 2em;
-            line-height : 2;
-            padding     : 0 1em;
-            margin      : 0 0 0.5em;
-            cursor      : pointer;
+            display      : inline-block;
+            height       : 2em;
+            line-height  : 2;
+            padding      : 0 1em;
+            border-width : 1px;
+            border-style : solid;
+            margin       : 0 0 0.5em;
+            cursor       : pointer;
         }
 
-#lF {
+.Subscribe div {
     .atom {
-        background : #DD6502;
-        color      : #DD6502;
+        background   : #DD6502;
+        border-color : #DD6502;
+        color        : #DD6502;
     }
     .rss {
-        background : #DD8902;
-        color      : #DD8902;
+        background   : #DD8902;
+        border-color : #DD8902;
+        color        : #DD8902;
     }
     .ldr {
-        background : #FF6565;
-        color      : #FF6565;
+        background   : #FF6565;
+        border-color : #FF6565;
+        color        : #FF6565;
     }
-    .nv {
+    /* .nv {
         background : #0EBB00;
+        border-color : #DD6502;
         color      : #0EBB00;
-    }
+    } */
     .fl {
-        background : #53BB45;
-        color      : #53BB45;
+        background   : #53BB45;
+        border-color : #53BB45;
+        color        : #53BB45;
     }
     .stm {
-        background : #8BC53F;
-        color      : #8BC53F;
+        background   : #8BC53F;
+        border-color : #8BC53F;
+        color        : #8BC53F;
     }
     /* .bl {
         background : #008ACE;
         color      : #008ACE;
-    } */
+    }
     .fs {
         background : #333;
         color      : #333;
@@ -2742,23 +2763,23 @@ table {
     .bb {
         background : #008ACE;
         color      : #008ACE;
+    } */
+}
+    .Subscribe div a:link {
+        background : $COLOR_FtS_fill;
     }
-
-    .Subscribe a:link {
+    .Subscribe div a:visited {
         color      : #fff;
     }
-    .Subscribe a:visited {
-        background : $COLOR_FtS_fill;
+    .Subscribe div a:hover {
+        border-color : $COLOR_FtS_fill !important;
+        background   : $COLOR_ACCENT;
+        color        : #fff !important;
     }
-    .Subscribe a:hover {
-        background : $COLOR_FtS_fill;
-        color      : $COLOR_ACCENT;
+    .Subscribe div a:active, .Subscribe div a:focus {
+        border-color : $COLOR_FtS_text;
     }
-    .Subscribe a:active:hover, .Subscribe a:focus:hover {
-        background : $COLOR_FtS_flip_fill;
-        color      : $COLOR_FtS_flip_text;
-    }
-}
+
 /* //_{#can-mq */
 
 /* //_<bottom21 */

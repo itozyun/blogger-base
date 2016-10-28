@@ -1,0 +1,66 @@
+.ContactForm form {
+    margin  : 1em 1em 4em;
+    display : block;
+}
+
+    .ContactForm-pair {
+        @include clearfix;
+
+        margin-bottom : 1em;
+    }
+
+        .ContactForm label {
+            float   : left;
+            width   : 7em;
+            display : block;
+        }
+
+        .ContactForm-text {
+            margin-left : 8em;
+        }
+
+        .ContactForm-text input,
+        .ContactForm textarea,
+        .ContactForm select {
+            display : block;
+            width   : 100%;
+        }
+        .ContactForm-text input,
+        .ContactForm textarea {
+            background : $COLOR_BdM_casual_fill;
+        }
+        .ContactForm-text input:focus {
+            color       : darken( $COLOR_ACCENT, 30% );
+        }
+        .ContactForm textarea {
+            padding : 0;
+            margin  : 0;
+            border  : 0;
+        }
+        .ContactForm input {
+            border : 0;
+        }
+        .ContactForm-submit {
+            text-align : right;
+        }
+        .ContactForm-submit .btn {
+            display : inline-block;
+            padding : 0 1em;
+        }
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+    .ContactForm label {
+        float   : none;
+        width   : auto;
+    }
+
+    .ContactForm-text {
+        margin-left : 0;
+    }
+}
+/* //_>bottom30 */
+/* //_}#can-mq */

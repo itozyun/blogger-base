@@ -33,7 +33,7 @@
         }
         .AEntry-date:link div {
             border-color : $COLOR_BdM_link;
-        }
+        }     
         .AEntry-date:link:hover div {
             border-color : $COLOR_BdM_hover;
         }
@@ -44,20 +44,38 @@
             border-color : $COLOR_BdM_visited_hover;
         }
 
-        .AEntry h3 {
-            font-size     : 2em;
-            margin        : 0;
-            padding       : 0.1em 0 0;
-            text-align    : left;
+        .AEntry-title a {
+            @include noUnderLineAlways;
         }
+            /* //_{@ie7,@ie8,@ie9,@modern */
+            .AEntry-date:hover + .AEntry-title :visited h3 {
+                color : $COLOR_BdM_visited_hover;
+            }
+            .AEntry-date:hover + .AEntry-title :link h3 {
+                color : $COLOR_BdM_hover;
+            }
+            .AEntry-date:hover ~ .AEntry-jump :visited:first-of-type {
+                background : $COLOR_BdM_visited_hover;
+            }
+            .AEntry-date:hover ~ .AEntry-jump :link:first-of-type {
+                background : $COLOR_BdM_hover;
+            }
+            /* //_}@ie7,@ie8,@ie9,@modern */
 
-        .AEntry-label {
-            font-size   : 1.25em;
-            font-weight : bold;
-            margin      : 0.4em 0 0.5em 1em;
-            
-            word-break  : break-all;
-        }
+            .AEntry h3 {
+                font-size     : 2em;
+                margin        : 0;
+                padding       : 0.2em 0 0;
+                text-align    : left;
+            }
+
+            .AEntry-label {
+                font-size   : 1.25em;
+                font-weight : bold;
+                margin      : 0.4em 0 0.5em 1em;
+                
+                word-break  : break-all;
+            }
 
         .AEntry .mB {
             margin-left   : 0.25em;
@@ -70,12 +88,12 @@
  *
 --------------------------------------------------------------------------------------*/
 .AEntry-jump {
-	line-height : 1.8;
 	text-align  : right;
 }
     .AEntry-jump .btn {
         display     : inline-block;
         height      : 1.8em;
+        line-height : 1.8;
         padding     : 0 1em;
         margin-left : 1em;
     }
@@ -128,7 +146,7 @@
         width       : 45%;
         float       : left;
         margin-left : 0;
-        margin-top  : 0.5em;
+        margin-top  : 0.7em;
     }
     .AEntry-jump {
         width : 10%;
@@ -136,9 +154,10 @@
     }
         .AEntry-jump .btn {
             margin-left : 0;
-            margin-top  : 0.5em;
+            margin-top  : 0.7em;
             width       : 80%;
             height      : auto;
+            line-height : 1;
             padding     : 10%;
         }
 
