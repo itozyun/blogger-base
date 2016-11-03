@@ -8,45 +8,53 @@
 
         margin-bottom : 1em;
     }
-
         .ContactForm label {
+            display : block;
             float   : left;
             width   : 7em;
-            display : block;
+            padding : 0.2em 0;
         }
 
         .ContactForm-text {
             margin-left : 8em;
         }
 
-        .ContactForm-text input,
-        .ContactForm textarea,
-        .ContactForm select {
-            display : block;
-            width   : 100%;
-        }
-        .ContactForm-text input,
+            .ContactForm-text input,
+            .ContactForm textarea {
+                width      : 100%;
+                padding    : 0.2em 0;
+                border     : 0;
+                background : $COLOR_BdM_casual_fill;
+            }
+
+            /* //_{@ie9,@modern */
+            .ContactForm form :invalid {
+                color      : $COLOR_WARN;
+                box-shadow : none;
+            }
+            /* //_}@ie9,@modern */
+
+            .ContactForm-text input:focus,
+            .ContactForm textarea:focus {
+                color      : darken( $COLOR_ACCENT, 30% );
+            }
+
         .ContactForm textarea {
-            background : $COLOR_BdM_casual_fill;
-        }
-        .ContactForm-text input:focus {
-            color       : darken( $COLOR_ACCENT, 30% );
-        }
-        .ContactForm textarea {
-            padding : 0;
-            margin  : 0;
-            border  : 0;
-        }
-        .ContactForm input {
+            margin : 0;
             border : 0;
+            resize : vertical;
+            /* //_{@modern */
+            background-image : none; /* Android Firefox */
+            /* //_}@modern */
         }
+
         .ContactForm-submit {
             text-align : right;
         }
-        .ContactForm-submit .btn {
-            display : inline-block;
-            padding : 0 1em;
-        }
+            .ContactForm-submit .btn {
+                display : inline-block;
+                padding : 0 1em;
+            }
 
 /* //_{#can-mq */
 /* //_<bottom30 */
@@ -63,4 +71,14 @@
     }
 }
 /* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+    .ContactForm-text input,
+    .ContactForm textarea {
+        background : $COLOR_WTC_casual_fill;
+    }
+}
+/* //_>bottom40 */
 /* //_}#can-mq */

@@ -389,8 +389,11 @@ $PHONE_H_SPACE       : 1%;
 		break-after        : avoid;
 		/* //_{@modern */
 		-moz-break-after   : avoid;
-		page-break-inside  : avoid;
+		break-after        : avoid;
+		break-inside       : avoid;
 		column-break-after : avoid;
+		-webkit-column-break-after : avoid;
+		-webkit-region-break-after : avoid;
 		/* //_}@modern */
 	}
 
@@ -507,13 +510,35 @@ $PHONE_H_SPACE       : 1%;
 		margin-bottom : 0;
 	}
 
+	dl, ul, ol {
+		/* //_{@modern */
+		page-break-inside  : avoid;
+		break-inside       : avoid;
+		/* //_}@modern */
+	}
+
+	dt {
+		/* //_{@modern */
+		-moz-break-after   : avoid;
+		break-after        : avoid;
+		column-break-after : avoid;
+		-webkit-column-break-after : avoid;
+		-webkit-region-break-after : avoid;
+		/* //_}@modern */
+	}
+
 	strong {
 		border-bottom : 2px solid;
 	}
 	em {
+		font-style    : normal;
 		border-bottom : 1px dotted;
 	}
-	dfn, abbr, acronym {
+	dfn,
+	/* //_{^#ie7-win */
+	abbr[title],
+	/* //_}^#ie7-win */
+	acronym {
 		border-bottom : 1px dotted;
 		cursor        : help;
 	}
@@ -545,7 +570,8 @@ $PHONE_H_SPACE       : 1%;
 --------------------------------------------------------------------------------------*/
 @media print {
 	h1, h2, h3, h4, h5, h6  {
-		page-break-after : avoid;
+		page-break-after  : avoid;
+		page-break-inside : avoid;
 	}
 }
 /* //_>bottom50 */
@@ -650,6 +676,14 @@ a:link          {
 	color        : $COLOR_BdM_link;
 	border-color : $COLOR_BdM_fill;
 }
+
+/* //_{@modern */
+a:link, a:visited {
+	background : rgba( 255, 255, 255, 0 );
+	transition : 0.3s background ease-in, 0.3s color ease-in, 0.3s border-color ease-in;
+}
+/* //_}@modern */
+
 a:visited       {
 	color        : $COLOR_BdM_text; /* 訪問済のリンクは黒になる, .mB のみ紫に */
 	border-color : $COLOR_BdM_fill;
@@ -841,13 +875,6 @@ a:active *, a:focus * {
 		border-color : $COLOR_FtM_casual_fill;
 	}
 }
-
-/* //_{@modern */
-a:link {
-	background : rgba( 255, 255, 255, 0 );
-	transition : 0.3s background ease-in, 0.3s color ease-in, 0.3s border-color ease-in;
-}
-/* //_}@modern */
 
 /* //_{#can-mq */
 /* //_<bottom40 */
@@ -1448,6 +1475,13 @@ body {
 		padding-left  : 0;
 		padding-right : 0;
 	}
+
+	form * {
+		color  : $COLOR_WTC_text;
+	}
+	form :focus {
+	    color : $COLOR_ACCENT;
+	}
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
@@ -1969,7 +2003,10 @@ table {
 		font-size   : 0.875em;
 		color       : $COLOR_PRT_link;
 	}
-	.mB a[href*=javascript：]:after {
+	.mB a[href$=".jpeg"]:after,
+	.mB a[href$=".jpg"]:after,
+	.mB a[href$=".gif"]:after,
+	.mB a[href$=".png"]:after {
 		display     : none;
 	}
 }
@@ -2186,6 +2223,7 @@ table {
 		/* href がない場合 current カラーになる */
 		cursor             : pointer;
 		page-break-inside  : avoid;
+		break-inside       : avoid;
 	}
 }
 @mixin linkCommon_watch {
@@ -2216,6 +2254,7 @@ table {
 @media only screen and (min-width: 96em) {
 	.mL a {
 		page-break-inside  : avoid;
+		break-inside       : avoid;
 	}
 }
 /* //_>bottom10 */
@@ -2299,6 +2338,7 @@ table {
 			.mLts a {
 				@include clearfix;
 				page-break-inside  : avoid;
+				break-inside       : avoid;
 			}
 
 				.mLts img {
@@ -2536,19 +2576,14 @@ table {
 }
 /* //_}#ie7-win */
 
-
 /* //_{#can-mq */
 /* //_<bottom40 */
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
 	/* //_{^+coloredHeader */
-	.mS, .mSt {
+	.mS {
 		background : $COLOR_WTC_casual_fill;
-		color      : $COLOR_WTC_text;
-	}
-	.mSt:focus {
-	    color : $COLOR_ACCENT;
 	}
 	/* //_}^+coloredHeader */
 }
@@ -2669,6 +2704,9 @@ table {
         color        : $COLOR_WTC_fill; /* , を消す */
 		border-color : $COLOR_WTC_casual_fill;
 	}
+    .SocialButtons a:link {
+        background   : $COLOR_WTC_fill;
+    }
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
@@ -3044,6 +3082,8 @@ blockquote .box {
 	cursor     : pointer;
     text-align : center;
 
+    border     : 0;
+
     background : $COLOR_BdM_casual_text;
     color      : $COLOR_BdM_fill;
 }
@@ -3060,21 +3100,53 @@ blockquote .box {
     color      : #fff !important;
 }
 
+/* //_{@ie9,@modern */
+:invalid .btn[type="submit"],
+.btn:disabled {
+    background : $COLOR_BdM_casual_fill !important;
+    color      : $COLOR_BdM_fill !important;
+}
+/* //_}@ie9,@modern */
+
 /* //_{#can-mq */
 /*  Watch !important 指定があるので移動しない
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-    .btn, .btn:visited {
+    .btn, .btn:visited
+    /* //_{^+coloredHeader */
+    , #lH .btn, #lH .btn:visited
+    /* //_}^+coloredHeader */
+    {
         background : $COLOR_WTC_casual_text;
         color      : $COLOR_WTC_fill;
     }
-    .btn:link {
+    .btn:link
+    /* //_{^+coloredHeader */
+    , #lH .btn:link
+    /* //_}^+coloredHeader */
+    {
         background : $COLOR_WTC_link;
         color      : $COLOR_WTC_fill;
     }
-    .btn:active:hover, .btn:focus:hover {
+    .btn:active:hover, .btn:focus:hover
+    /* //_{^+coloredHeader */
+    , #lH .btn:active:hover, #lH .btn:focus:hover
+    /* //_}^+coloredHeader */
+    {
         background : $COLOR_WTC_flip_fill !important;
     }
+
+    /* //_{@ie9,@modern */
+    :invalid .btn[type="submit"],
+    .btn:disabled
+    /* //_{^+coloredHeader */
+    , #lH :invalid .btn[type="submit"], #lH .btn:disabled
+    /* //_}^+coloredHeader */
+    {
+        background : $COLOR_WTC_casual_fill !important;
+        color      : $COLOR_WTC_fill !important;
+    }
+    /* //_}@ie9,@modern */
 }
 /* //_}#can-mq */
 
@@ -3089,6 +3161,13 @@ blockquote .box {
 .lS .btn:active:hover, .lS .btn:focus:hover {
     background : $COLOR_BdS_flip_fill !important;
 }
+/* //_{@ie9,@modern */
+.lS :invalid .btn[type="submit"],
+.lS .btn:disabled {
+    background : $COLOR_BdS_casual_fill !important;
+    color      : $COLOR_BdS_fill !important;
+}
+/* //_}@ie9,@modern */
 
 /* //_{+coloredHeader */
 #lH .btn, #lH .btn:visited {
@@ -3097,11 +3176,18 @@ blockquote .box {
 }
 #lH .btn:link {
     background : $COLOR_HdM_link;
-    color      : $COLOR_BdM_fill;
+    color      : $COLOR_HdM_fill;
 }
 #lH .btn:active:hover, #lH .btn:focus:hover {
     background : $COLOR_HdM_flip_fill !important;
 }
+/* //_{@ie9,@modern */
+#lH :invalid .btn[type="submit"],
+#lH .btn:disabled {
+    background : $COLOR_HdM_casual_fill !important;
+    color      : $COLOR_HdM_fill !important;
+}
+/* //_}@ie9,@modern */
 
 #lH .lS .btn, #lH .lS .btn:visited {
     background : $COLOR_HdS_casual_text;
@@ -3112,8 +3198,15 @@ blockquote .box {
     color      : $COLOR_HdS_fill;
 }
 #lH .lS .btn:active:hover, #lH .lS .btn:focus:hover {
-    background : $COLOR_BdS_flip_fill !important;
+    background : $COLOR_HdS_flip_fill !important;
 }
+/* //_{@ie9,@modern */
+#lH .lS :invalid .btn[type="submit"],
+#lH .lS .btn:disabled {
+    background : $COLOR_HdS_casual_fill !important;
+    color      : $COLOR_HdS_fill !important;
+}
+/* //_}@ie9,@modern */
 /* //_}+coloredHeader */
 
 .fillbg .btn, .fillbg .btn:visited {
@@ -3127,6 +3220,13 @@ blockquote .box {
 .fillbg .btn:active:hover, .fillbg .btn:focus:hover {
     background : $COLOR_FtS_flip_fill !important;
 }
+/* //_{@ie9,@modern */
+.fillbg :invalid .btn[type="submit"],
+.fillbg .btn:disabled {
+    background : $COLOR_FtS_casual_fill !important;
+    color      : $COLOR_FtS_fill !important;
+}
+/* //_}@ie9,@modern */
 
 .fillbg .lM .btn, .fillbg .lM .btn:visited {
     background : $COLOR_FtM_casual_text;
@@ -3139,6 +3239,13 @@ blockquote .box {
 .fillbg .lM .btn:active:hover, .fillbg .lM .btn:focus:hover {
     background : $COLOR_FtM_flip_fill !important;
 }
+/* //_{@ie9,@modern */
+.fillbg .lM :invalid .btn[type="submit"],
+.fillbg .lM .btn:disabled {
+    background : $COLOR_FtM_casual_fill !important;
+    color      : $COLOR_FtM_fill !important;
+}
+/* //_}@ie9,@modern */
 
 /* //_{+dlflat */
 /*  Flatten
@@ -3312,6 +3419,7 @@ dd p, dd blockquote {
 	background-color  : #333;
 	color             : #fff;
 	page-break-inside : avoid;
+	break-inside      : avoid;
 }
 
 pre.prettyprint {

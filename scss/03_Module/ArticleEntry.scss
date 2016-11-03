@@ -19,9 +19,10 @@
     padding     : 1em 0;
     line-height : 1.4;
 }
-    .AEntry-date {
+    .AEntry a {
         @include noUnderLineAlways;
-
+    }
+    .AEntry-date {
         display : block;
     }
         .AEntry-date div {
@@ -43,10 +44,6 @@
         .AEntry-date:visited:hover div {
             border-color : $COLOR_BdM_visited_hover;
         }
-
-        .AEntry-title a {
-            @include noUnderLineAlways;
-        }
             /* //_{@ie7,@ie8,@ie9,@modern */
             .AEntry-date:hover + .AEntry-title :visited h3 {
                 color : $COLOR_BdM_visited_hover;
@@ -60,14 +57,29 @@
             .AEntry-date:hover ~ .AEntry-jump :link:first-of-type {
                 background : $COLOR_BdM_hover;
             }
+
+            .AEntry-date:focus + .AEntry-title :visited h3,
+            .AEntry-date:focus + .AEntry-title :link h3 {
+                color : $COLOR_ACCENT;
+            }
+            .AEntry-date:focus ~ .AEntry-jump :visited:first-of-type,
+            .AEntry-date:focus ~ .AEntry-jump :link:first-of-type {
+                background : $COLOR_ACCENT;
+            }
             /* //_}@ie7,@ie8,@ie9,@modern */
 
-            .AEntry h3 {
-                font-size     : 2em;
-                margin        : 0;
-                padding       : 0.2em 0 0;
-                text-align    : left;
+            .AEntry-title-link {
+                display : block;
+                /* //_{#ie6-win */
+                width   : 100%;
+                /* //_}#ie6-win */
             }
+                .AEntry h3 {
+                    font-size     : 2em;
+                    margin        : 0;
+                    padding       : 0.2em 0 0;
+                    text-align    : left;
+                }
 
             .AEntry-label {
                 font-size   : 1.25em;
@@ -177,5 +189,36 @@
 	}
 }
 /* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+        .AEntry-date:link div {
+            border-color : $COLOR_WTC_link;
+        }     
+        .AEntry-date:link:hover div {
+            border-color : $COLOR_WTC_hover;
+        }
+        .AEntry-date:visited div {
+            border-color : $COLOR_WTC_text;
+        }
+        .AEntry-date:visited:hover div {
+            border-color : $COLOR_WTC_visited_hover;
+        }
+
+            .AEntry-date:hover + .AEntry-title :visited h3 {
+                color : $COLOR_WTC_visited_hover;
+            }
+            .AEntry-date:hover + .AEntry-title :link h3 {
+                color : $COLOR_WTC_hover;
+            }
+            .AEntry-date:hover ~ .AEntry-jump :visited:first-of-type {
+                background : $COLOR_WTC_visited_hover;
+            }
+            .AEntry-date:hover ~ .AEntry-jump :link:first-of-type {
+                background : $COLOR_WTC_hover;
+            }
+}
+/* //_>bottom40 */
 
 /* //_}#can-mq */
