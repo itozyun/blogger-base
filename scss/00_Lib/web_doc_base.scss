@@ -138,26 +138,29 @@ $COLOR_PRT_link          : #006 !default;
 $COLOR_PRT_visited       : #606 !default;
 
 
-$PC_SUB_COLUMN_RATIO  : 0.3;
+$BASE_LINE_HEIGHT     : 1.9 !default;
+$BASE_LINE_HEIGHT_EM  : 1em * $BASE_LINE_HEIGHT;
+
+$PC_SUB_COLUMN_RATIO  : 0.3 !default;
 $PC_MAIN_COLUMN_RATIO : 1 - $PC_SUB_COLUMN_RATIO;
-$PC_COLUMN_GAP_RATIO  : 0.027;
-$PC_MAX_WIDTH_EM      : 70em;
+$PC_COLUMN_GAP_RATIO  : 0.027 !default;
+$PC_MAX_WIDTH_EM      : 70em !default;
 
-$WSXGA_SUB_COLUMN_RATIO  : 0.17;
+$WSXGA_SUB_COLUMN_RATIO  : 0.17 !default;
 $WSXGA_MAIN_COLUMN_RATIO : 1 - $WSXGA_SUB_COLUMN_RATIO;
-$WSXGA_COLUMN_GAP_PCT    : 1.5%;
-$WSXGA_COLUMN_GAP_EM     : 2.6em;
-$WSXGA_MAX_WIDTH_EM      : 108em;
+$WSXGA_COLUMN_GAP_PCT    : 1.5% !default;
+$WSXGA_COLUMN_GAP_EM     : 2.6em !default;
+$WSXGA_MAX_WIDTH_EM      : 108em !default;
 
-$WQXGA_SUB_COLUMN_RATIO  : 0.3;
+$WQXGA_SUB_COLUMN_RATIO  : 0.3 !default;
 $WQXGA_MAIN_COLUMN_RATIO : 1 - $WQXGA_SUB_COLUMN_RATIO;
-$WQXGA_COLUMN_GAP_PCT    : 2%;
-$WQXGA_COLUMN_GAP_EM     : 2.6em;
-$WQXGA_MAX_WIDTH_EM      : 150em;
+$WQXGA_COLUMN_GAP_PCT    : 2% !default;
+$WQXGA_COLUMN_GAP_EM     : 2.6em !default;
+$WQXGA_MAX_WIDTH_EM      : 150em !default;
 
-$TABLET_H_SPACE      : 6%;
-$PHABLET_H_SPACE     : 3%;
-$PHONE_H_SPACE       : 1%;
+$TABLET_H_SPACE      : 6% !default;
+$PHABLET_H_SPACE     : 3% !default;
+$PHONE_H_SPACE       : 1% !default;
 
 @charset "utf-8";
 
@@ -194,7 +197,7 @@ $PHONE_H_SPACE       : 1%;
 		*,
 		/* //_}@ie5win,@ie55 */
 		body, input {
-			line-height : 1.8;
+			line-height : $BASE_LINE_HEIGHT;
 		}
 
 /* //_{#can-mq */
@@ -334,15 +337,14 @@ $PHONE_H_SPACE       : 1%;
 			font-style : normal;
 		}
 
-		
 		input {
 			font-size : 1em;
 			/* //_{@modern */
 			-webkit-border-radius : 0;			    
-			 -khtml-border-radius : 0;			    
+			 /* -khtml-border-radius : 0; */			    
 			   -moz-border-radius : 0;			    
 			    -ms-border-radius : 0;			    
-			     -o-border-radius : 0;			    
+		      /* -o-border-radius : 0; */	    
 		            border-radius : 0;
 			-webkit-appearance    : none;
 			/* //_}@modern */
@@ -385,7 +387,6 @@ $PHONE_H_SPACE       : 1%;
 --------------------------------------------------------------------------------------*/
 	h1, h2, h3, h4, h5, h6 {
 		line-height        : 1.2;
-		font-weight        : normal;
 		break-after        : avoid;
 		/* //_{@modern */
 		-moz-break-after   : avoid;
@@ -398,6 +399,10 @@ $PHONE_H_SPACE       : 1%;
 	}
 
 	/* //_{+from-h2-at-post */
+	h1, h2, h3, h6 {
+		font-weight        : normal;
+	}
+
 	@mixin h2-main-content {
 		font-size      : 2em;
 		padding        : 0;
@@ -417,33 +422,40 @@ $PHONE_H_SPACE       : 1%;
 
 	@mixin h3-main-content {
 		font-size      : 1.5em;
-		padding        : 0.8em 0.66em;
 		margin         : 2em 0 1em;
+		border-width   : 0.2em 0 0;
+		border-style   : solid;
+		padding        : 0.8em 0 0;
 		letter-spacing : 1px;
 	}
 
 	h4 {
-		font-size      : 1.2em;
+		font-size      : 1.25em;
 		letter-spacing : 1px;
-		border-bottom  : 1px dotted;
-		padding        : 0 0 0.25em;
-		margin         : 2em 0 1em;
+		border-top     : 1px dotted $COLOR_BdM_flip_fill;
+		color          : $COLOR_BdM_flip_fill;
+		padding        : 0.4em 0 0;
+		margin         : 2.4em 0 1.2em;
 	}
 	h5 {
 		font-size      : 1em;
-		border-left    : 0.5em solid;
+		border-left    : 0.5em solid $COLOR_BdM_flip_fill;
 		padding        : 0 0 0 0.5em;
 		margin         : 1.5em 0 0.8em;
 	}
 	h6 {
 		font-size      : 1em;
-		border-left    : 0.3em solid;
+		border-left    : 0.3em solid $COLOR_BdM_casual_text;
 		padding        : 0 0 0 0.6em;
 		margin         : 1.5em 0 0.8em 0.1em;
 	}
 	/* //_}+from-h2-at-post */
 
 	/* //_{+from-h1-at-post */
+	h1, h2, h3, h5, h6 {
+		font-weight        : normal;
+	}
+
 	@mixin h1-main-content {
 		font-size      : 2em;
 		padding        : 0;
@@ -453,40 +465,47 @@ $PHONE_H_SPACE       : 1%;
 
 	@mixin h2-main-content {
 		font-size      : 1.5em;
-		padding        : 0.8em 0.66em;
-		border         : 0;
 		margin         : 2em 0 1em;
+		border-width   : 0.2em 0 0;
+		border-style   : solid;
+		padding        : 0.8em 0 0;
 		letter-spacing : 1px;
 
 		/* //_{#can-content */
 		&:after {
 			content : none;
 			/* //_{@modern */
-			display : none; /* for iOS4 */
+			display : none; /* for iOS4 content : none だけでは消えない */
 			/* //_}@modern */
 		}
 		/* //_}#can-content */
 	}
 
 	@mixin h3-main-content {
-		font-size      : 1.2em;
+		font-weight    : bold;
+		font-size      : 1.25em;
 		letter-spacing : 1px;
-		border-bottom  : 1px dotted;
-		padding        : 0 0 0.25em;
-		margin         : 2em 0 1em;
+		border-top     : 1px dotted $COLOR_BdM_flip_fill;
+		color          : $COLOR_BdM_flip_fill;
+		padding        : 0.8em 0 0;
+		margin         : 2.4em 0 1.2em;
 	}
 
 	h4 {
 		font-size      : 1em;
-		border-left    : 0.5em solid;
+		border-left    : 0.5em solid $COLOR_BdM_flip_fill;
 		padding        : 0 0 0 0.5em;
 		margin         : 1.5em 0 0.8em;
 	}
-	h5, h6 {
+	h5 {
 		font-size      : 1em;
-		border-left    : 0.3em solid;
+		border-left    : 0.3em solid $COLOR_BdM_casual_text;
 		padding        : 0 0 0 0.6em;
 		margin         : 1.5em 0 0.8em 0.1em;
+	}
+	h6 {
+		font-size      : 1em;
+		margin         : 1.5em 0 0.8em 1em;
 	}
 	/* //_}+from-h1-at-post */
 
@@ -561,6 +580,24 @@ $PHONE_H_SPACE       : 1%;
 	dd {
 		margin-left : 0.5em;
 	}
+
+	/* //_{+from-h2-at-post */
+		h4, h5 {
+			border-color : $COLOR_WTC_flip_fill;
+		}
+		h6 {
+			border-color : $COLOR_WTC_casual_text;
+		}
+	/* //_}+from-h2-at-post */
+
+	/* //_{+from-h1-at-post */
+		h3, h4 {
+			border-color : $COLOR_WTC_flip_fill;
+		}
+		h5 {
+			border-color : $COLOR_WTC_casual_text;
+		}
+	/* //_}+from-h1-at-post */
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
@@ -651,14 +688,17 @@ $PHONE_H_SPACE       : 1%;
 --------------------------------------------------------------------------------------*/
 
 /* 下線なし -> hover -> 下線あり */
-a:link, a:focus, a:active { text-decoration : none; }
+/* //_{#ie6-win */
+a,
+/* //_}#ie6-win */
+a:link, a:visited, a:focus, a:active { text-decoration : none; }
 a:hover { text-decoration : none; } /* link の無い a には下線をつけない */
 a:link:hover, a:visited:hover { text-decoration : underline; }
 a:focus:hover, a:active:hover { text-decoration : underline !important; }
 
 /* 下線あり -> hover -> 下線なし 但し, focus:hover active:hover では下線が付く*/
 @mixin hideUnderLineOnHover {
-    &:link { text-decoration : underline; }
+    &:link, &:visited { text-decoration : underline; }
     &:hover, &:focus, &:active { text-decoration : none; }
 }
 
@@ -1080,8 +1120,7 @@ hr {
 --------------------------------------------------------------------------------------*/
 	/* tables still need 'cellspacing="0"' in the markup */
 	table {
-		border-style      : solid;
-		border-width      : 1px 0 0 1px;
+		border            : 0;
 		border-collapse   : collapse;
 		empty-cells       : show;
 		border-spacing    : 0;
@@ -1090,14 +1129,30 @@ hr {
 	/* //_}@ie5win,@ie55 */
 	}
 
-	th, td {
-		padding           : 0.5em 0.3em;
-		border-style      : solid;
-		border-width      : 0 1px 1px 0;
+	th {
+		font-weight  : normal;
+		padding      : 0.5em;
 	}
-	
-	thead th {
-		font-weight : normal;
+
+	thead td {
+		padding      : 0.5em 0.25em;
+	}
+	tbody td {
+		padding      : 0.5em 0;
+	}
+
+	thead th, thead td {
+		border-style : solid;
+		border-width : 0 0 1px 0;
+	}
+
+	tbody th {
+		border-style : solid;
+		border-width : 0 0 1px;
+	}
+	tbody td {
+		border-style : solid;
+		border-width : 0 0.5em 1px;
 	}
 
 	.fat tbody th, .fat tbody td {
@@ -1106,43 +1161,127 @@ hr {
 
 	/*  Table
 --------------------------------------------------------------------------------------*/
-	table, th, td {
-		border-color : mix($COLOR_BdM_fill, $COLOR_BdM_text, 50%) mix($COLOR_BdM_fill, $COLOR_BdM_text, 60%);
+	th {
+		background   : $COLOR_BdM_casual_fill;
+		border-color : $COLOR_BdM_fill;
+	}
+	td {
+		border-color : $COLOR_BdM_fill $COLOR_BdM_fill $COLOR_BdM_casual_fill;
 	}
 	/* //_{@ie5win,@ie55 */
 	table {
-		color      : $COLOR_BdM_text;
+		color        : $COLOR_BdM_text;
 	}
 	/* //_}@ie5win,@ie55 */
-	thead th {
-		background : mix($COLOR_BdM_fill, $COLOR_BdM_text, 50%);
-		color      : $COLOR_BdM_text;
-	}
-	th {
-		background : mix($COLOR_BdM_fill, $COLOR_BdM_text, 80%);
+	thead th, thead td {
+		background   : $COLOR_BdM_casual_text;
+		border-color : $COLOR_BdM_fill;
+		color        : $COLOR_BdM_fill;
 	}
 
 	/* //_{^#ie6-win */
-	tr:hover td {
-		background : mix($COLOR_BdM_fill, $COLOR_BdM_text, 90%);
+	tbody tr:hover td {
+		border-color : $COLOR_BdM_fill $COLOR_BdM_fill $COLOR_ACCENT;
+		color        : $COLOR_ACCENT;
 	}
-	
 	tbody tr:hover th {
-		background : mix($COLOR_BdM_fill, $COLOR_BdM_text, 70%);
+		background   : $COLOR_ACCENT;
+		color        : #fff;
 	}
 	/* //_}^#ie6-win */
+
+	blockquote {
+		th, thead td {
+			background   : $COLOR_BdM_flip_fill;
+			border-color : $COLOR_BdM_casual_fill;
+			color        : $COLOR_BdM_casual_fill;
+		}
+		td {
+			border-color : $COLOR_BdM_casual_fill $COLOR_BdM_casual_fill $COLOR_BdM_casual_text;
+		}
+
+		/* //_{^#ie6-win */
+		tbody tr:hover td {
+			border-color : $COLOR_BdM_casual_fill $COLOR_BdM_casual_fill $COLOR_ACCENT;
+		}
+		/* //_}^#ie6-win */
+	}
 
 /* //_{#can-mq */
 /* //_<bottom40 */
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-	th { background : mix($COLOR_WTC_fill, $COLOR_WTC_text, 90%); }
-	tr:hover td { background : mix($COLOR_WTC_fill, $COLOR_WTC_text, 85%); }
-	tbody tr:hover th { background :mix($COLOR_WTC_fill, $COLOR_WTC_text, 70%); }
+	th {
+		background   : $COLOR_WTC_casual_fill;
+		border-color : $COLOR_WTC_fill;
+	}
+	td {
+		border-color : $COLOR_WTC_fill $COLOR_WTC_fill $COLOR_WTC_casual_fill;
+	}
+	thead th, thead td {
+		background   : $COLOR_WTC_casual_text;
+		border-color : $COLOR_WTC_fill;
+		color        : $COLOR_WTC_fill;
+	}
+	th {
+		padding      : 0.5em 0.2em;
+	}
+	thead td {
+		padding      : 0.5em 0.1em;
+	}
+	tbody td {
+		border-width : 0 0.2em 1px;
+	}
+
+	tbody tr:hover td {
+		border-color : $COLOR_WTC_fill $COLOR_WTC_fill $COLOR_ACCENT;
+	}
+
+	blockquote {
+		th, thead td {
+			background   : $COLOR_WTC_flip_fill;
+			border-color : $COLOR_WTC_casual_fill;
+			color        : $COLOR_WTC_casual_fill;
+		}
+		td {
+			border-color : $COLOR_WTC_casual_fill $COLOR_WTC_casual_fill $COLOR_WTC_casual_text;
+		}
+
+		tbody tr:hover td {
+			border-color : $COLOR_WTC_casual_fill $COLOR_WTC_casual_fill $COLOR_ACCENT;
+		}
+	}
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	th {
+		border-color : #fff;
+	}
+	td {
+		border-color : #fff #fff $COLOR_BdM_casual_fill;
+	}
+	thead th, thead td {
+		border-color : #fff;
+		color        : #fff;
+	}
+
+	blockquote {
+		th, thead td {
+			border-color : #fff;
+			color        : #fff;
+		}
+		td {
+			border-color : #fff #fff $COLOR_BdM_casual_text;
+		}
+	}
+}
+/* //_>bottom50 */
 
 .r {
 	text-align : right;
@@ -1183,13 +1322,11 @@ body {
 }
 
 	#lB .lS
-	/* //_{#ie7-win */
-	, #lB .lSi
-	/* //_}#ie7-win */
 	{
 		background : $COLOR_BdS_fill;
 		color      : $COLOR_BdS_text;
 	}
+
 	.fillbg {
 		background : $COLOR_FtM_fill;
 		color      : $COLOR_FtM_text;
@@ -1243,7 +1380,12 @@ body {
 		/* //_}^#ie89 */
 	}
 		.lMi {
+			/* //_{@ie6 */ /* maring でないと :hover でレイアウトがガタつく */
+			margin-left  : 100% * $PC_COLUMN_GAP_RATIO / $PC_MAIN_COLUMN_RATIO;
+			/* //_}@ie6 */
+			/* //_{^@ie6 */
 			padding-left : 100% * $PC_COLUMN_GAP_RATIO / $PC_MAIN_COLUMN_RATIO;
+			/* //_}^@ie6 */
 		}
 
 /*  sub
@@ -1261,8 +1403,14 @@ body {
 			/* //_{#ie55- */
 			width         : 100%;
 			/* //_}#ie55- */
+			/* //_{@ie6 */ /* maring でないと :hover でレイアウトがガタつく */
+			margin-left  : 100% * $PC_COLUMN_GAP_RATIO / $PC_SUB_COLUMN_RATIO;
+			margin-right : 100% * $PC_COLUMN_GAP_RATIO / $PC_SUB_COLUMN_RATIO;
+			/* //_}@ie6 */
+			/* //_{^@ie6 */
 			padding-left  : 100% * $PC_COLUMN_GAP_RATIO / $PC_SUB_COLUMN_RATIO;
 			padding-right : 100% * $PC_COLUMN_GAP_RATIO / $PC_SUB_COLUMN_RATIO;
+			/* //_}^@ie6 */
 		}
 
 /*  x-column
@@ -1534,6 +1682,13 @@ body {
 			overflow : hidden;
 			width    : 100%;
 		}
+		.e6BR {
+			clear         : both;
+			height        : 1px;
+			line-height   : 1px;
+			display       : block;
+			margin-bottom : -1px;
+		}
 
 	#lH
 	/* //_{@ie55 */
@@ -1758,27 +1913,21 @@ table {
 	.mB h3 {
 		@include h3-main-content;
 
-		background : $COLOR_BdM_flip_fill;
-		color      : $COLOR_BdM_flip_text;
+		border-color : $COLOR_ACCENT;
+		color        : $COLOR_ACCENT;
 	}
-	h4, h6 { border-color : mix($COLOR_BdM_fill, $COLOR_BdM_text, 60%); }
-
-	h5 { border-color : mix($COLOR_BdM_fill, $COLOR_BdM_text, 10%) }
 /* //_}+from-h2-at-post */
 
 /* //_{+from-h1-at-post */
 	.mB h2 {
 		@include h2-main-content;
 
-		background : $COLOR_BdM_flip_fill;
-		color      : $COLOR_BdM_flip_text;
+		border-color : $COLOR_ACCENT;
+		color        : $COLOR_ACCENT;
 	}
 	.mB h3 {
 		@include h3-main-content;
 	}
-	h3, h5, h6 { border-color : mix($COLOR_BdM_fill, $COLOR_BdM_text, 60%); }
-
-	h4 { border-color : mix($COLOR_BdM_fill, $COLOR_BdM_text, 10%) }
 /* //_}+from-h1-at-post */
 
 /*  Object
@@ -1914,25 +2063,23 @@ table {
 	}
 	/* //_{+from-h2-at-post */
 		.mB h3 {
-			background    : mix($COLOR_WTC_fill, $COLOR_WTC_text, 70%);
-			color         : $COLOR_WTC_text;
 			padding-left  : 0;
 			padding-right : 0;
 		}
 		.mB h4 {
-			border-color : mix($COLOR_WTC_fill, $COLOR_WTC_text, 60%);
+			border-color : $COLOR_WTC_flip_fill;
+			color        : $COLOR_WTC_flip_fill;
 		}
 	/* //_}+from-h2-at-post */
 
 	/* //_{+from-h1-at-post */
 		.mB h2 {
-			background    : mix($COLOR_WTC_fill, $COLOR_WTC_text, 70%);
-			color         : $COLOR_WTC_text;
 			padding-left  : 0;
 			padding-right : 0;
 		}
 		.mB h3 {
-			border-color : mix($COLOR_WTC_fill, $COLOR_WTC_text, 60%);
+			border-color : $COLOR_WTC_flip_fill;
+			color        : $COLOR_WTC_flip_fill;
 		}
 	/* //_}+from-h1-at-post */
 
@@ -2347,9 +2494,9 @@ table {
 				}
 
 				.mLts h3 {
-					font-size : 1.1em;
-					padding   : 0;
-					margin    : 0 0 0.4em;
+					font-size   : 1.1em;
+					padding     : 0;
+					margin      : 0 0 0.4em;
 				}
 
 				.mLts span, .mLts b {
@@ -2359,7 +2506,9 @@ table {
 				}
 				.mLts p {
 					display     : block;
+					/* //_{#ie55-,@ie8,@ie9,@modern */
 					padding     : 0 0 1em;
+					/* //_}#ie55-,@ie8,@ie9,@modern */
 					/* //_{@ie6,@ie7 */
 					padding     : 0;
 					/* //_}@ie6,@ie7 */
@@ -2383,7 +2532,9 @@ table {
 /*  layout Main
 --------------------------------------------------------------------------------------*/
 	.lM .mLts a {
+		/* //_{#ie55-,@ie8,@ie9,@modern */
 		padding : 1em 0.5em 0;
+		/* //_}#ie55-,@ie8,@ie9,@modern */
 		/* //_{@ie6,@ie7 */
 		padding : 1em 0.5em;
 		/* //_}@ie6,@ie7 */
@@ -2403,7 +2554,9 @@ table {
 /*  layout Sub
 --------------------------------------------------------------------------------------*/
 .lS .mLts a {
+	/* //_{#ie55-,@ie8,@ie9,@modern */
 	padding : 0.5em 0.5em 0;
+	/* //_}#ie55-,@ie8,@ie9,@modern */
 	/* //_{@ie6,@ie7 */
 	padding : 0.5em;
 	/* //_}@ie6,@ie7 */
@@ -2416,9 +2569,11 @@ table {
 		}
 
 		.lS .mLts span, .lS .mLts b {
-			padding     : 0 0 0.56em;
+			/* //_{#ie55-,@ie8,@ie9,@modern */
+			padding : 0 0 0.56em;
+			/* //_}#ie55-,@ie8,@ie9,@modern */
 			/* //_{@ie6,@ie7 */
-			padding     : 0;
+			padding : 0;
 			/* //_}@ie6,@ie7 */
 		}
 
@@ -2533,7 +2688,7 @@ table {
 .mS {
 	position   : relative;
     display    : block;
-    height     : 1.8em;
+    height     : $BASE_LINE_HEIGHT_EM;
     margin     : 0;
     padding    : 0 3em 0 0.5em;
 }
@@ -2545,15 +2700,15 @@ table {
 	}
 	.mSt {
 	    width       : 100%;
-	    height      : 1.75em; /* 少し小さく */
-		line-height : 1.75;
+	    height      : 1em * ( $BASE_LINE_HEIGHT - 0.05 ); /* 少し小さく */
+		line-height : ( $BASE_LINE_HEIGHT - 0.05 );
 	}
 	.mSt:focus {
 		color       : darken( $COLOR_ACCENT, 30% );
 	}
 	.mS .btn {
 	    width       : 3em;
-	    height      : 1.8em;
+	    height      : $BASE_LINE_HEIGHT_EM;
 	    position    : absolute;
 	    top         : 0;
 	    right       : 0;
@@ -3339,6 +3494,46 @@ blockquote .box {
 
 /* //_}#can-mq */
 
+/* [parts] moduleSpacer
+ *  module 配下の要素をラップし適切な余白を与える
+--------------------------------------------------------------------------------------*/
+
+.mspacer {
+    margin : 1em 1em 0;
+
+/* //_{#ie7-win */
+	word-break : break-all;
+/* //_}#ie7-win */
+}
+
+#lF .mspacer {
+    margin : 0.6em 0.5em 0;
+}
+
+.lS .mspacer {
+    margin : 0.6em 0 0 !important;
+}
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.mspacer {
+		margin : 1em 0.5em 0;
+	}
+}
+/* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+    .mspacer, #lF .mspacer {
+		margin : 0.6em 0 0;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
 /* //_{+mona */
 /* http://b4t.jp/823 */
 .mona {
@@ -3513,9 +3708,21 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 --------------------------------------------------------------------------------------*/
 /* //_{@modern */
 #jM a[href] > img {
-	transition : width 0.3s ease-in-out;
+-webkit-transition-property : width;
+
+	-webkit-transition :       0.5s ease-in-out;
+	   -moz-transition : width 0.3s ease-in-out;
+	    -ms-transition : width 0.3s ease-in-out;
+		 -o-transition : width 0.3s ease-in-out;
+		    transition : width 0.3s ease-in-out;
 }
 /* //_}@modern */
+
+/* //_{@ie9 */
+#jM a[href] > img {
+	    -ms-transition : width 0.3s ease-in-out;
+}
+/* //_}@ie9 */
 
 .jL img {
 	width       : 100%;
@@ -3528,6 +3735,16 @@ a:focus img, a:active img {
 	background  : $COLOR_ACCENT;
 }
 
+#jF {
+    background : $COLOR_BdS_fill;
+
+    /* //_{@modern */
+		/* http://blog.webcreativepark.net/2012/10/19-161432.html */
+		-webkit-backface-visibility : hidden;
+		   -moz-backface-visibility : hidden;
+		        backface-visibility : hidden;
+    /* //_}@modern */
+}
 
 /* //_{+aa */
 .aa {

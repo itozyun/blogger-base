@@ -1,5 +1,4 @@
 .ContactForm form {
-    margin  : 1em 1em 4em;
     display : block;
 }
 
@@ -17,12 +16,14 @@
 
         .ContactForm-text {
             margin-left : 8em;
+            padding     : 0.2em 0.5em;
+            background  : $COLOR_BdM_casual_fill;
         }
 
             .ContactForm-text input,
             .ContactForm textarea {
                 width      : 100%;
-                padding    : 0.2em 0;
+                padding    : 0;
                 border     : 0;
                 background : $COLOR_BdM_casual_fill;
             }
@@ -75,9 +76,15 @@
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
+    .ContactForm-text,
     .ContactForm-text input,
     .ContactForm textarea {
         background : $COLOR_WTC_casual_fill;
+    }
+
+    .ContactForm-text input:focus,
+    .ContactForm textarea:focus {
+        color      : $COLOR_ACCENT;
     }
 }
 /* //_>bottom40 */

@@ -104,8 +104,8 @@
 }
     .AEntry-jump .btn {
         display     : inline-block;
-        height      : 1.8em;
-        line-height : 1.8;
+        height      : $BASE_LINE_HEIGHT_EM;
+        line-height : $BASE_LINE_HEIGHT;
         padding     : 0 1em;
         margin-left : 1em;
     }

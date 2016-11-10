@@ -36,7 +36,11 @@
 	margin-left  : 5%;
 	margin-right : 5%;
 }
-.mC div { color : $COLOR_BdM_casual_text; }
+.mC div {
+	color     : $COLOR_BdM_casual_text;
+	font-size : 93%;
+}
+.mC p { margin-top : 0 }
 .mC p a { @include hideUnderLineOnHover }
 
 .mF iframe {

@@ -7,15 +7,10 @@
 }
 
 	.Label div {
-		margin : 1em 1em 0;
 		color  : $COLOR_BdM_fill; /* , を消す */
 	}
 	.fillbg .Label div {
 		color  : $COLOR_FtM_fill; /* , を消す */
-	}
-	.lS .Label div,
-	#lF .Label div {
-		margin : 0.6em 0.5em 0;
 	}
 
 		.Label a {
@@ -27,7 +22,7 @@
 		/* //_}@modern,@ie9,@ie8 */
 
 		/* //_{#ie7-win */
-			height       : 2.8em;
+			line-height : 2.8;
 		/* //_}#ie7-win */
 
 			border-width : 0 0 1px;
@@ -40,7 +35,7 @@
 		/* //_}@modern,@ie9,@ie8 */
 
 		/* //_{#ie7-win */
-			height : 2.4em;
+			line-height : 2.4;
 		/* //_}#ie7-win */
 		}
 /* //_{#can-mq */
@@ -61,7 +56,6 @@
 @media handheld, only screen and (max-width: 479px) {
 	.Label div {
 		text-align : left;
-		margin     : 1em 0.5em 0;
 	}
 }
 /* //_>bottom30 */
@@ -69,10 +63,6 @@
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-	.lS .Label div,
-	#lF .Label div {
-		margin : 0.6em 0 0;
-	}
 	.Label div {
 		color  : $COLOR_WTC_fill; /* , を消す */
 	}
