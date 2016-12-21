@@ -13,6 +13,7 @@
  *  //#ie55-[@ie5win,@ie5mac,@ie55]
  *  //#ie6-win[@ie5win,@ie55,@ie6]
  *  //#ie7-win[@ie5win,@ie55,@ie6,@ie7]
+ *  //#ie8-win[@ie5win,@ie55,@ie6,@ie7,@ie8]
  *  //#ie89[@ie8,@ie9]
  *
  *  //#can-mq[@modern,@ie9]
@@ -336,26 +337,6 @@ $PHONE_H_SPACE       : 1% !default;
 		dfn, cite, code, var, samp, kbd, q {
 			font-style : normal;
 		}
-
-		input {
-			font-size : 1em;
-			/* //_{@modern */
-			-webkit-border-radius : 0;			    
-			 /* -khtml-border-radius : 0; */			    
-			   -moz-border-radius : 0;			    
-			    -ms-border-radius : 0;			    
-		      /* -o-border-radius : 0; */	    
-		            border-radius : 0;
-			-webkit-appearance    : none;
-			/* //_}@modern */
-		}
-		
-		/* //_{@modern */
-		input::-moz-focus-inner /* , button::-moz-focus-inner */ {
-			border      : 0;
-		}
-		/* //_}@modern */
-
 		
 		/* http://e2designer.seesaa.net/article/152168876.html */
 		/* http://perishablepress.com/press/2010/06/01/wrapping-content/ */
@@ -383,19 +364,35 @@ $PHONE_H_SPACE       : 1% !default;
 		ins { text-decoration: none; }
 		del { text-decoration: line-through; }
 
+		/* //_{@ie9,@modern */
+		figure {
+			margin : 0;
+		}
+		/* //_}@ie9,@modern */
+
+
+@mixin unbreak-inside {
+	break-inside      : avoid;
+	page-break-inside : avoid;
+}
+
+@mixin unbreak-after {
+	/* //_{@modern */
+	-webkit-column-break-after : avoid;
+	-webkit-region-break-after : avoid;
+	  -moz-break-after         : avoid;
+	column-break-after         : avoid;
+	/* //_}@modern */
+	break-after                : avoid;
+	page-break-after           : avoid;
+}
+
 /*  Typography
 --------------------------------------------------------------------------------------*/
 	h1, h2, h3, h4, h5, h6 {
 		line-height        : 1.2;
-		break-after        : avoid;
-		/* //_{@modern */
-		-moz-break-after   : avoid;
-		break-after        : avoid;
-		break-inside       : avoid;
-		column-break-after : avoid;
-		-webkit-column-break-after : avoid;
-		-webkit-region-break-after : avoid;
-		/* //_}@modern */
+		@include unbreak-inside;
+		@include unbreak-after;
 	}
 
 	/* //_{+from-h2-at-post */
@@ -529,21 +526,9 @@ $PHONE_H_SPACE       : 1% !default;
 		margin-bottom : 0;
 	}
 
-	dl, ul, ol {
-		/* //_{@modern */
-		page-break-inside  : avoid;
-		break-inside       : avoid;
-		/* //_}@modern */
-	}
-
-	dt {
-		/* //_{@modern */
-		-moz-break-after   : avoid;
-		break-after        : avoid;
-		column-break-after : avoid;
-		-webkit-column-break-after : avoid;
-		-webkit-region-break-after : avoid;
-		/* //_}@modern */
+	dl, ul, ol, tr, dt {
+		@include unbreak-inside;
+		@include unbreak-after;
 	}
 
 	strong {
@@ -606,10 +591,7 @@ $PHONE_H_SPACE       : 1% !default;
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	h1, h2, h3, h4, h5, h6  {
-		page-break-after  : avoid;
-		page-break-inside : avoid;
-	}
+
 }
 /* //_>bottom50 */
 
@@ -719,8 +701,8 @@ a:link          {
 
 /* //_{@modern */
 a:link, a:visited {
-	background : rgba( 255, 255, 255, 0 );
-	transition : 0.3s background ease-in, 0.3s color ease-in, 0.3s border-color ease-in;
+	background-color : rgba( 255, 255, 255, 0 );
+	transition       : 0.3s background-color ease-in, 0.3s color ease-in, 0.3s border-color ease-in;
 }
 /* //_}@modern */
 
@@ -738,8 +720,8 @@ a:visited:hover {
 }
 
 a:active, a:focus {
-    background : $COLOR_ACCENT !important;
-    color      : #fff        !important;
+    background-color : $COLOR_ACCENT !important;
+    color            : #fff        !important;
 }
 a:active *, a:focus * {
 	color      : #fff !important;
@@ -819,16 +801,18 @@ a:active *, a:focus * {
 	color      : $COLOR_BdM_flip_text;
 
 	&:link {
-		background : none;
-		color      : $COLOR_BdM_link;
+		background-color : none;
+		background-color : transparent;
+		color            : $COLOR_BdM_link;
 	}
 	&:visited {
-		background : none;
-		color      : $COLOR_BdM_text;
+		background-color : none;
+		background-color : transparent;
+		color            : $COLOR_BdM_text;
 	}
 	&:link:hover, &:visited:hover { /* visited:hover は ie11- で必要 */
-		background : $COLOR_BdM_casual_fill;
-		color      : $COLOR_BdM_text;
+		background-color : $COLOR_BdM_casual_fill;
+		color            : $COLOR_BdM_text;
 	}
 
 	.lS & {
@@ -885,34 +869,22 @@ a:active *, a:focus * {
 
 @mixin fill_watch {
 	/* href がない場合 current カラーになる */
-	background : $COLOR_WTC_flip_fill;
-	color      : $COLOR_WTC_flip_text;
+	background-color : $COLOR_WTC_flip_fill;
+	color            : $COLOR_WTC_flip_text;
 
 	&:link {
-		background : none;
-		color      : $COLOR_WTC_link;
+		background-color : none;
+		background-color : transparent;
+		color            : $COLOR_WTC_link;
 	}
 	&:visited {
-		background : none;
-		color      : $COLOR_WTC_text;
+		background-color : none;
+		background-color : transparent;
+		color            : $COLOR_WTC_text;
 	}
 	&:link:hover, &:visited:hover { /* visited:hover は ie11- で必要 */
-		background : $COLOR_WTC_casual_fill;
-		color      : $COLOR_WTC_text;
-	}
-}
-
-@mixin border-color {
-	border-color : $COLOR_BdM_casual_fill;
-
-	.lS & {
-		border-color : $COLOR_BdS_casual_fill;
-	}
-	.fillbg & {
-		border-color : $COLOR_FtS_casual_fill;
-	}
-	.fillbg .lM & {
-		border-color : $COLOR_FtM_casual_fill;
+		background-color : $COLOR_WTC_casual_fill;
+		color            : $COLOR_WTC_text;
 	}
 }
 
@@ -949,7 +921,6 @@ h2 {
 	margin       : 0;
 	border-width : 0 0 1px;
 	border-style : solid;
-	@include border-color;
 
 	padding      : 1.5em 0.45em 0.5em;
 	font-size    : 1.1em;
@@ -1089,12 +1060,6 @@ h2:after {
 		padding-right : 0;
 	}
 
-	h2 {
-		@if $COLOR_BdM_casual_fill != $COLOR_WTC_casual_fill {
-			border-color : $COLOR_WTC_casual_fill;
-		}
-	}
-
 	/* //_{#can-content */
 	h2:after {
 		@if $COLOR_BdM_accent != $COLOR_WTC_accent {
@@ -1109,6 +1074,57 @@ h2:after {
 /* //_}#can-mq */
 
 
+
+input {
+    font-size : 1em;
+    /* //_{@modern */
+    -webkit-border-radius : 0;		    
+       -moz-border-radius : 0;			    
+        -ms-border-radius : 0;			    
+            border-radius : 0;
+    -webkit-appearance    : none;
+    /* //_}@modern */
+}
+
+/* //_{@modern */
+input::-moz-focus-inner /* , button::-moz-focus-inner */ {
+    border      : 0;
+}
+/* //_}@modern */
+
+textarea {
+    overflow         : auto;
+    /* //_{@modern */
+    resize           : vertical;
+    background-image : none; /* Android Firefox */
+    /* //_}@modern */
+}
+
+form :focus {
+    color      : darken( $COLOR_ACCENT, 30% );
+}
+
+/* //_{@modern */
+form :invalid {
+    color      : $COLOR_WARN;
+    box-shadow : none; /* firefox45 */
+}
+/* //_}@modern */
+
+/* //_{#can-mq */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	form * {
+		color  : $COLOR_WTC_text;
+	}
+	form :focus {
+	    color : $COLOR_ACCENT;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
 hr {
 	border : 0;
     height : 1px;
@@ -1290,6 +1306,91 @@ hr {
 	text-align : center;
 }
 
+/* Base color
+--------------------------------------------------------------------------------------*/
+.fillbg {
+    background : $COLOR_FtM_fill;
+    color      : $COLOR_FtM_text;
+}
+
+body, .fillbg .lS, .fillbg .lO {
+	background  : $COLOR_FtS_fill;
+	color       : $COLOR_FtS_text;
+}
+
+
+/* //_{^+coloredHeader */
+#lH,
+/* //_}^+coloredHeader */
+#lB {
+	background : $COLOR_BdM_fill;
+	color      : $COLOR_BdM_text;
+}
+
+	#lB .lS {
+		background : $COLOR_BdS_fill;
+		color      : $COLOR_BdS_text;
+	}
+
+	#lE .lS {
+		background : none;
+	}
+
+/* //_{+coloredHeader */
+	#lH .lO {
+		background : $COLOR_HdX_fill;
+		color      : $COLOR_HdX_text;
+	}
+	#lH {
+		background : $COLOR_HdM_fill;
+		color      : $COLOR_HdM_text;
+	}
+	#lH .lS {
+		background : $COLOR_HdS_fill;
+		color      : $COLOR_HdS_text;
+	}
+/* //_}+coloredHeader */
+
+	* {
+		border-color : $COLOR_BdM_casual_fill;
+	}
+
+	.lS * {
+		border-color : $COLOR_BdS_casual_fill;
+	}
+	.fillbg * {
+		border-color : $COLOR_FtS_casual_fill;
+	}
+	.fillbg .lM * {
+		border-color : $COLOR_FtM_casual_fill;
+	}
+
+/* //_{#can-mq */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+	* {
+		border-color : $COLOR_WTC_casual_fill;
+	}
+
+	/* //_{^+coloredHeader */
+	#lH {
+		background : $COLOR_WTC_fill;
+		color      : $COLOR_WTC_text;
+	}
+	/* //_}^+coloredHeader */
+	#lB {
+		background : $COLOR_WTC_fill;
+	}
+	
+	#lB .lM {
+		color      : $COLOR_WTC_text;
+	}
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
+
 /* .lX
  *    .lXi
  * .lW
@@ -1308,52 +1409,7 @@ hr {
  *    * 上記以外のブラウザ 
  *
 --------------------------------------------------------------------------------------*/
-body {
-	background  : $COLOR_FtS_fill;
-	color       : $COLOR_FtS_text;
-}
 
-/* //_{^+coloredHeader */
-#lH,
-/* //_}^+coloredHeader */
-#lB {
-	background : $COLOR_BdM_fill;
-	color      : $COLOR_BdM_text;
-}
-
-	#lB .lS
-	{
-		background : $COLOR_BdS_fill;
-		color      : $COLOR_BdS_text;
-	}
-
-	.fillbg {
-		background : $COLOR_FtM_fill;
-		color      : $COLOR_FtM_text;
-	}
-	.fillbg .lS, .fillbg .lO {
-		background : $COLOR_FtS_fill;
-		color      : $COLOR_FtS_text;
-	}
-
-/* //_{+coloredHeader */
-	#lH .lO {
-		background : $COLOR_HdX_fill;
-		color      : $COLOR_HdX_text;
-	}
-	#lH {
-		background : $COLOR_HdM_fill;
-		color      : $COLOR_HdM_text;
-	}
-	#lH .lS {
-		background : $COLOR_HdS_fill;
-		color      : $COLOR_HdS_text;
-	}
-/* //_}+coloredHeader */
-
-	#lE .lS, #lE .lSi {
-		background : none;
-	}
 
 /*  wrapper
 --------------------------------------------------------------------------------------*/	
@@ -1368,15 +1424,17 @@ body {
 	/* //_{^#ie6-win */
 	max-width : $PC_MAX_WIDTH_EM;
 	/* //_}^#ie6-win */
+	/* //_{^@ie5win */
 	margin    : 0 auto;
+	/* //_}^@ie5win */
 }
 
 /*  main
 --------------------------------------------------------------------------------------*/	
 	.lM {
 		/* //_{^#ie89 */
-		width        : 100% * ( $PC_MAIN_COLUMN_RATIO - $PC_COLUMN_GAP_RATIO );
-		float        : left;
+		width : 100% * ( $PC_MAIN_COLUMN_RATIO - $PC_COLUMN_GAP_RATIO );
+		float : left;
 		/* //_}^#ie89 */
 	}
 		.lMi {
@@ -1398,10 +1456,10 @@ body {
 	}
 		.lSi {
 			/* //_{@ie6 */
-			width         : 82%;
+			width        : 82%;
 			/* //_}@ie6 */
 			/* //_{#ie55- */
-			width         : 100%;
+			width        : 100%;
 			/* //_}#ie55- */
 			/* //_{@ie6 */ /* maring でないと :hover でレイアウトがガタつく */
 			margin-left  : 100% * $PC_COLUMN_GAP_RATIO / $PC_SUB_COLUMN_RATIO;
@@ -1607,28 +1665,9 @@ body {
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-	#lH {
-		background : $COLOR_WTC_fill;
-		color      : $COLOR_WTC_text;
-	}
-	#lB {
-		background : $COLOR_WTC_fill;
-	}
-	
-	#lB .lM {
-		color      : $COLOR_WTC_text;
-	}
-
 	.lMi, .lSi, .lXi {
 		padding-left  : 0;
 		padding-right : 0;
-	}
-
-	form * {
-		color  : $COLOR_WTC_text;
-	}
-	form :focus {
-	    color : $COLOR_ACCENT;
 	}
 }
 /* //_>bottom40 */
@@ -1639,7 +1678,7 @@ body {
 --------------------------------------------------------------------------------------*/
 @media print {
 	body, #lH, #lE, #lB,
-	.fillbg, .fillbg .lS, .fillbg .lO
+	.fillbg, .fillbg .lM
 /* //_{+coloredHeader */
 	, #lH .lO, #lH, #lH .lS
 /* //_}+coloredHeader */
@@ -1936,7 +1975,8 @@ table {
 .mB embed,
 .mB object,
 .mB iframe,
-.mB video {
+.mB video,
+.mB .caption {
 	max-width : 100%;
 	display   : block;
 	margin    : 1em auto;
@@ -2365,12 +2405,10 @@ table {
 	/* //_}#ie6,@ie55 */
 
 	a {
-		@include fill;
-
 		/* href がない場合 current カラーになる */
+		@include fill;
+		@include unbreak-inside;
 		cursor             : pointer;
-		page-break-inside  : avoid;
-		break-inside       : avoid;
 	}
 }
 @mixin linkCommon_watch {
@@ -2400,8 +2438,7 @@ table {
 /* //_<bottom10 */
 @media only screen and (min-width: 96em) {
 	.mL a {
-		page-break-inside  : avoid;
-		break-inside       : avoid;
+		@include unbreak-inside;
 	}
 }
 /* //_>bottom10 */
@@ -2476,16 +2513,13 @@ table {
 		.mLts div {
 			border-width : 0 0 1px;
 			border-style : solid;
-			
-			@include border-color;
 		}
 		.mLts .mLts1 {
 			border-width : 1px 0;
 		}
 			.mLts a {
 				@include clearfix;
-				page-break-inside  : avoid;
-				break-inside       : avoid;
+				@include unbreak-inside;
 			}
 
 				.mLts img {
@@ -2548,29 +2582,29 @@ table {
 			font-size : 1.5em;
 		}
 		.lM .mLts span, .lM .mLts b {
-		    margin      : 0 0 0.7em;	
+		    margin    : 0 0 0.7em;	
 		}
 	
 /*  layout Sub
 --------------------------------------------------------------------------------------*/
-.lS .mLts a {
-	/* //_{#ie55-,@ie8,@ie9,@modern */
-	padding : 0.5em 0.5em 0;
-	/* //_}#ie55-,@ie8,@ie9,@modern */
-	/* //_{@ie6,@ie7 */
-	padding : 0.5em;
-	/* //_}@ie6,@ie7 */
-}
+	.lS .mLts a {
+		/* //_{#ie55-,@ie8,@ie9,@modern */
+		padding : 0.8em 0.5em 0;
+		/* //_}#ie55-,@ie8,@ie9,@modern */
+		/* //_{@ie6,@ie7 */
+		padding : 0.8em 0.5em;
+		/* //_}@ie6,@ie7 */
+	}
 		.lS .mLts img {
 			float      : right;
 			width      : 3.2em;
 			height     : 3.2em;
-			margin     : 0 0 0.5em 0.5em;
+			margin     : 0 0 0.8em 0.5em;
 		}
 
 		.lS .mLts span, .lS .mLts b {
 			/* //_{#ie55-,@ie8,@ie9,@modern */
-			padding : 0 0 0.56em;
+			padding : 0 0 0.914em; /* 0.8em/0.875; */
 			/* //_}#ie55-,@ie8,@ie9,@modern */
 			/* //_{@ie6,@ie7 */
 			padding : 0;
@@ -2624,10 +2658,15 @@ table {
 /*  Tablet
 --------------------------------------------------------------------------------------*/
 @media print, handheld, only screen and (max-width: 950px) {
+.lS .mLts a {
+	padding : 0.5em 0.5em 0;
+}
+	.lS .mLts span, .lS .mLts b {
+		padding : 0 0 0.57em; /* 0.5em / 0.875; */
+	}
 	.lS .mLts img {
 		float        : left;
-		margin-left  : 0;
-		margin-right : 0.5em;
+		margin       : 0 0.5em 0.5em 0;
 		width        : 2.6em;
 		height       : 2.6em;			
 	}
@@ -2703,9 +2742,6 @@ table {
 	    height      : 1em * ( $BASE_LINE_HEIGHT - 0.05 ); /* 少し小さく */
 		line-height : ( $BASE_LINE_HEIGHT - 0.05 );
 	}
-	.mSt:focus {
-		color       : darken( $COLOR_ACCENT, 30% );
-	}
 	.mS .btn {
 	    width       : 3em;
 	    height      : $BASE_LINE_HEIGHT_EM;
@@ -2725,11 +2761,11 @@ table {
 }
 /* //_}^+coloredHeader */
 
-/* //_{#ie7-win */
+/* //_{@ie55,@ie6,@ie7 */
 .mS * {
 	zoom : 1;
 }
-/* //_}#ie7-win */
+/* //_}@ie55,@ie6,@ie7 */
 
 /* //_{#can-mq */
 /* //_<bottom40 */
@@ -2737,7 +2773,7 @@ table {
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
 	/* //_{^+coloredHeader */
-	.mS {
+	.mS, .mSt {
 		background : $COLOR_WTC_casual_fill;
 	}
 	/* //_}^+coloredHeader */
@@ -2759,7 +2795,6 @@ table {
     padding       : 1em 0 0.5em;
 	border-width  : 1px 0;
 	border-style  : solid;
-	border-color  : $COLOR_BdM_casual_fill;
 	color         : $COLOR_BdM_fill; /* , を消す */
 }
 
@@ -2857,7 +2892,6 @@ table {
 @media handheld, only screen and (max-width: 240px) {
 	.SocialButtons {
         color        : $COLOR_WTC_fill; /* , を消す */
-		border-color : $COLOR_WTC_casual_fill;
 	}
     .SocialButtons a:link {
         background   : $COLOR_WTC_fill;
@@ -3028,7 +3062,7 @@ table {
 @media handheld, only screen and (max-width: 479px) {
 	.mB .aa {
 		margin-left  : 0.67em;
-		margin-right : 0.67em;	
+		margin-right : 0.67em;
 	}
 }
 /* //_>bottom30 */
@@ -3147,6 +3181,12 @@ table {
 	
 	margin      : 0 1em;
 }
+.box p, .box dl {
+	margin-top      : 0;
+	margin-left     : 0;
+	margin-right    : 0;
+}
+
 blockquote .box {
 	margin-top  : 1em;
 }
@@ -3156,32 +3196,36 @@ blockquote .box {
 .box object,
 .box iframe,
 .box video {
-	float       : left;
-	padding     : 1px 0 0 1px;
-	margin      : 0 1em 1em 0;
+	padding : 1px 0 0 1px;
 }
 
-.box p, .box dl {
-	margin-top      : 0;
-	margin-left     : 0;
-	margin-right    : 0;
-}
-/* focus 時の高さ確保用, 高さが無い場合、必ずしも画面内に画像が現れない 
-#Bm a[href*=javascript：] {
-	display : block;
+.box img,
+.box embed,
+.box object,
+.box iframe,
+.box video,
+.box .caption {
 	float   : left;
-}*/
-/* .Lg のときは block, float を切る ie では無い方がよい 
-.mB a.Lg,
-.e8- #Bm a[href*=javascript：] {
-	display : inline;
-	float   : none;
+	margin  : 0 1em 1em 0;
 }
-#Bm a[href*=javascript：]:focus {
-	outline    : 0;
-	background : inherit;
-} */
 
+
+/* object with caption
+ *  .box
+ *    .caption[style=width:XXpx]
+ *       figure
+ *         img|emned|
+ *         figcaption
+ */
+.caption {
+	word-break    : break-all;
+	text-align    : center;
+	line-height   : 1.2;
+	font-size     : 0.875em;
+}
+.box .caption * {
+	float        : none;
+}
 
 /* //_{#can-mq */
 
@@ -3197,7 +3241,8 @@ blockquote .box {
 	.box embed,
 	.box object,
 	.box iframe,
-	.box video {
+	.box video,
+	.box .caption {
 		margin-right : 0.5em;
 	}
 }
@@ -3215,7 +3260,8 @@ blockquote .box {
 	.box embed,
 	.box object,
 	.box iframe,
-	.box video {
+	.box video,
+	.box .caption {
 		float       : none;
 		display     : block;
 		margin      : 0 auto 1em;
@@ -3402,6 +3448,90 @@ blockquote .box {
 }
 /* //_}@ie9,@modern */
 
+/* [parts] commonForm
+ *
+ * form.commonForm
+ *   .commonForm-pair
+ *     label
+ *     div.commonForm-wrap
+ *       input[type=text]|textarea
+ *    .commonForm-send
+ *       input[type=submit].btn
+--------------------------------------------------------------------------------------*/
+.commonForm {
+    display : block;
+}
+
+    .commonForm-pair {
+        @include clearfix;
+        @include unbreak-inside;
+
+        margin-bottom : 1em;
+    }
+        .commonForm label {
+            display : block;
+            float   : left;
+            width   : 7em;
+            padding : 0.2em 0;
+        }
+
+        .commonForm-wrap {
+            margin-left : 8em;
+            /* //_{@modern */
+            padding     : 0.2em 0.5em;
+            /* //_}@modern */
+            background  : $COLOR_BdM_casual_fill;
+        }
+
+            .commonForm-wrap * {
+                width      : 100%;
+                padding    : 0;
+                border     : 0;
+                background : $COLOR_BdM_casual_fill;
+            }
+
+            .commonForm-wrap textarea {
+                margin : 0;
+                border : 0;
+            }
+
+        .commonForm-send {
+            text-align : right;
+        }
+            .commonForm-send .btn {
+                /* //_{@ie8,@ie9,@modern */
+                display : inline-block;
+                /* //_}@ie8,@ie9,@modern */
+                padding : 0 1em;
+            }
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+    .commonForm label {
+        float   : none;
+        width   : auto;
+    }
+
+    .commonForm-wrap {
+        margin-left : 0;
+    }
+}
+/* //_>bottom30 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+    .commonForm-wrap,
+    .commonForm-wrap * {
+        background : $COLOR_WTC_casual_fill;
+    }
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
+
 /* //_{+dlflat */
 /*  Flatten
 --------------------------------------------------------------------------------------*/
@@ -3422,6 +3552,81 @@ blockquote .box {
 /* //_}+dlflat */
 
 
+/*
+ * http://webcommu.net/phone-table-scroll/
+ */
+.hscroll {
+    /* //_{@modern */
+    overflow   : auto;
+    /* //_}@modern */
+    overflow-x : auto;
+    overflow-y : hidden;
+}
+
+.hscroll pre {
+    overflow-x : auto;
+}
+
+.mB .hscroll {
+    margin : 1em 0;
+}
+
+    .hscroll table {
+        /* //_{@modern */
+        width        : 99%;
+        margin       : 0 0.5% 0.5em;
+        /* //_}@modern */
+        /* //_{#ie8-win,@ie9 */
+        width        : 99%;
+        margin       : 0 0 0.5em;
+        /* //_}#ie8-win,@ie9 */
+	/* //_{@ie5win,@ie55 */
+		table-layout : auto;
+	/* //_}@ie5win,@ie55 */
+    }
+    .hscroll pre {
+        margin      : 0 0 0.5em;
+        white-space : pre;
+    }
+
+/* //_{@modern */
+.hscroll::-webkit-scrollbar {
+    height : 5px;
+}
+.hscroll::-webkit-scrollbar-track {
+    background : #F1F1F1;
+}
+.hscroll::-webkit-scrollbar-thumb {
+    background : #BCBCBC;
+}
+/* //_}@modern */
+
+/* //_{#can-mq */
+/* //_<bottom21 */
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 950px) {
+    .hscroll table {
+        white-space  : nowrap;
+    }
+}
+/* //_>bottom21 */
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+    .hscroll table {
+        width        : 100%;
+        margin       : 0;
+    }
+    .hscroll pre {
+        margin      : 0;
+        white-space : pre-wrap;
+    }
+}
+/* //_>bottom50 */
 /*  links
 --------------------------------------------------------------------------------------*/
 .links {
@@ -3611,17 +3816,16 @@ dd p, dd blockquote {
 /* //_{+GoogleCodePrettify */
 
 .prettyprint {
+	@include unbreak-inside;
+
 	background-color  : #333;
 	color             : #fff;
-	page-break-inside : avoid;
-	break-inside      : avoid;
 }
 
 pre.prettyprint {
 	font-size   : 0.875em;
 	margin      : 1.23em;
 	padding     : 1.23em;
-	white-space : pre-wrap;
 }
 blockquote pre.prettyprint {
 	margin      : 1.23em 0;
@@ -3706,23 +3910,26 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
 
 /*  PicaThumbnail
 --------------------------------------------------------------------------------------*/
-/* //_{@modern */
-#jM a[href] > img {
+
+#jM a[href] > img, #jM .caption {
+	/* //_{@modern */
 -webkit-transition-property : width;
 
-	-webkit-transition :       0.5s ease-in-out;
-	   -moz-transition : width 0.3s ease-in-out;
-	    -ms-transition : width 0.3s ease-in-out;
-		 -o-transition : width 0.3s ease-in-out;
-		    transition : width 0.3s ease-in-out;
+		 -webkit-transition :       0.5s ease-in-out;
+		    -moz-transition : width 0.3s ease-in-out;
+			  -o-transition : width 0.3s ease-in-out;
+				 transition : width 0.3s ease-in-out;
+		/* //_}@modern */
+		/* //_{@ie9 */
+			 /* -ms-transition : width 0.3s ease-in-out; */
+		/* //_}@ie9 */
 }
-/* //_}@modern */
 
-/* //_{@ie9 */
-#jM a[href] > img {
-	    -ms-transition : width 0.3s ease-in-out;
+.caption {
+	/* //_{@modern */
+	width       : 100%; /* for animation */
+	/* //_}@modern */
 }
-/* //_}@ie9 */
 
 .jL img {
 	width       : 100%;
@@ -3734,6 +3941,27 @@ a:focus img, a:active img {
     outline     : 1px solid $COLOR_ACCENT;
 	background  : $COLOR_ACCENT;
 }
+
+.js-picaThumb-small {
+	display : table; /* focus 時の高さ確保用, 高さが無い場合、必ずしも画面内に画像が現れない */
+}
+
+/* focus 時の高さ確保用, 高さが無い場合、必ずしも画面内に画像が現れない 
+#Bm a[href*=javascript：] {
+	display : block;
+	float   : left;
+}*/
+/* .Lg のときは block, float を切る ie では無い方がよい 
+.mB a.Lg,
+.e8- #Bm a[href*=javascript：] {
+	display : inline;
+	float   : none;
+}
+#Bm a[href*=javascript：]:focus {
+	outline    : 0;
+	background : inherit;
+} */
+
 
 #jF {
     background : $COLOR_BdS_fill;
