@@ -14,7 +14,11 @@
 	.FeaturedPost p {
 		line-height : 1.4;
 	}
-
+/* //_{@ie5win */
+	.FeaturedPost p * {
+		line-height : 1.4;
+	}
+/* //_}@ie5win */
 
 /*  layout Main
 --------------------------------------------------------------------------------------*/

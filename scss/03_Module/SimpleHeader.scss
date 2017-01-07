@@ -14,6 +14,9 @@
 	padding     : 0;
 	margin      : 0 0.5em 0 0;
 }
+/* //_{@ie5win */
+.Header h1 *,
+/* //_}@ie5win */
 .Header span {
 	line-height : 1;
 }

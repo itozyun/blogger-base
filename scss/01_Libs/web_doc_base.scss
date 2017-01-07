@@ -342,18 +342,26 @@ $PHONE_H_SPACE       : 1% !default;
 		/* http://perishablepress.com/press/2010/06/01/wrapping-content/ */
 		/* http://stackoverflow.com/questions/3247358/css-how-do-i-wrap-text-with-no-whitespace-inside-a-td */
 		@mixin pre-wrap {
-			white-space : pre;           /* CSS 2.0 */
 		/* //_{@modern */
+			white-space : pre;           /* CSS 2.0 */
 			white-space : -pre-wrap;     /* Opera 4-6 */
 			white-space : -o-pre-wrap;   /* Opera 7 */
-			white-space : -moz-pre-wrap; /* Mozilla */
+			white-space : -moz-pre-wrap; /* Firefox 1.0-2.0 */
 			white-space : -webkit-pre-wrap; /* Chrome, Safari */
 		/* //_}@modern */
-			/* white-space : -hp-pre-wrap;  HP Printers */				
-			white-space : pre-wrap;      /* CSS 2.1 */
+			/* white-space : -hp-pre-wrap;  HP Printers */
+		/* //_{@ie8,@ie9,@modern */		
+			white-space : pre-wrap;      /* CSS 2.1, ie8+ */
+		/* //_}@ie8,@ie9,@modern */
+
 			/* white-space : pre-line;      CSS 3.0 */
-			word-wrap   : break-word;    /* IE 5.5+ */
-			word-break  : break-all;
+
+		/* //_{@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
+			word-wrap   : break-word;    /* IE 5.5+, Firefox3.5, Safari 1, Opera 10.5 */
+		/* //_}@ie55,@ie6,@ie7,@ie8,@ie9,@modern */
+		/* //_{#ie8-win,@ie9,@modern */
+			word-break  : break-all;     /* IE 5+ */
+		/* //_}#ie8-win,@ie9,@modern */
 		}
 
 		pre {
@@ -394,6 +402,11 @@ $PHONE_H_SPACE       : 1% !default;
 		@include unbreak-inside;
 		@include unbreak-after;
 	}
+	/* //_{@ie5win */
+	h1 *, h2 *, h3 *, h4 *, h5 *, h6 * {
+		line-height        : 1.2;
+	}
+	/* //_}@ie5win */
 
 	/* //_{+from-h2-at-post */
 	h1, h2, h3, h6 {
@@ -865,6 +878,42 @@ a:active *, a:focus * {
 		background : $COLOR_FtM_casual_fill;
 		color      : $COLOR_FtM_text;
 	}
+
+	/* //_{+coloredHeader */
+	#lH & {
+		background : $COLOR_HdS_flip_fill;
+		color      : $COLOR_HdS_flip_text;
+	}
+	#lH &:link {
+		background : none;
+		color      : $COLOR_HdS_link;
+	}
+	#lH &:visited {
+		background : none;
+		color      : $COLOR_HdS_text;
+	}
+	#lH &:link:hover, #lH &:visited:hover {
+		background : $COLOR_HdS_casual_fill;
+		color      : $COLOR_HdS_text;
+	}
+
+	#lH .lM & {
+		background : $COLOR_HdM_flip_fill;
+		color      : $COLOR_HdM_flip_text;
+	}
+	#lH .lM &:link {
+		background : none;
+		color      : $COLOR_HdM_link;
+	}
+	#lH .lM &:visited {
+		background : none;
+		color      : $COLOR_HdM_text;
+	}
+	#lH .lM &:link:hover, #lH .lM &:visited:hover {
+		background : $COLOR_HdM_casual_fill;
+		color      : $COLOR_HdM_text;
+	}
+	/* //_}+coloredHeader */
 }
 
 @mixin fill_watch {
@@ -1101,7 +1150,7 @@ textarea {
 }
 
 form :focus {
-    color      : darken( $COLOR_ACCENT, 30% );
+    color      : $COLOR_ACCENT;
 }
 
 /* //_{@modern */
@@ -1744,6 +1793,9 @@ body, .fillbg .lS, .fillbg .lO {
  * MaxWidthFix で作られたタグ(div.e6C)と div.lW を組み合わせてセンタリングだけを行う.
  * http://blog.xicolotic.info/css/advent-calendar-2015-css1/
  */
+	.e6L, .e6R, .e6BR {
+		display : none;
+	}
 	.e6C {
 		text-align : center;
 	}
@@ -1784,17 +1836,15 @@ body, .fillbg .lS, .fillbg .lO {
 @media only screen and (min-width: 126em) {
 /* 2column */
 	[data-lsc] {
-		padding : 0 0 2em;
+		padding-bottom : 2em;
 	}
 		.lS1 {
-			float        : left;
-			width        : 50% - ($WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO) * 1.5;
-			margin-left  : $WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO;
+			float : left;
+			width : 50% - ($WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO) * 0.5;
 		}
 		.lS2 {
-			float        : right;
-			width        : 50% - ($WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO) * 1.5;
-			margin-right : $WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO;
+			float : right;
+			width : 50% - ($WQXGA_COLUMN_GAP_PCT / $WQXGA_SUB_COLUMN_RATIO) * 0.5;
 		}
 }
 /* //_>bottom15 */
@@ -1806,22 +1856,21 @@ body, .fillbg .lS, .fillbg .lO {
 /* 2column */
 	[data-lmc],
 	[data-lsc] {
-		padding    : 0 0 2em;
+		padding-bottom : 2em;
 	}
 	[data-lsc] {
-		border-top : 1px solid $COLOR_BdS_casual_fill;
+		border-width : 1px 0 0;
+		border-style : solid;
 	}
 		.lM1,
 		.lS1 {
-			float       : left;
-			width       : 50% - $TABLET_H_SPACE * 1.5;
-			margin-left : $TABLET_H_SPACE;
+			float : left;
+			width : 50% - $TABLET_H_SPACE * 0.5;
 		}
 		.lM2,
 		.lS2 {
-			float        : right;
-			width        : 50% - $TABLET_H_SPACE * 1.5;
-			margin-right : $TABLET_H_SPACE;
+			float : right;
+			width : 50% - $TABLET_H_SPACE * 0.5;
 		}
 }
 /* //_>bottom21 */
@@ -1832,17 +1881,15 @@ body, .fillbg .lS, .fillbg .lO {
 @media handheld, only screen and (max-width: 740px) {
 	[data-lmc],
 	[data-lsc] {
-		padding : 0 0 2em;
+		padding-bottom : 2em;
 	}
 		.lM1,
 		.lS1 {
-			width       : 50% - $PHABLET_H_SPACE * 1.5;
-			margin-left : $PHABLET_H_SPACE;
+			width : 50% - $PHABLET_H_SPACE * 0.5;
 		}
 		.lM2,
 		.lS2 {
-			width        : 50% - $PHABLET_H_SPACE * 1.5;
-			margin-right : $PHABLET_H_SPACE;
+			width : 50% - $PHABLET_H_SPACE * 0.5;
 		}
 }
 /* //_>bottom25 */
@@ -1978,10 +2025,9 @@ table {
 .mB video,
 .mB .caption {
 	max-width : 100%;
+	height    : auto;
 	display   : block;
 	margin    : 1em auto;
-	/* width     : auto;
-	height    : auto; */
 }
 
 
@@ -2510,6 +2556,11 @@ table {
 		@include linkCommon;
 		line-height : 1.4;
 	}
+	/* //_{@ie5win */
+	.mLts * {
+		line-height : 1.4;
+	}
+	/* //_}@ie5win */
 		.mLts div {
 			border-width : 0 0 1px;
 			border-style : solid;
@@ -3191,6 +3242,10 @@ blockquote .box {
 	margin-top  : 1em;
 }
 
+.box ul, .box ol {
+	list-style-position : inside;
+}
+
 .box img,
 .box embed,
 .box object,
@@ -3223,6 +3278,12 @@ blockquote .box {
 	line-height   : 1.2;
 	font-size     : 0.875em;
 }
+/* //_{@ie5win */
+.caption * {
+	line-height        : 1.2;
+}
+/* //_}@ie5win */
+
 .box .caption * {
 	float        : none;
 }
@@ -3559,12 +3620,11 @@ blockquote .box {
     /* //_{@modern */
     overflow   : auto;
     /* //_}@modern */
+/* //_{@ie5win,@ie55 */
+    width      : 100%;
+/* //_}@ie5win,@ie55 */
     overflow-x : auto;
     overflow-y : hidden;
-}
-
-.hscroll pre {
-    overflow-x : auto;
 }
 
 .mB .hscroll {
@@ -3587,6 +3647,7 @@ blockquote .box {
     .hscroll pre {
         margin      : 0 0 0.5em;
         white-space : pre;
+        overflow    : auto;
     }
 
 /* //_{@modern */
@@ -3741,41 +3802,42 @@ blockquote .box {
 /* //_}#can-mq */
 /* //_{+mona */
 /* http://b4t.jp/823 */
-.mona {
-	speak       : none;
+
+@mixin mona {
 	line-height : 1.125;
-	padding     : 2em 1em;
-}
 
-/* //_{@modern */
-/* Opera */
-.mona {
+	/* IE */
+	/* //_{#ie6-win */
+		font-family:Mona,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,"MS PGothic AA","ＭＳ Ｐゴシック","MS Pゴシック","MS PGothic","MS Pｺﾞｼｯｸ","ＭＳＰゴシック","MSPゴシック",sans-serif;
+	/* //_}#ie6-win */
+
+	/* //_{@ie7,@ie8 */
+		font-family:Mona,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,"MS PGothic AA","ＭＳ Ｐゴシック","MS Pゴシック","MS PGothic","MS Pｺﾞｼｯｸ","ＭＳＰゴシック","MSPゴシック",sans-serif;
+	/* //_}@ie7,@ie8 */
+
+	/* //_{@modern */
+	/* Opera */
 	font-family:"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,Mona,"MS PGothic AA","ＭＳ Ｐゴシック","MS Pゴシック","ＭＳＰゴシック","MSPゴシック","MS Pｺﾞｼｯｸ","MS PGothic",sans-serif;
-}
-/* firefox */
-:-moz-read-only .mona {
-	font-family:Mona,"MS PGothic AA","ＭＳ Ｐゴシック","MS PGothic","MS Pｺﾞｼｯｸ","MS Pゴシック","ＭＳＰゴシック","MSPゴシック","IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,sans-serif;
-}
-/* safari */
-@media screen and (-webkit-min-device-pixel-ratio:0){
-.mona {
-	font-family:"MS PGothic AA","ＭＳ Ｐゴシック","MS PGothic","MS Pｺﾞｼｯｸ","MS Pゴシック","ＭＳＰゴシック","MSPゴシック",IPAMonaPGothic,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",Mona,sans-serif;
-}
-}
-/* //_}@modern */
 
-/* IE */
-/* //_{#ie6-win */
-.mona {
-	font-family:Mona,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,"MS PGothic AA","ＭＳ Ｐゴシック","MS Pゴシック","MS PGothic","MS Pｺﾞｼｯｸ","ＭＳＰゴシック","MSPゴシック",sans-serif;
+	/* firefox */
+	:-moz-read-only & {
+		font-family:Mona,"MS PGothic AA","ＭＳ Ｐゴシック","MS PGothic","MS Pｺﾞｼｯｸ","MS Pゴシック","ＭＳＰゴシック","MSPゴシック","IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,sans-serif;
+	}
+	/* safari */
+	@media screen and (-webkit-min-device-pixel-ratio:0){
+		& {
+			font-family:"MS PGothic AA","ＭＳ Ｐゴシック","MS PGothic","MS Pｺﾞｼｯｸ","MS Pゴシック","ＭＳＰゴシック","MSPゴシック",IPAMonaPGothic,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",Mona,sans-serif;
+		}
+	}
+	/* //_}@modern */
 }
-/* //_}#ie6-win */
 
-/* //_{@ie7,@ie8 */
 .mona {
-	font-family:Mona,"IPA モナー Pゴシック","IPA mona PGothic","IPA MONAPGOTHIC",IPAMonaPGothic,"MS PGothic AA","ＭＳ Ｐゴシック","MS Pゴシック","MS PGothic","MS Pｺﾞｼｯｸ","ＭＳＰゴシック","MSPゴシック",sans-serif;
+	@include mona;
+
+	speak   : none;
+	padding : 2em 1em;
 }
-/* //_}@ie7,@ie8 */
 
 /* //_<bottom50 */
 /*  Print

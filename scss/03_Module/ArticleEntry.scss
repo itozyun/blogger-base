@@ -19,6 +19,11 @@
     padding     : 1em 0;
     line-height : 1.4;
 }
+/* //_{@ie5win */
+.AEntry * {
+    line-height : 1.4;
+}
+/* //_}@ie5win */
     .AEntry a {
         @include noUnderLineAlways;
     }
