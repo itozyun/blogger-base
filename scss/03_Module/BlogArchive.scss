@@ -44,6 +44,8 @@
 				border-width : 0 0 1px;
 				border-style : solid;
 			}
+			.BlogArchive a:focus:hover { text-decoration : none !important; }
+			
 			.lS .BlogArchive a,
 			#lF .BlogArchive a {
 			/* //_{@modern,@ie9,@ie8 */

@@ -28,6 +28,8 @@
 			border-width : 0 0 1px;
 			border-style : solid;
 		}
+		.Label a:focus:hover { text-decoration : none !important; }
+
 		.lS .Label a,
 		#lF .Label a {
 		/* //_{@modern,@ie9,@ie8 */
