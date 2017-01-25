@@ -3,11 +3,11 @@
  *
 --------------------------------------------------------------------------------------*/
 
-.mA {
+.AAuthor {
 	@include clearfix;
 	@include stackableModule;
 }
-.mA img {
+.AAuthor img {
 	float       : left;
 	margin      : 0 1em 1em 0;
 }
@@ -17,7 +17,7 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-	.mA img {
+	.AAuthor img {
 		margin : 0 0.5em 0 0;
 	}
 }

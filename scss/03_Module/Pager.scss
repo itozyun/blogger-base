@@ -1,23 +1,23 @@
-/* [module] Pager large
+/* [module] Pager
  *  出現位置は #lB .lMi 下で固定
  *
 --------------------------------------------------------------------------------------*/
-.mNl {
+.Pager {
 	position      : relative;
 	height        : 2.5em;
     margin        : 4em 0 0;
     text-align    : center;
 }
-	.mNl div {
+	.Pager div {
 		position : absolute;
 		top      : 0;
 	    width    : 32%;
 	}
-	.mNn { left  : 0; }
-	.mNt { left  : 34%; }
-	.mNp { right : 0; }
+	.Pager-next { left  : 0; }
+	.Pager-top  { left  : 34%; }
+	.Pager-prev { right : 0; }
 
-		.mNl a {
+		.Pager a {
 			@include noUnderLineAlways;
 			
 		    display         : block;
@@ -33,10 +33,10 @@
 			text-overflow   : ellipsis;
 		}
 
-		.mNl a {
+		.Pager a {
 			background : $COLOR_BdM_casual_fill;
 		}
-		.mNl a:hover {
+		.Pager a:hover {
 			background : $COLOR_BdM_flip_fill;
 			color      : $COLOR_BdM_flip_text;
 		}
@@ -46,10 +46,10 @@
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-	.mNl a {
+	.Pager a {
 		background : $COLOR_WTC_casual_fill;
 	} 
-	.mNl a:hover {
+	.Pager a:hover {
 		background : $COLOR_WTC_flip_fill;
 		color      : $COLOR_WTC_flip_text !important;
 	}
@@ -61,7 +61,7 @@
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	.mNl {
+	.Pager {
 		display : none;
 	}
 }

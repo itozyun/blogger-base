@@ -1,49 +1,49 @@
-/* [module] Comment, Comment form
+/* [module] Comment & Comment form
  *  出現位置は #lB .lMi 下で固定
  *
- *  div.mC
- *  div.mF
+ *  div.Comment
+ *  div.CmtForm
 --------------------------------------------------------------------------------------*/
 /* //_{#ie55- */
-.mF {
+.CmtForm {
 	display : none;
 }
 /* //_}#ie55- */
 
-.mC {
+.Comment {
 	margin         : 2em 0 4em;
 }
 
-.mF {
+.CmtForm {
 	margin         : 2% 0 0;
 }
 
-.mF .btn {
+.CmtForm .btn {
 	line-height    : 1;
     padding        : 1em 0.5em;
 }
 
-.mC h3 {
+.Comment h3 {
 	margin-bottom : 0;
 }
 
-.mC h3, .mC div {
+.Comment h3, .Comment div {
 	margin-left  : 3%;
 }
-.mC p {
+.Comment p {
 	@include clearfix;
 	
 	margin-left  : 5%;
 	margin-right : 5%;
 }
-.mC div {
+.Comment div {
 	color     : $COLOR_BdM_casual_text;
 	font-size : 93%;
 }
-.mC p { margin-top : 0 }
-.mC p a { @include hideUnderLineOnHover }
+.Comment p { margin-top : 0 }
+.Comment p a { @include hideUnderLineOnHover }
 
-.mF iframe {
+.CmtForm iframe {
 	width       : 100%;
 /* //_{^@ie6 */
 	height      : 400px;
@@ -59,7 +59,7 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-	.mC h3, .mF h3 {
+	.Comment h3, .CmtForm h3 {
 		text-align : center;
 	}
 }
@@ -71,7 +71,7 @@
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	.mF {
+	.CmtForm {
 		display : none;
 	}
 }

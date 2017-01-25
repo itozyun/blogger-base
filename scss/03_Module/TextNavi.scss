@@ -1,18 +1,18 @@
-/* [module] Pager small
+/* [module] Text Navi
  *  出現位置は (#lB|#lE) .lMi 下で固定
  *
 --------------------------------------------------------------------------------------*/
-.mNs {
+.TxtNavi {
 	padding-top : 0.5em;
 	text-align  : right;
 	color       : $COLOR_BdM_fill; /* , を消す */
 }
 
-.fillbg .mNs {
+.fillbg .TxtNavi {
 	color       : $COLOR_FtM_fill; /* , を消す */
 }
 
-#lE .mNs {
+#lE .TxtNavi {
 	margin-bottom : 1em;
 }
 
@@ -20,7 +20,7 @@
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	.mNs {
+	.TxtNavi {
 		display : none;
 	}
 }
