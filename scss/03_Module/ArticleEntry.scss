@@ -7,7 +7,8 @@
  *   .AEntry-title
  *     h3
  *     .AEntry-label
- *   .body
+ *   .aBodyRoot
+ *     .box
  *   .AEntry-jump
  *     .btn
  *     .btn
@@ -19,14 +20,20 @@
     padding     : 1em 0;
     line-height : 1.4;
 }
+	/* //_{#can-1stOfType */
+	.AEntry .box > p:first-of-type {
+		margin-top : -0.1em;
+	}
+	/* //_}#can-1stOfType */
+
 /* //_{@ie5win */
 .AEntry * {
     line-height : 1.4;
 }
 /* //_}@ie5win */
-    .AEntry a {
-        @include noUnderLineAlways;
-    }
+    .AEntry a {  @include noUnderLineAlways; }
+    .AEntry .aBodyRoot a { @include hideUnderLineOnHover }
+
     .AEntry-date {
         display : block;
     }
@@ -157,6 +164,11 @@
         margin      : 0.7em 0 0;
         line-height : 1.6;
     }
+        /* //_{#can-1stOfType */
+        .AEntry .box > p:first-of-type {
+            margin-top : -0.2em;
+        }
+        /* //_}#can-1stOfType */
         .AEntry .aBodyRoot > *:first-child {
             margin-top : 0;
         }

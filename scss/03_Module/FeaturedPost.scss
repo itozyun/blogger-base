@@ -6,6 +6,7 @@
 	@include stackableModule;
 	margin : 0.8em 0.5em 0;
 }
+
 	.FeaturedPost h3 {
 		font-size : 1.1em;
 		padding   : 0;
@@ -14,6 +15,13 @@
 	.FeaturedPost p {
 		line-height : 1.4;
 	}
+
+	/* //_{#can-1stOfType */
+	.FeaturedPost .box > p:first-of-type {
+		margin-top : -0.13em;
+	}
+	/* //_}#can-1stOfType */
+
 /* //_{@ie5win */
 	.FeaturedPost p * {
 		line-height : 1.4;
@@ -41,6 +49,11 @@
 			padding-top : 0.3em;
 			line-height : 1.8;
 		}
+		/* //_{#can-1stOfType */
+		.lM1 .FeaturedPost .box > p:first-of-type {
+			margin-top : -0.26em;
+		}
+		/* //_}#can-1stOfType */
 }
 /* //_>bottom10 */
 
