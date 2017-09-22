@@ -113,16 +113,9 @@
 	text-align  : right;
 }
     .AEntry-jump .btn {
-    /* //_{@modern,@ie9,@ie8 */
-        display     : inline-block;
-    /* //_}@modern,@ie9,@ie8 */
-        /* //_{^#ie55- */
-        height      : 1em;
-        /* //_}^#ie55- */
         /* //_{#ie55- */
         height      : 2em;
         /* //_}#ie55- */
-        line-height : 1;
         padding     : 0.5em 1em;
         margin-left : 1em;
     }
@@ -191,7 +184,6 @@
             margin-top  : 0.7em;
             width       : 80%;
             height      : auto;
-            line-height : 1;
             padding     : 10%;
         }
 
