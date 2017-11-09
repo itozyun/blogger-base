@@ -7,7 +7,7 @@
 
 /*  [module] Header
 --------------------------------------------------------------------------------------*/
-.Header h1 {
+.Header h1, .h1 {
 	display     : inline;
 	font-size   : 1.5em;
 	line-height : 1;
@@ -15,7 +15,7 @@
 	margin      : 0 0.5em 0 0;
 }
 /* //_{@ie5win */
-.Header h1 *,
+.Header h1 *, .h1 *,
 /* //_}@ie5win */
 .Header span {
 	line-height : 1;
@@ -40,7 +40,7 @@
 	.Header {
 	    text-align : center;
 	}
-		.Header h1 {
+		.Header h1, .h1 {
 			display   : block;
 			margin    : 0 0 0.5em;
 		}
@@ -52,7 +52,7 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-		.Header h1 {
+		.Header h1, .h1 {
 			font-size : 1.2em;
 		}
 }

@@ -3,51 +3,51 @@
  *
 --------------------------------------------------------------------------------------*/
 .Pager {
-	position      : relative;
-	height        : 2.5em;
-    margin        : 4em 0 0;
-    text-align    : center;
+	position   : relative;
+	height     : 2.5em;
+    margin     : 4em 0 0;
+	text-align : center;
+	color      : $COLOR_BdM_fill; /* , を消す */
 }
-	.Pager div {
-		position : absolute;
-		top      : 0;
-	    width    : 32%;
-	}
 	.Pager-next { left  : 0; }
 	.Pager-top  { left  : 34%; }
 	.Pager-prev { right : 0; }
 
-		.Pager a {
-			@include noUnderLineAlways;
-			
-		    display         : block;
-			/* //_{^#ie55- */
-			height          : 1em;
-			/* //_}^#ie55- */
-			/* //_{#ie55- */
-			height          : 2.5em;
-			/* //_}#ie55- */
-		    line-height     : 1;
-		    padding         : 0.75em 0;
-		    /* http://tacamy.hatenablog.com/entry/2014/02/19/141948 */
-			overflow        : hidden;
-			white-space     : nowrap;
-			text-overflow   : ellipsis;
-		}
+	.Pager a {
+		@include noUnderLineAlways;
 
-		.Pager a {
-			background : $COLOR_BdM_casual_fill;
-		}
-		.Pager a:hover {
-			background : $COLOR_BdM_flip_fill;
-			color      : $COLOR_BdM_flip_text;
-		}
+		display         : block;
+		position        : absolute;
+		top             : 0;
+		width           : 32%;
+		/* //_{^#ie55- */
+		height          : 1em;
+		/* //_}^#ie55- */
+		/* //_{#ie55- */
+		height          : 2.5em;
+		/* //_}#ie55- */
+		line-height     : 1;
+		padding         : 0.75em 0;
+		/* http://tacamy.hatenablog.com/entry/2014/02/19/141948 */
+		overflow        : hidden;
+		white-space     : nowrap;
+		text-overflow   : ellipsis;
+		background      : $COLOR_BdM_casual_fill;
+	}
+	.Pager a:hover {
+		background      : $COLOR_BdM_flip_fill;
+		color           : $COLOR_BdM_flip_text;
+	}
 
 /* //_{#can-mq */
 /* //_<bottom40 */
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
+	.Pager {
+		color      : $COLOR_WTC_fill; /* , を消す */
+	}
+
 	.Pager a {
 		background : $COLOR_WTC_casual_fill;
 	} 
