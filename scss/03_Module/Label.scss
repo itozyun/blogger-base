@@ -8,6 +8,15 @@
 
 	.Label div {
 		color  : $COLOR_BdM_fill; /* , を消す */
+	
+	/* //_{#ie7-win,@ie8,@ie9 */
+		text-justify : inter-ideograph;
+		line-break   : normal;
+	/* //_}#ie7-win,@ie8,@ie9 */
+	/* //_{#ie7-win,@ie9,@modern */
+		text-align   : justify;
+		/* ie8 は要素への :hover で画面がガタツク... zoom で回避できる? */
+	/* //_}#ie7-win,@ie9,@modern */
 	}
 	.fillbg .Label div {
 		color  : $COLOR_FtM_fill; /* , を消す */
