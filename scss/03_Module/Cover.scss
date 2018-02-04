@@ -1,0 +1,220 @@
+/* [module] Cover
+ *  出現位置は #lB .lMi 下で固定
+ *
+ * .Cover
+ *   div.Cover-item
+ *     div.Cover-img
+ *       img
+ *       div
+ *         h2
+ *         h3
+ *     div.Cover-meta
+ *       i
+ *     p
+ *     div.Cover-btn
+ *       .btn
+ *     
+--------------------------------------------------------------------------------------*/
+.Cover {
+    @include clearfix;
+    margin         : 1.5em 0 0;
+    padding        : 0 0 1em;
+    border-style   : solid;
+    border-width   : 0 0 1px;
+    line-height    : 1.4;
+}
+
+    .Cover-item {
+        float    : left;
+        width    : 49%;
+    }
+    .Cover-item-1st {
+        margin-right : 2%;
+    }
+        .Cover-img {
+            position      : relative;
+            height        : 100%;
+            margin-bottom : 0.6em;
+        }
+            .Cover img {
+                margin   : 0;
+                display  : block;
+                width    : 100%;
+            }
+            .Cover-img div {
+                position : absolute;
+                bottom   : 0;
+                left     : 0;
+                width    : 100%;
+            }
+            .img-disabled .Cover-img div {
+                position : static;
+            }
+                .Cover h2 {
+                    font-size  : 0.825em;
+                    padding    : 0.6em;
+                    border     : 0;
+                /* //_{^#ie7-win */
+                    display     : inline-block;
+                /* //_}^#ie7-win */
+                    background : $COLOR_ACCENT;
+                    color      : $COLOR_BdM_fill;
+                }
+                .Cover h2:after {
+                    display : none;
+                }
+                .Cover h3 {
+                    font-size  : 1.33em;
+                    padding    : 0.385em;
+                    margin     : 0;
+                    color      : #fff;
+                    /* //_{^@ie9 */
+                    background : #000;
+                    /* //_}^@ie9 */
+                    /* //_{@modern,@ie9 */
+                    background : rgba( 0, 0, 0, .65);
+                    /* //_}@modern,@ie9 */
+                }
+        .Cover-meta {
+            display     : block;
+            color       : $COLOR_BdM_casual_text;
+        }
+        .Cover p {
+            margin     : 0.6em 0;
+        }
+        .Cover-btn {
+            text-align : right;
+        }
+            .Cover .btn {
+            /* //_{#ie55- */
+                height      : 2em;
+            /* //_}#ie55- */
+                padding     : 0.5em 1em;
+            }
+
+/* //_{#can-mq */
+
+/* //_<bottom10 */
+/*  Full HD
+--------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 96em) {
+    .Cover-item {
+        @include clearfix;
+    }
+        .Cover img {
+            position : static;
+            width    : auto;
+            float    : left;
+            margin   : 0 1em 1em 0;
+        }
+            .Cover-img div {
+                position   : static;
+                background : $COLOR_BdM_text;
+                padding    : 1em 0;
+            }
+                .Cover h2 {
+                    font-size  : 1em;
+                    padding    : 0.5em;
+                }
+                .Cover h3 {
+                    background : transparent;
+                    padding    : 0.77em 0.77em 0 0;
+                }
+}
+/* //_>bottom10 */
+
+/* //_<bottom15 */
+/*  WQXGA
+--------------------------------------------------------------------------------------*/
+@media only screen and (min-width: 126em) {
+    .Cover img {
+        margin   : 0 2em 1em 0;
+    }
+        .Cover-img div {
+            padding    : 2em 0;
+        }
+            .Cover h3 {
+                font-size : 1.5em;
+                padding   : 0.67em 1.33em 0 0;
+            }
+}
+/* //_>bottom15 */
+
+/* //_<bottom25 */
+/*  Phablet
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 740px) {
+    .Cover h3 {
+        font-size  : 1em;
+        padding    : 0.5em;
+    }
+}
+/* //_>bottom25 */
+
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+        .Cover-item {
+            float  : none;
+            width  : auto;
+            margin : 1em 0 0;
+        }
+        .Cover-item-1st {
+            padding      : 0 0 1em;
+            border-style : solid;
+            border-width : 0 0 1px;
+            margin       : 0 0 1em;
+        }
+            .Cover h3 {
+                font-size  : 1.33em;
+                padding    : 0.77em 0.385em;
+            }
+}
+/* //_>bottom30 */
+
+/* //_<bottom35 */
+/*  Phone-
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 319px) {
+    .Cover-item {
+        @include clearfix;
+    }
+        .Cover img {
+            position : static;
+            width    : auto;
+            float    : left;
+            margin   : 0 1em 1em 0;
+        }
+            .Cover-img div {
+                position   : static;
+                padding    : 0;
+            }
+                .Cover h2 {
+                    float      : left;
+                    display    : inline-block;
+                    font-size  : 1em;
+                    padding    : 0.5em;
+                    margin     : 0 .5em .5em 0;
+                }
+                .Cover h3 {
+                    background : transparent;
+                    color      : $COLOR_BdM_text;
+                    font-size  : 1.5em;
+                    padding    : 0.33em 0;
+                }
+}
+/* //_>bottom35 */
+/* //_<bottom40 */
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 240px) {
+    .Cover h3 {
+        color   : $COLOR_WTC_text;
+    }    
+    .Cover span {
+        color   : $COLOR_WTC_casual_text;
+    }
+}
+/* //_>bottom40 */
+/* //_}#can-mq */
