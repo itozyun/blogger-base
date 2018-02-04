@@ -78,12 +78,14 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
+	.lM2 .BlogArchive dt,
 	.lS .BlogArchive dt,
 	#lF .BlogArchive dt {
 		display       : inline;
 		float         : left; 
 		padding-right : 1em;
 	}
+		.lM2 .BlogArchive dd,
 		.lS .BlogArchive dd,
 		#lF .BlogArchive dd {
 			margin-left  : 0.5em;
