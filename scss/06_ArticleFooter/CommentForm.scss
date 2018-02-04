@@ -1,0 +1,54 @@
+/* [ArticleFooter Item] Comment form
+ *
+ *  div.CmtForm
+--------------------------------------------------------------------------------------*/
+/* //_{#ie55- */
+.CmtForm {
+    display : none;
+}
+/* //_}#ie55- */
+
+.CmtForm {
+	border-width  : 0 0 1px;
+    border-style  : solid;
+
+    padding       : 1em 0;
+    text-align    : center;
+}
+
+    .CmtForm iframe {
+        width       : 100%;
+    /* //_{^@ie6 */
+        height      : 400px;
+    /* //_}^@ie6 */
+    /* //_{@ie6 */
+        height      : 430px;
+        margin-left : -18px;
+    /* //_}@ie6 */
+    }
+    .CmtForm h2 {
+        text-align : left;
+    }
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.CmtForm h2 {
+		text-align : center;
+	}
+}
+/* //_>bottom30 */
+
+/* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.CmtForm {
+		display : none;
+	}
+}
+/* //_>bottom50 */

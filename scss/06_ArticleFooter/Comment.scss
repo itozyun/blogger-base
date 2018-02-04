@@ -1,0 +1,43 @@
+/* [ArticleFooter Item] Comment
+ *
+ *  div.Comment
+ *  
+--------------------------------------------------------------------------------------*/
+.Comment {
+	border-width  : 0 0 1px;
+	border-style  : solid;
+}
+
+	.Comment h2 {
+		margin-bottom : 0;
+	}
+
+	.Comment h2, .Comment div {
+		margin-left  : 3%;
+	}
+	.Comment p {
+		@include clearfix;
+		
+		margin-left  : 5%;
+		margin-right : 5%;
+	}
+	.Comment div {
+		color     : $COLOR_BdM_casual_text;
+		font-size : 93%;
+	}
+	.Comment p { margin-top : 0 }
+	.Comment p a { @include hideUnderLineOnHover }
+
+/* //_{#can-mq */
+/* //_<bottom30 */
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@media handheld, only screen and (max-width: 479px) {
+	.Comment h2 {
+		text-align : center;
+	}
+}
+/* //_>bottom30 */
+
+/* //_}#can-mq */
+
