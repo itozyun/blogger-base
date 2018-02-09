@@ -76,20 +76,23 @@
                     /* //_}@modern,@ie9 */
                 }
         .Cover-meta {
-            display     : block;
-            color       : $COLOR_BdM_casual_text;
+            display    : block;
+            color      : $COLOR_BdM_casual_text;
+            margin     : 0 0.5em;
         }
         .Cover p {
-            margin     : 0.6em 0;
+            margin     : 0.6em 0.5em;
         }
         .Cover-btn {
             text-align : right;
+
+            @include btn-more;
         }
             .Cover .btn {
             /* //_{#ie55- */
                 height      : 2em;
             /* //_}#ie55- */
-                padding     : 0.5em 1em;
+                padding     : 0.5em 0.5em 0.5em 1em;
             }
 
 /* //_{#can-mq */
@@ -120,6 +123,9 @@
                     background : transparent;
                     padding    : 0.77em 0.77em 0 0;
                 }
+            .Cover-meta, .Cover p {
+                margin-right : 1em;
+            }
 }
 /* //_>bottom10 */
 
@@ -137,6 +143,9 @@
                 font-size : 1.5em;
                 padding   : 0.67em 1.33em 0 0;
             }
+        .Cover-meta, .Cover p {
+            margin-right : 2em;
+        }
 }
 /* //_>bottom15 */
 
@@ -203,6 +212,10 @@
                     font-size  : 1.5em;
                     padding    : 0.33em 0;
                 }
+            .Cover-meta, .Cover p {
+                margin-left  : 0;
+                margin-right : 0;
+            }
 }
 /* //_>bottom35 */
 /* //_<bottom40 */
@@ -218,3 +231,25 @@
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
+
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+    .Cover h2 {
+        border-width : 1px solid #000;
+        border-style : solid;
+        margin-top   : 1em;
+    }
+    .Cover h2, .Cover h3 {
+        background : #fff;
+        color      : #000;
+    }
+    .Cover img, .Cover-img div {
+        position : static;
+    }
+	.Cover-btn {
+        display : none;
+    }
+}
+/* //_>bottom50 */

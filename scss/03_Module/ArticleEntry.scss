@@ -8,11 +8,66 @@
  *     h3
  *     .AEntry-label
  *   .aBodyRoot
- *     .box
+ *     .box | *
  *   .AEntry-jump
  *     .btn
+ *        i
  *     .btn
+ *        i
 --------------------------------------------------------------------------------------*/
+
+/*  ▶
+--------------------------------------------------------------------------------------*/
+@mixin btn-more {
+    & i {
+        border-width : 0.5em 0 0.5em 0.7em;
+        margin-left  : .5em;
+        position     : relative;
+        top          : 0.15em;
+
+        /* //_{#can-transparent */
+        border-color : transparent $COLOR_BdM_fill;
+        /* //_}#can-transparent */
+
+        /* //_{^#can-transparent */
+        border-color : $COLOR_BdM_casual_text $COLOR_BdM_fill;
+        /* //_}^#can-transparent */
+
+        border-style : solid;
+
+        /* //_{^#ie7-win */
+        display     : inline-block;
+        /* //_}^#ie7-win */
+        /* //_{@ie6,@ie7,@ie55,@ie5win */
+        height      : 0;
+        width       : 0;
+        /* //_}@ie6,@ie7,@ie55,@ie5win */
+        /* //_{@ie55,@ie5win */
+        line-height : 0;
+        font-size   : 0;
+        /* //_}@ie55,@ie5win */      
+    }
+
+    /* //_{^#can-transparent */
+    & :link i {
+        border-color : $COLOR_BdM_link $COLOR_BdM_fill;
+    }
+    & :active i, & :focus i, & :hover i {
+        border-color : $COLOR_ACCENT $COLOR_BdM_fill;
+    }
+    & :active:hover i, & :focus:hover i {
+        border-color : $COLOR_BdM_flip_fill $COLOR_BdM_fill;
+    }
+    /* //_}^#can-transparent */
+
+    /* //_{#can-mq */
+	@media handheld, only screen and (max-width: 240px) {
+		& i {
+			border-color    : transparent $COLOR_WTC_fill;
+		}
+	}
+	/* //_}#can-mq */
+}
 
 .AEntry {
     @include clearfix;
@@ -110,7 +165,9 @@
  *
 --------------------------------------------------------------------------------------*/
 .AEntry-jump {
-	text-align  : right;
+    text-align  : right;
+
+    @include btn-more;
 }
     .AEntry-jump .btn {
         /* //_{#ie55- */
