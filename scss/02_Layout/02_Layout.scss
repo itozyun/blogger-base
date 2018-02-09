@@ -4,22 +4,27 @@
 		padding : 1em 0;
 	}
 
-	/* //_<bottom20 */
+	/* //_{#can-mq */
+	/* //_<bottom21 */
 	/*  Tablet
 	--------------------------------------------------------------------------------------*/
-	@media print, handheld, only screen and (max-width: 950px) {
+	@media handheld, only screen and (max-width: 950px) {
 		#lH .lM {
 			padding : 1em 0 0;
 		}
 	}
-	/* //_>bottom20 */
+	/* //_>bottom21 */
+	/* //_}#can-mq */
 
 	/* //_<bottom50 */
 	/*  Print
 	--------------------------------------------------------------------------------------*/
 	@media print {
 		#lH {
-			font-size   : 0.875em;
+			font-size : 0.875em;
+		}
+		#lH .lM {
+			padding : .5em 0;
 		}
 	}
 	/* //_>bottom50 */

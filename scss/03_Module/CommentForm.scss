@@ -1,4 +1,5 @@
-/* [ArticleFooter Item] Comment form
+/* [module] Comment form
+ *  出現位置は #lB .lMh 下で固定
  *
  *  div.CmtForm
 --------------------------------------------------------------------------------------*/
@@ -8,8 +9,8 @@
 }
 /* //_}#ie55- */
 
-.CmtForm {
-	border-width  : 0 0 1px;
+/* //_{^#ie55- */
+.CmtForm { 
     border-style  : solid;
 
     padding       : 1em 0;
@@ -29,6 +30,7 @@
     .CmtForm h2 {
         text-align : left;
     }
+/* //_}^#ie55- */
 
 /* //_{#can-mq */
 /* //_<bottom30 */

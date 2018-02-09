@@ -1,11 +1,10 @@
-/* [ArticleFooter Item] Comment
- *
+/* [module] Comment
+ *  出現位置は #lB .lMh 下で固定
  *  div.Comment
  *  
 --------------------------------------------------------------------------------------*/
 .Comment {
-	border-width  : 0 0 1px;
-	border-style  : solid;
+	@include stackableModule;
 }
 
 	.Comment h2 {

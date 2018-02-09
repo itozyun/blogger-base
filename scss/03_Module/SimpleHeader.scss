@@ -7,19 +7,21 @@
 
 /*  [module] Header
 --------------------------------------------------------------------------------------*/
-.Header h1, .h1 {
-	display     : inline;
-	font-size   : 1.5em;
-	line-height : 1;
-	padding     : 0;
-	margin      : 0 0.5em 0 0;
-}
+.Header
 /* //_{@ie5win */
-.Header h1 *, .h1 *,
+, .Header * .Header h1 *, .h1 *,
 /* //_}@ie5win */
-.Header span {
+{
 	line-height : 1;
 }
+
+	.Header h1, .h1 {
+		display     : inline;
+		font-size   : 1.5em;
+		line-height : 1;
+		padding     : 0;
+		margin      : 0 0.5em 0 0;
+	}
 
 /* //_{#can-mq */
 /* //_<bottom10 */
@@ -31,12 +33,11 @@
 	}
 }
 /* //_>bottom10 */
-/* //_}#can-mq */
 
-/* //_<bottom20 */
+/* //_<bottom21 */
 /*  Tablet
 --------------------------------------------------------------------------------------*/
-@media print, handheld, only screen and (max-width: 950px) {
+@media handheld, only screen and (max-width: 950px) {
 	.Header {
 	    text-align : center;
 	}
@@ -45,18 +46,38 @@
 			margin    : 0 0 0.5em;
 		}
 }
-/* //_>bottom20 */
+/* //_>bottom21 */
 
-/* //_{#can-mq */
 /* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-		.Header h1, .h1 {
-			font-size : 1.2em;
-		}
+	.Header h1, .h1 {
+		font-size : 1.2em;
+	}
 }
 /* //_>bottom30 */
 /* //_}#can-mq */
 
+/* //_<bottom50 */
+/*  Print
+--------------------------------------------------------------------------------------*/
+@media print {
+	.Header {
+	    text-align : left;
+	}
+		.h1 {
+			font-size : 1em;
+		}
+		.Header h1 {
+			display    : block;
+			text-align : center;
+			margin     : 0 0 0.5em;
+		}
+		.Header h1+span {
+			display    : block;
+			text-align : center;
+		}
+}
+/* //_>bottom50 */
 /** //_}+simpleHeader **/
