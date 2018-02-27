@@ -31,10 +31,10 @@
 			text-overflow   : ellipsis;
 		}
 			.Pager-next a {
-				padding         : 0 0 0 2.5em;
+				padding         : 0 0 0 1.5em;
 			}
 			.Pager-prev a {
-				padding         : 0 2.5em 0 0;
+				padding         : 0 1.5em 0 0;
 			}
 				.Pager i {
 					position     : absolute;
@@ -56,11 +56,11 @@
 				}
 				.Pager-next i {
 					border-width : 0.5em 0.7em 0.5em 0;
-					left         : 1em;
+					left         : 0;
 				}
 				.Pager-prev i {
 					border-width : 0.5em 0 0.5em 0.7em;
-					right        : 1em;
+					right        : 0;
 				}
 				.Pager i {
 					/* //_{#can-transparent */
@@ -85,7 +85,7 @@
 					position     : static;
 	
 					border-width : 0 0.45em 0.9em;
-					margin-right : .5em;
+					margin-right : 0.5em;
 
 					/* //_{#can-transparent */
 					border-color : $COLOR_BdM_casual_text transparent;
@@ -115,12 +115,6 @@
 	}
 	.Pager-prev a {
 		padding      : 0 1em 0 0;
-	}
-	.Pager-next i {
-		left         : 0;
-	}
-	.Pager-prev i {
-		right        : 0;
 	}
 	.Pager-top i {
 		margin-right : .2em;
