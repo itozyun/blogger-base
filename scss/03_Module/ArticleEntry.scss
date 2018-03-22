@@ -61,12 +61,12 @@
     /* //_}^#can-transparent */
 
     /* //_{#can-mq */
-	@media handheld, only screen and (max-width: 240px) {
-		& i {
-			border-color    : transparent $COLOR_WTC_fill;
-		}
-	}
-	/* //_}#can-mq */
+    @media handheld, only screen and (max-width: 240px) {
+        & i {
+            border-color    : transparent $COLOR_WTC_fill;
+        }
+    }
+    /* //_}#can-mq */
 }
 
 .AEntry {
@@ -75,11 +75,11 @@
     padding     : 1em 0.5em;
     line-height : 1.4;
 }
-	/* //_{#can-1stOfType */
-	.AEntry .box > p:first-of-type {
-		margin-top : -0.1em;
-	}
-	/* //_}#can-1stOfType */
+    /* //_{#can-1stOfType */
+    .AEntry .box > p:first-of-type {
+        margin-top : -0.1em;
+    }
+    /* //_}#can-1stOfType */
 
 /* //_{@ie5win */
 .AEntry * {
@@ -181,14 +181,14 @@
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	.AEntry-jump { display : none; }
+    .AEntry-jump { display : none; }
 }
 /* //_>bottom50 */
 
-	/* //_<bottom20 */
-	/*  Tablet
-	--------------------------------------------------------------------------------------*/
-	@media print, handheld, only screen and (max-width: 950px) {
+    /* //_<bottom20 */
+    /*  Tablet
+    --------------------------------------------------------------------------------------*/
+    @media print, handheld, only screen and (max-width: 950px) {
         .AEntry-date div, .AEntry-label {
             font-size     : 1em;
         }
@@ -200,8 +200,8 @@
         .AEntry h3 a {
             border-width : .12em 0 0;
         }
-	}
-	/* //_>bottom20 */
+    }
+    /* //_>bottom20 */
 
 /* //_{#can-mq */
 /* //_<bottom10 */
@@ -255,7 +255,7 @@
     }
     .AEntry .aBodyRoot {
         margin   : 0;
-	}
+    }
 }
 /* //_>bottom30 */
 /* //_<bottom40 */

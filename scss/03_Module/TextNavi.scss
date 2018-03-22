@@ -3,29 +3,29 @@
  *
 --------------------------------------------------------------------------------------*/
 .TxtNavi {
-	padding     : 0.5em 0;
-	text-align  : right;
-	color       : $COLOR_BdM_fill; /* , を消す */
+    padding     : 0.5em 0;
+    text-align  : right;
+    color       : $COLOR_BdM_fill; /* , を消す */
 }
-	.TxtNavi a {
-		/* //_{^#ie7-win */
-		display     : inline-block;
-		/* //_}^#ie7-win */
-		/* //_{@ie6,@ie7,@ie55 */
-		zoom        : 1;
-		/* //_}@ie6,@ie7,@ie55 */
-	}
+    .TxtNavi a {
+        /* //_{^#ie7-win */
+        display     : inline-block;
+        /* //_}^#ie7-win */
+        /* //_{@ie6,@ie7,@ie55 */
+        zoom        : 1;
+        /* //_}@ie6,@ie7,@ie55 */
+    }
 
 .fillbg .TxtNavi {
-	color       : $COLOR_FtM_fill; /* , を消す */
+    color       : $COLOR_FtM_fill; /* , を消す */
 }
 
 /* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
 @media print {
-	.TxtNavi {
-		display : none;
-	}
+    .TxtNavi {
+        display : none;
+    }
 }
 /* //_>bottom50 */

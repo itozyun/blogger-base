@@ -3,61 +3,61 @@
  *
 --------------------------------------------------------------------------------------*/
 .Label {
-	@include stackableModule;
+    @include stackableModule;
 }
 
-	.Label div {
-		color  : $COLOR_BdM_fill; /* , を消す */
-	
-	/* //_{#ie7-win,@ie8,@ie9 */
-		text-justify : inter-ideograph;
-		line-break   : normal;
-	/* //_}#ie7-win,@ie8,@ie9 */
-	/* //_{#ie7-win,@ie9,@modern */
-		text-align   : justify;
-		/* ie8 は要素への :hover で画面がガタツク... zoom で回避できる? */
-	/* //_}#ie7-win,@ie9,@modern */
-	}
-	.fillbg .Label div {
-		color  : $COLOR_FtM_fill; /* , を消す */
-	}
+    .Label div {
+        color  : $COLOR_BdM_fill; /* , を消す */
+    
+    /* //_{#ie7-win,@ie8,@ie9 */
+        text-justify : inter-ideograph;
+        line-break   : normal;
+    /* //_}#ie7-win,@ie8,@ie9 */
+    /* //_{#ie7-win,@ie9,@modern */
+        text-align   : justify;
+        /* ie8 は要素への :hover で画面がガタツク... zoom で回避できる? */
+    /* //_}#ie7-win,@ie9,@modern */
+    }
+    .fillbg .Label div {
+        color  : $COLOR_FtM_fill; /* , を消す */
+    }
 
-		.Label a {
-			@include noUnderLineAlways;
-			
-		/* //_{@modern,@ie9,@ie8 */
-			display      : inline-block;
-			margin       : 0 0 1em;
-		/* //_}@modern,@ie9,@ie8 */
+        .Label a {
+            @include noUnderLineAlways;
+            
+        /* //_{@modern,@ie9,@ie8 */
+            display      : inline-block;
+            margin       : 0 0 1em;
+        /* //_}@modern,@ie9,@ie8 */
 
-		/* //_{#ie7-win */
-			line-height : 2.8;
-		/* //_}#ie7-win */
+        /* //_{#ie7-win */
+            line-height : 2.8;
+        /* //_}#ie7-win */
 
-			border-width : 0 0 1px;
-			border-style : solid;
-		}
-		.Label a:focus:hover { text-decoration : none !important; }
+            border-width : 0 0 1px;
+            border-style : solid;
+        }
+        .Label a:focus:hover { text-decoration : none !important; }
 
-		.lS .Label a,
-		#lF .Label a {
-		/* //_{@modern,@ie9,@ie8 */
-			margin : 0 0 0.6em;
-		/* //_}@modern,@ie9,@ie8 */
+        .lS .Label a,
+        #lF .Label a {
+        /* //_{@modern,@ie9,@ie8 */
+            margin : 0 0 0.6em;
+        /* //_}@modern,@ie9,@ie8 */
 
-		/* //_{#ie7-win */
-			line-height : 2.4;
-		/* //_}#ie7-win */
-		}
+        /* //_{#ie7-win */
+            line-height : 2.4;
+        /* //_}#ie7-win */
+        }
 /* //_{#can-mq */
 
 /* //_<bottom25 */
 /*  Phablet
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 740px) {
-	.lM2 .Label div, .lS2 .Label div {
-		text-align : right;
-	}
+    .lM2 .Label div, .lS2 .Label div {
+        text-align : right;
+    }
 }
 /* //_>bottom25 */
 
@@ -65,18 +65,18 @@
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 479px) {
-	.Label div {
-		text-align : center;
-	}
+    .Label div {
+        text-align : center;
+    }
 }
 /* //_>bottom30 */
 /* //_<bottom40 */
 /*  Watch
 --------------------------------------------------------------------------------------*/
 @media handheld, only screen and (max-width: 240px) {
-	.Label div {
-		color  : $COLOR_WTC_fill; /* , を消す */
-	}
+    .Label div {
+        color  : $COLOR_WTC_fill; /* , を消す */
+    }
 }
 /* //_>bottom40 */
 /* //_}#can-mq */
