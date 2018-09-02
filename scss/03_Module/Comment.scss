@@ -7,11 +7,12 @@
     @include stackableModule;
 }
 
-    .Comment h2 {
+    .Comment h2, .Comment h3 {
         margin-bottom : 0;
     }
 
-    .Comment h2, .Comment div {
+    .Comment h3, .Comment div {
+        font-size    : 1em;
         margin-left  : 3%;
     }
     .Comment p {
