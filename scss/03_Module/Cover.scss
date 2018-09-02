@@ -69,7 +69,9 @@
                     margin     : 0;
                     color      : #fff;
                     /* //_{^@ie9 */
-                    background : #000;
+                        /* clean-css ignore:start */
+                        background : #000;
+                        /* clean-css ignore:end */
                     /* //_}^@ie9 */
                     /* //_{@modern,@ie9 */
                     background : rgba( 0, 0, 0, .65);
@@ -80,6 +82,11 @@
             color      : $COLOR_BdM_casual_text;
             margin     : 0 0.5em;
         }
+        /* //_{@modern,@ie9,@ie8 */
+            .Cover-meta span {
+                display : inline-block;
+            }
+        /* //_}@modern,@ie9,@ie8 */
         .Cover p {
             margin     : 0.6em 0.5em;
         }
@@ -225,7 +232,7 @@
     .Cover h3 {
         color   : $COLOR_WTC_text;
     }    
-    .Cover span {
+    .Cover-meta {
         color   : $COLOR_WTC_casual_text;
     }
 }
