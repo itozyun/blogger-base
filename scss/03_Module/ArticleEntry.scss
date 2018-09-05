@@ -60,13 +60,11 @@
     }
     /* //_}^#can-transparent */
 
-    /* //_{#can-mq */
-    @media handheld, only screen and (max-width: 240px) {
+    @include media(watch) {
         & i {
             border-color    : transparent $COLOR_WTC_fill;
         }
     }
-    /* //_}#can-mq */
 }
 
 .AEntry {
@@ -81,11 +79,12 @@
     }
     /* //_}#can-1stOfType */
 
-/* //_{@ie5win */
-.AEntry * {
-    line-height : 1.4;
-}
-/* //_}@ie5win */
+    /* //_{@ie5win */
+    .AEntry * {
+        line-height : 1.4;
+    }
+    /* //_}@ie5win */
+
     .AEntry a {  @include noUnderLineAlways; }
     .AEntry .aBodyRoot a { @include hideUnderLineOnHover }
 
@@ -160,54 +159,44 @@
             margin      : 0 0 0 0.25em;
         }
 
-/* [module] Jump
- *  出現位置は #lB .lMi 下で固定
- *
---------------------------------------------------------------------------------------*/
-.AEntry-jump {
-    text-align  : right;
+    .AEntry-jump {
+        text-align  : right;
 
-    @include btn-more;
-}
-    .AEntry-jump .btn {
-        /* //_{#ie55- */
-        height      : 2em;
-        /* //_}#ie55- */
-        padding     : 0.5em 1em;
-        margin-left : 1em;
+        @include btn-more;
     }
+        .AEntry-jump .btn {
+            /* //_{#ie55- */
+            height      : 2em;
+            /* //_}#ie55- */
+            padding     : 0.5em 1em;
+            margin-left : 1em;
+        }
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .AEntry-jump { display : none; }
 }
-/* //_>bottom50 */
 
-    /* //_<bottom20 */
-    /*  Tablet
-    --------------------------------------------------------------------------------------*/
-    @media print, handheld, only screen and (max-width: 950px) {
-        .AEntry-date div, .AEntry-label {
-            font-size     : 1em;
-        }
-
-        .AEntry h3 {
-            font-size  : 1.5em;
-            text-align : left;
-        }
-        .AEntry h3 a {
-            border-width : .12em 0 0;
-        }
-    }
-    /* //_>bottom20 */
-
-/* //_{#can-mq */
-/* //_<bottom10 */
-/*  Full HD
+/*  Tablet
 --------------------------------------------------------------------------------------*/
-@media only screen and (min-width: 96em) {
+@include media(tablet_print) {
+    .AEntry-date div, .AEntry-label {
+        font-size     : 1em;
+    }
+
+    .AEntry h3 {
+        font-size  : 1.5em;
+        text-align : left;
+    }
+    .AEntry h3 a {
+        border-width : .12em 0 0;
+    }
+}
+
+/*  WSXGA
+--------------------------------------------------------------------------------------*/
+@include media(WSXGA) {
     .AEntry-title {
         width : 45%;
         float : left;
@@ -241,15 +230,11 @@
             height      : auto;
             padding     : 10%;
         }
-
 }
-/* //_>bottom10 */
 
-
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .AEntry h2 {
         text-align : left;
     }
@@ -257,37 +242,33 @@
         margin   : 0;
     }
 }
-/* //_>bottom30 */
-/* //_<bottom40 */
+
 /*  Watch
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
-        .AEntry-date:link div {
-            border-color : $COLOR_WTC_link;
-        }     
-        .AEntry-date:link:hover div {
-            border-color : $COLOR_WTC_hover;
-        }
-        .AEntry-date:visited div {
-            border-color : $COLOR_WTC_text;
-        }
-        .AEntry-date:visited:hover div {
-            border-color : $COLOR_WTC_visited_hover;
-        }
+@include media(watch) {
+    .AEntry-date:link div {
+        border-color : $COLOR_WTC_link;
+    }     
+    .AEntry-date:link:hover div {
+        border-color : $COLOR_WTC_hover;
+    }
+    .AEntry-date:visited div {
+        border-color : $COLOR_WTC_text;
+    }
+    .AEntry-date:visited:hover div {
+        border-color : $COLOR_WTC_visited_hover;
+    }
 
-            .AEntry-date:hover + .AEntry-title :visited h3 {
-                color : $COLOR_WTC_visited_hover;
-            }
-            .AEntry-date:hover + .AEntry-title :link h3 {
-                color : $COLOR_WTC_hover;
-            }
-            .AEntry-date:hover ~ .AEntry-jump :visited:first-of-type {
-                background : $COLOR_WTC_visited_hover;
-            }
-            .AEntry-date:hover ~ .AEntry-jump :link:first-of-type {
-                background : $COLOR_WTC_hover;
-            }
+        .AEntry-date:hover + .AEntry-title :visited h3 {
+            color : $COLOR_WTC_visited_hover;
+        }
+        .AEntry-date:hover + .AEntry-title :link h3 {
+            color : $COLOR_WTC_hover;
+        }
+        .AEntry-date:hover ~ .AEntry-jump :visited:first-of-type {
+            background : $COLOR_WTC_visited_hover;
+        }
+        .AEntry-date:hover ~ .AEntry-jump :link:first-of-type {
+            background : $COLOR_WTC_hover;
+        }
 }
-/* //_>bottom40 */
-
-/* //_}#can-mq */

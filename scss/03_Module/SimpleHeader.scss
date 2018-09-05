@@ -23,21 +23,17 @@
         margin      : 0 0.5em 0 0;
     }
 
-/* //_{#can-mq */
-/* //_<bottom10 */
-/*  Full HD
+/*  WSXGA
 --------------------------------------------------------------------------------------*/
-@media only screen and (min-width: 96em) {
+@include media(WSXGA) {
     .Header {
         text-align : center;
     }
 }
-/* //_>bottom10 */
 
-/* //_<bottom21 */
 /*  Tablet
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 950px) {
+@include media(tablet) {
     .Header {
         text-align : center;
     }
@@ -46,23 +42,18 @@
             margin    : 0 0 0.5em;
         }
 }
-/* //_>bottom21 */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .Header h1, .h1 {
         font-size : 1.2em;
     }
 }
-/* //_>bottom30 */
-/* //_}#can-mq */
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .Header {
         text-align : left;
     }
@@ -79,5 +70,4 @@
             text-align : center;
         }
 }
-/* //_>bottom50 */
 /** //_}+simpleHeader **/

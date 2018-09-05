@@ -11,7 +11,7 @@
         .BlogArchive dt {
             display : block;
             float   : left;
-            clear   : left;
+            clear   : both;
         /* //_{#ie7-win */
             line-height : 2.8;
         /* //_}#ie7-win */
@@ -57,14 +57,11 @@
             /* //_}#ie7-win */
             }
 
-/* //_{#can-mq */
-/* //_<bottom25 */
 /*  Phablet
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 740px) {
+@include media(phablet) {
     .lM2 .BlogArchive dt {
         float   : right;
-        clear   : right;
     }
     .lM2 .BlogArchive dd {
         margin-left  : 0;
@@ -72,16 +69,13 @@
         text-align   : right;
     }
 }
-/* //_>bottom25 */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .lM2 .BlogArchive dt,
     .lS .BlogArchive dt,
     #lF .BlogArchive dt {
-		display       : inline;
 		float         : left; 
         padding-right : 1em;
     }
@@ -93,15 +87,12 @@
             text-align   : left;
         }
 }
-/* //_>bottom30 */
-/* //_<bottom40 */
+
 /*  Watch
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
+@include media(watch) {
     .BlogArchive dd {
         color : $COLOR_WTC_fill; /* , を消す */
     }
 }
-/* //_>bottom40 */
-/* //_}#can-mq */
 

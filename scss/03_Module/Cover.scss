@@ -102,12 +102,9 @@
                 padding     : 0.5em 0.5em 0.5em 1em;
             }
 
-/* //_{#can-mq */
-
-/* //_<bottom10 */
-/*  Full HD
+/*  WSXGA
 --------------------------------------------------------------------------------------*/
-@media only screen and (min-width: 96em) {
+@include media(WSXGA) {
     .Cover-item {
         @include clearfix;
     }
@@ -134,12 +131,10 @@
                 margin-right : 1em;
             }
 }
-/* //_>bottom10 */
 
-/* //_<bottom15 */
 /*  WQXGA
 --------------------------------------------------------------------------------------*/
-@media only screen and (min-width: 126em) {
+@include media(WQXGA) {
     .Cover img {
         margin   : 0 2em 1em 0;
     }
@@ -154,23 +149,19 @@
             margin-right : 2em;
         }
 }
-/* //_>bottom15 */
 
-/* //_<bottom25 */
 /*  Phablet
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 740px) {
+@include media(phablet) {
     .Cover h3 {
         font-size  : 1em;
         padding    : 0.5em;
     }
 }
-/* //_>bottom25 */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
         .Cover-item {
             float  : none;
             width  : auto;
@@ -187,12 +178,10 @@
                 padding    : 0.77em 0.385em;
             }
 }
-/* //_>bottom30 */
 
-/* //_<bottom35 */
 /*  Phone-
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 319px) {
+@include media(smallphone) {
     .Cover-item {
         @include clearfix;
     }
@@ -224,11 +213,10 @@
                 margin-right : 0;
             }
 }
-/* //_>bottom35 */
-/* //_<bottom40 */
+
 /*  Watch
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
+@include media(watch) {
     .Cover h3 {
         color   : $COLOR_WTC_text;
     }    
@@ -236,13 +224,10 @@
         color   : $COLOR_WTC_casual_text;
     }
 }
-/* //_>bottom40 */
-/* //_}#can-mq */
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .Cover h2 {
         border-width : 1px solid #000;
         border-style : solid;
@@ -259,4 +244,3 @@
         display : none;
     }
 }
-/* //_>bottom50 */

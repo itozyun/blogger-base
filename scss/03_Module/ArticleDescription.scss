@@ -11,12 +11,10 @@
     color  : $COLOR_FtM_casual_text;
 }
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(watch) {
     .ADesc p {
         color  : $COLOR_PRT_text;
     }
 }
-/* //_>bottom50 */

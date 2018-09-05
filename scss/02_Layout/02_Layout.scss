@@ -4,22 +4,17 @@
         padding : 1em 0;
     }
 
-    /* //_{#can-mq */
-    /* //_<bottom21 */
     /*  Tablet
     --------------------------------------------------------------------------------------*/
-    @media handheld, only screen and (max-width: 950px) {
+    @include media(tablet) {
         #lH .lM {
             padding : 1em 0 0;
         }
     }
-    /* //_>bottom21 */
-    /* //_}#can-mq */
 
-    /* //_<bottom50 */
     /*  Print
     --------------------------------------------------------------------------------------*/
-    @media print {
+    @include media(print) {
         #lH {
             font-size : 0.875em;
         }
@@ -27,5 +22,4 @@
             padding : .5em 0;
         }
     }
-    /* //_>bottom50 */
 /** //_}+simpleHeader **/

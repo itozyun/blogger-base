@@ -17,15 +17,13 @@
     }
 
 .fillbg .TxtNavi {
-    color       : $COLOR_FtM_fill; /* , を消す */
+    color : $COLOR_FtM_fill; /* , を消す */
 }
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .TxtNavi {
         display : none;
     }
 }
-/* //_>bottom50 */

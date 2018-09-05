@@ -32,25 +32,18 @@
     }
 /* //_}^#ie55- */
 
-/* //_{#can-mq */
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .CmtForm h2 {
         text-align : center;
     }
 }
-/* //_>bottom30 */
 
-/* //_}#can-mq */
-
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .CmtForm {
         display : none;
     }
 }
-/* //_>bottom50 */

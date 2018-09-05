@@ -1,5 +1,5 @@
 {
-  "name": "blogspot-base",
+  "name": "blogger-base",
   "version": "1.0.0",
   "description": "Development of Blogspot templete.",
   "main": "index.js",
@@ -8,18 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/itozyun/blogspot-base.git"
+    "url": "git+https://github.com/itozyun/blogger-base.git"
   },
   "author": "itozyun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itozyun/blogspot-base/issues"
+    "url": "https://github.com/itozyun/blogger-base/issues"
   },
-  "homepage": "https://github.com/itozyun/blogspot-baseb#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.3.2"
-  }
+  "homepage": "https://github.com/itozyun/blogger-baseb#readme"
 }

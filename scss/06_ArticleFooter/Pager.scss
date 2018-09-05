@@ -104,12 +104,10 @@
                     border-color : $COLOR_BdM_fill $COLOR_ACCENT;
                     /* //_}^#can-transparent */
                 }
-/* //_{#can-mq */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .Pager-next a {
         padding      : 0 0 0 1em;
     }
@@ -120,12 +118,10 @@
         margin-right : .2em;
     }
 }
-/* //_>bottom30 */
 
-/* //_<bottom40 */
 /*  Watch
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
+@include media(watch) {
     .Pager {
         color : $COLOR_WTC_fill; /* , を消す */
     }
@@ -142,17 +138,11 @@
         border-color : $COLOR_WTC_text transparent;
     }
 }
-/* //_>bottom40 */
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
+@include media(print) {
     .Pager {
         display : none;
     }
 }
-/* //_>bottom50 */
-
-/* //_}#can-mq */
-

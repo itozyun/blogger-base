@@ -49,35 +49,27 @@
             line-height : 2.4;
         /* //_}#ie7-win */
         }
-/* //_{#can-mq */
 
-/* //_<bottom25 */
 /*  Phablet
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 740px) {
+@include media(phablet) {
     .lM2 .Label div, .lS2 .Label div {
         text-align : right;
     }
 }
-/* //_>bottom25 */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .Label div {
         text-align : center;
     }
 }
-/* //_>bottom30 */
-/* //_<bottom40 */
+
 /*  Watch
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 240px) {
+@include media(watch) {
     .Label div {
         color  : $COLOR_WTC_fill; /* , を消す */
     }
 }
-/* //_>bottom40 */
-/* //_}#can-mq */
-

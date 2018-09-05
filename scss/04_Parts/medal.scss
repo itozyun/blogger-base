@@ -1,3 +1,7 @@
+/* [parts] medal
+ *  出現位置は RichLink 内
+ *
+--------------------------------------------------------------------------------------*/
 .medal {
     position : relative;
     display  : block !important;
@@ -40,21 +44,19 @@
         margin : 0 0 0 0.5em;
     }
 
-    /* //_<bottom20 */
-    /*  Tablet
-    --------------------------------------------------------------------------------------*/
-    @media print, handheld, only screen and (max-width: 950px) {
-        .lS .medal i {
-            left  : 0;
-            right : auto;
-        }
-        .img-disabled .lS .medal i {
-            float  : left;
-            clear  : right;
-            margin : 0 0.5em 0 0;
-        }
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@include media(tablet_print) {
+    .lS .medal i {
+        left  : 0;
+        right : auto;
     }
-    /* //_>bottom20 */
+    .img-disabled .lS .medal i {
+        float  : left;
+        clear  : right;
+        margin : 0 0.5em 0 0;
+    }
+}
 
 
 .medal * {
@@ -73,5 +75,3 @@
     background : #C47222;
     color      : rgb(230, 214, 169);
 }
-
-

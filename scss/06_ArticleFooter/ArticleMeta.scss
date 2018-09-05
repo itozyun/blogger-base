@@ -17,16 +17,14 @@
     text-indent  : -1.2em;
 }
 
-/* //_<bottom50 */
 /*  Print
 --------------------------------------------------------------------------------------*/
-@media print {
-/* //_{#can-content */
-    .AMeta-cita:after {
-        content   : " ("attr(href)") ";
-        font-size : 0.875em;
-        color     : $COLOR_PRT_link;
-    }
-/* //_}#can-content */
+@include media(print) {
+    /* //_{#can-content */
+        .AMeta-cita:after {
+            content   : " ("attr(href)") ";
+            font-size : 0.875em;
+            color     : $COLOR_PRT_link;
+        }
+    /* //_}#can-content */
 }
-/* //_>bottom50 */

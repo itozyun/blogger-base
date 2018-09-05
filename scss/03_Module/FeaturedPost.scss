@@ -1,5 +1,5 @@
 /* [module] Featured Post
- *  出現位置は  [#lB|#lF] [.lMi|.lSi] 下
+ *  出現位置は #lB .lMi 下
  *
 --------------------------------------------------------------------------------------*/
 .FeaturedPost .box {
@@ -34,11 +34,9 @@
         font-size : 1.5em;
     }
 
-/* //_{#can-mq */
-/*  Full HD
+/*  WSXGA
 --------------------------------------------------------------------------------------*/
-/* //_<bottom10 */
-@media only screen and (min-width: 96em) {
+@include media(WSXGA){
     .lM1 .FeaturedPost .box {
         margin-top : 2em;
     }
@@ -55,12 +53,10 @@
         }
         /* //_}#can-1stOfType */
 }
-/* //_>bottom10 */
 
-/* //_<bottom30 */
 /*  Phone
 --------------------------------------------------------------------------------------*/
-@media handheld, only screen and (max-width: 479px) {
+@include media(phone) {
     .FeaturedPost h3 {
         text-align : center;
     }
@@ -71,5 +67,3 @@
         max-width : 100%;
     }
 }
-/* //_>bottom30 */
-/* //_}#can-mq */
