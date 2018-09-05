@@ -13,7 +13,6 @@
     position    : relative;
     color       : $COLOR_BdM_fill; /* , を消す */
     height      : 4em;
-    line-height : 2;
 }
     .Pager-next { left  : 0; }
     .Pager-top  { left  : 34%; text-align : center; }
@@ -24,7 +23,6 @@
             top             : 1em;
             display         : block;
             width           : 32%;
-            height          : 2em;
             /* http://tacamy.hatenablog.com/entry/2014/02/19/141948 */
             overflow        : hidden;
             white-space     : nowrap;
