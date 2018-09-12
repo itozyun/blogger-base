@@ -13,7 +13,7 @@
 
 /*  Print
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(print) {
     .ADesc p {
         color  : $COLOR_PRT_text;
     }
