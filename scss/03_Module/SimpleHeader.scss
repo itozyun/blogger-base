@@ -7,18 +7,14 @@
 
 /*  [module] Header
 --------------------------------------------------------------------------------------*/
-.Header
-/* //_{@ie5win */
-, .Header * .Header h1 *, .h1 *,
-/* //_}@ie5win */
-{
-    line-height : 1;
+.Header {
+    @include lineHeight(1, 1);
 }
 
     .Header h1, .h1 {
         display     : inline;
         font-size   : 1.5em;
-        line-height : 1;
+        @include lineHeight(1, 0);
         padding     : 0;
         margin      : 0 0.5em 0 0;
     }

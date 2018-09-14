@@ -72,19 +72,13 @@
     @include clearfix;
 
     padding     : 1em 0.5em;
-    line-height : 1.4;
+    @include lineHeight(1.4, 1);
 }
     /* //_{#can-1stOfType */
     .AEntry .box > p:first-of-type {
         margin-top : -0.1em;
     }
     /* //_}#can-1stOfType */
-
-    /* //_{@ie5win */
-    .AEntry * {
-        line-height : 1.4;
-    }
-    /* //_}@ie5win */
 
     .AEntry a {  @include noUnderLineAlways; }
     .AEntry .aBodyRoot a { @include hideUnderLineOnHover }
