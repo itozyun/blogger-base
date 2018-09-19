@@ -1,17 +1,48 @@
 /* [parts] medal
  *  出現位置は RichLink 内
  *
+ *  :.lM
+ *     .RichLink
+ *       h3
+ *         .medal
+ *           img, i
+ *  :.lS
+ *      .RichLink
+ *        .medal
+ *          img, i
+ *        b
 --------------------------------------------------------------------------------------*/
 .medal {
     position : relative;
     display  : block !important;
     padding  : 0 !important;
 }
-.lM .medal {
-    font-size : 1.5em;
+h3 .medal {
+    font-size : .67em;
+    i {
+        font-size : 1.5em;
+    }
 }
-.lS .medal {
-    font-size : 1em;
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@include media(phone) {
+    h3 .medal {
+        font-size : .77em;
+        i {
+            font-size : 1.3em;
+        }
+    }
+}
+
+/*  Phone-
+--------------------------------------------------------------------------------------*/
+@include media(smallphone) {
+    h3 .medal {
+        font-size : .91em;
+        i {
+            font-size : 1.1em;
+        }
+    }
 }
     .medal i {
         position    : absolute;
