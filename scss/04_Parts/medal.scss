@@ -54,38 +54,63 @@ h3 .medal {
         font-style  : normal;
         font-weight : bold;
 
-        width    : 1.6em;
-        height   : 1.6em;
+        width       : 1.6em;
+        height      : 1.6em;
     }
+
     .lM .medal i {
         left      : 0;
     }
-    .lS .medal i {
-        right     : 0;
-    }
-    .img-disabled .medal i {
+
+    /* //_{^+mobile */
+    .RichLink .img-disabled i {
         position : static;
     }
-    .img-disabled .lM .medal i {
+    /* //_}^+mobile */
+
+    .img-disabled
+    /* //_{^+mobile */
+    .lM 
+    /* //_}^+mobile */
+    .RichLink .img-disabled i {
         float  : left;
-        margin : 0 0.5em 0 0;
+        margin : 0 0.5em 1em 0;
     }
-    .img-disabled .lS .medal i {
+
+/* //_{^+mobile */
+    .lS .medal i {
+        right     : 0;
+    }    
+    .lS .RichLink .img-disabled i {
         float  : right;
-        margin : 0 0 0 0.5em;
+        margin : 0 0 1em 0.5em;
     }
+/* //_}^+mobile */
+
+/* //_{@ie5win */
+h3 .medal {
+    position : relative;
+    display  : inline !important;
+}
+    h3 .medal i {
+        position    : static;
+        display     : inline;
+    }
+/* //_}@ie5win */
 
 /*  Tablet
 --------------------------------------------------------------------------------------*/
 @include media(tablet_print) {
+    /* //_{^+mobile */
     .lS .medal i {
         left  : 0;
         right : auto;
     }
-    .img-disabled .lS .medal i {
+    .lS .RichLink .img-disabled i {
         float  : left;
-        margin : 0 0.5em 0 0;
+        margin : 0 0.5em 1em 0;
     }
+    /* //_}^+mobile */
 }
 
 /*  color
