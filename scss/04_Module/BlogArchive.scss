@@ -1,0 +1,67 @@
+/* [module] Blog Archive
+ *  出現位置は [#lB|#lF] [.lMi|.lSi] 下
+ *
+--------------------------------------------------------------------------------------*/
+.BlogArchive {
+    @include stackableModule;
+}
+    .BlogArchive dl {
+        @include clearfix;
+    }
+        .BlogArchive dt {
+            display : block;
+            float   : left;
+            clear   : both;
+        /* //_{#ie7-win */
+            line-height : 2.8;
+        /* //_}#ie7-win */
+        }
+        .lS .BlogArchive dt,
+        #lF .BlogArchive dt {
+        /* //_{#ie7-win */
+            line-height : 2.4;
+        /* //_}#ie7-win */
+        }
+        .BlogArchive dd {
+            margin-left : 3em;
+            color       : $COLOR_Default_fill; /* , を消す */
+        }
+        .ribbon .BlogArchive dd {
+            color      : $COLOR_Ribbon_fill; /* , を消す */
+        }
+            .BlogArchive a {
+            /* //_{#can-inline-block */
+                display : inline-block;
+                margin  : 0 0 1em;
+            /* //_}#can-inline-block */
+
+            /* //_{^#can-inline-block */
+                line-height : 2.8;
+            /* //_}^#can-inline-block */
+
+                border-width : 0 0 1px;
+
+                &:link:hover, &:visited:hover { /* 詳細度の為に a: が必要 */
+                    text-decoration : none;
+                }
+            }
+
+            .lS .BlogArchive a,
+            #lF .BlogArchive a {
+            /* //_{#can-inline-block */
+                margin  : 0 0 0.6em;
+            /* //_}#can-inline-block */
+
+            /* //_{^#can-inline-block */
+                line-height : 2.4;
+            /* //_}^#can-inline-block */
+            }
+
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@include media(watch) {
+    .BlogArchive dd {
+        color : $COLOR_Watch_fill; /* , を消す */
+    }
+}
+

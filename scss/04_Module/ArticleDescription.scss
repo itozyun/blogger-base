@@ -3,18 +3,16 @@
  *
 --------------------------------------------------------------------------------------*/
 .ADesc {
-    @include stackableModule;
+    p {
+        margin : 0 0.5em 1em;
+        color  : $COLOR_Ribbon_casual_text;
+    }
 }
 
-.ADesc p {
-    margin : 0;
-    color  : $COLOR_FtM_casual_text;
-}
-
-/*  Print
+/*  Tablet
 --------------------------------------------------------------------------------------*/
-@include media(print) {
+@include media(tablet_print) {
     .ADesc p {
-        color  : $COLOR_PRT_text;
+        margin : 1em 0 0;
     }
 }

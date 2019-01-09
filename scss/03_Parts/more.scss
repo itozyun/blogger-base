@@ -1,0 +1,69 @@
+/*  ▶
+--------------------------------------------------------------------------------------*/
+%more-icon {
+    & i {
+        border-width : 0.5em 0 0.5em 0.7em;
+        position     : relative;
+    
+        /* //_{@ie6,@ie7,@ie8,@ie9,@modern */
+        top          : 0.15em;
+        /* //_}@ie6,@ie7,@ie8,@ie9,@modern */
+
+        /* //_{#can-inline-block */
+        display      : inline-block;
+        margin-left  : .5em;
+        /* //_}#can-inline-block */
+
+        /* //_{@ie7 */
+        zoom         : 1;
+        /* //_}@ie7 */
+        /* //_{@ie6,@ie7,@ie55,@ie5win */
+        left         : .5em;
+        height       : 0;
+        width        : 0;
+        /* //_}@ie6,@ie7,@ie55,@ie5win */
+
+        /* //_{@ie55,@ie5win */
+        top          : 0.5em;
+        line-height  : 0;
+        /* //_}@ie55,@ie5win */      
+    }
+
+    & :link i {
+        /* //_{#can-transparent */
+        border-color : transparent $COLOR_Default_fill;
+        /* //_}#can-transparent */
+        /* //_{^#can-transparent */
+        border-color : $COLOR_Default_link $COLOR_Default_fill;
+        /* //_}^#can-transparent */
+    }
+    & :visited i {
+        /* //_{#can-transparent */
+        border-color : transparent $COLOR_Default_text;
+        /* //_}#can-transparent */
+        /* //_{^#can-transparent */
+        border-color : $COLOR_Default_fill $COLOR_Default_text;
+        /* //_}^#can-transparent */
+    }
+    & :link:active i, & :visited:active i
+    /* //_{#can-focus-psedo-class */
+    , & :link:focus i, & :visited:focus i
+    /* //_}#can-focus-psedo-class */
+    {
+        /* //_{#can-transparent */
+        border-color : transparent $COLOR_Default_fill;
+        /* //_}#can-transparent */
+        /* //_{^#can-transparent */
+        border-color : $COLOR_ACCENT $COLOR_Default_fill;
+        /* //_}^#can-transparent */
+    }
+
+    @include media(watch) {
+        & :link i {
+            border-color : transparent $COLOR_Watch_fill;
+        }
+        & :visited i {
+            border-color : transparent $COLOR_Watch_text;
+        }
+    }
+}

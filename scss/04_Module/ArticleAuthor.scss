@@ -1,0 +1,30 @@
+/* [module] Article Author
+ *  出現位置は #lE .lSi 下で固定
+ *
+--------------------------------------------------------------------------------------*/
+
+.AAuthor {
+    @include clearfix;
+    padding : 0 0.5em 1em;
+    
+    img {
+        float    : right;
+        margin   : 0 0 1em 1em;
+        position : relative;
+        top      : .4em;
+    }
+}
+
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@include media(tablet_print) {
+    .AAuthor {
+        margin   : 1em 0 0;
+        padding  : 0;
+
+        img {
+            float  : left;
+            margin : 0 1em 1em 0;
+        }
+    }
+}

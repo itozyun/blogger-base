@@ -1,14 +1,15 @@
 
 /** //_{+simpleHeader **/
-    #lH .lM, #lH .lS {
-        padding : 1em 0;
+    #lH .lMi, #lH .lSi { /* .lM に対して padding : 1em 0; とすると IE で h1 の文字が消える */
+        padding-top    : 1em;
+        padding-bottom : 1em;
     }
 
     /*  Tablet
     --------------------------------------------------------------------------------------*/
     @include media(tablet) {
-        #lH .lM {
-            padding : 1em 0 0;
+        #lH .lMi {
+            padding-bottom : 0;
         }
     }
 
@@ -18,7 +19,7 @@
         #lH {
             font-size : 0.875em;
         }
-        #lH .lM {
+        #lH .lMi {
             padding : .5em 0;
         }
     }

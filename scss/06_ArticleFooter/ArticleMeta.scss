@@ -7,7 +7,7 @@
 .AMeta {
     @include article-footer-item;
 
-    padding     : 0.5em 0;
+    padding : 0.5em 0;
     @include lineHeight(1.2, 1);
 }
 
@@ -20,11 +20,11 @@
 /*  Print
 --------------------------------------------------------------------------------------*/
 @include media(print) {
-    /* //_{#can-content */
-        .AMeta-cita:after {
-            content   : " ("attr(href)") ";
-            font-size : 0.875em;
-            color     : $COLOR_PRT_link;
-        }
-    /* //_}#can-content */
+/* //_{#can-content */
+    .AMeta-cita:after {
+        content   : " ("attr(href)") ";
+        font-size : 0.875em;
+        color     : $COLOR_Print_link;
+    }
+/* //_}#can-content */
 }

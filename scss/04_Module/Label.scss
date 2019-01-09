@@ -7,7 +7,7 @@
 }
 
     .Label div {
-        color  : $COLOR_BdM_fill; /* , を消す */
+        color : $COLOR_Default_fill; /* , を消す */
     
     /* //_{#ie7-win,@ie8,@ie9 */
         text-justify : inter-ideograph;
@@ -18,45 +18,37 @@
         /* ie8 は要素への :hover で画面がガタツク... zoom で回避できる? */
     /* //_}#ie7-win,@ie9,@modern */
     }
-    .fillbg .Label div {
-        color  : $COLOR_FtM_fill; /* , を消す */
+    .ribbon .Label div {
+        color : $COLOR_Ribbon_fill; /* , を消す */
     }
 
         .Label a {
-            @include noUnderLineAlways;
-            
-        /* //_{@modern,@ie9,@ie8 */
-            display      : inline-block;
-            margin       : 0 0 1em;
-        /* //_}@modern,@ie9,@ie8 */
+        /* //_{#can-inline-block */
+            display : inline-block;
+            margin  : 0 0 1em;
+        /* //_}#can-inline-block */
 
-        /* //_{#ie7-win */
+        /* //_{^#can-inline-block */
             line-height : 2.8;
-        /* //_}#ie7-win */
+        /* //_}^#can-inline-block */
 
             border-width : 0 0 1px;
-            border-style : solid;
+
+            &:link:hover, &:visited:hover { /* 詳細度の為に a: が必要 */
+                text-decoration : none;
+            }
         }
-        .Label a:focus:hover { text-decoration : none !important; }
 
         .lS .Label a,
         #lF .Label a {
-        /* //_{@modern,@ie9,@ie8 */
+        /* //_{#can-inline-block */
             margin : 0 0 0.6em;
-        /* //_}@modern,@ie9,@ie8 */
+        /* //_}#can-inline-block */
 
-        /* //_{#ie7-win */
+        /* //_{^#can-inline-block */
             line-height : 2.4;
-        /* //_}#ie7-win */
+        /* //_}^#can-inline-block */
         }
-
-/*  Phablet
---------------------------------------------------------------------------------------*/
-@include media(phablet) {
-    .lM2 .Label div, .lS2 .Label div {
-        text-align : right;
-    }
-}
 
 /*  Phone
 --------------------------------------------------------------------------------------*/
@@ -70,6 +62,6 @@
 --------------------------------------------------------------------------------------*/
 @include media(watch) {
     .Label div {
-        color  : $COLOR_WTC_fill; /* , を消す */
+        color : $COLOR_Watch_fill; /* , を消す */
     }
 }

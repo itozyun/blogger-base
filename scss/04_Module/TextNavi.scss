@@ -5,19 +5,19 @@
 .TxtNavi {
     padding     : 0.5em 0;
     text-align  : right;
-    color       : $COLOR_BdM_fill; /* , を消す */
+    color       : $COLOR_Default_fill; /* , を消す */
 }
     .TxtNavi a {
-        /* //_{^#ie7-win */
+        /* //_{#can-inline-block */
         display     : inline-block;
-        /* //_}^#ie7-win */
+        /* //_}#can-inline-block */
         /* //_{@ie6,@ie7,@ie55 */
         zoom        : 1;
         /* //_}@ie6,@ie7,@ie55 */
     }
 
-.fillbg .TxtNavi {
-    color : $COLOR_FtM_fill; /* , を消す */
+.ribbon .TxtNavi {
+    color : $COLOR_Ribbon_fill; /* , を消す */
 }
 
 /*  Print

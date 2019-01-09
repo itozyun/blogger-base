@@ -1,0 +1,234 @@
+/* [module] Cover
+ *  出現位置は #lB .lMi 下で固定
+ *
+ * .Cover
+ *   div.Cover-1st|.Cover-2nd
+ *     div.Cover-img
+ *       img
+ *       div
+ *         h2
+ *         h3
+ *     div.Cover-meta
+ *       i
+ *     p
+ *     div.Cover-btn
+ *       .btn
+ *     
+--------------------------------------------------------------------------------------*/
+.Cover {
+    @include clearfix;
+    margin  : 1.5em 0 0;
+    padding : 0 1px 1em 0; /* 1px : 0pxだとEdgeでボタンにフォーカスした際に要素がズレるのを回避 */
+    @include lineHeight(1.4, 1);
+}
+    .Cover-img {
+        position      : relative;
+        height        : 100%;
+        margin-bottom : 0.6em;
+    }
+        .Cover img {
+            margin  : 0;
+            display : block;
+            width   : 100%;
+        }
+        .Cover .img-loaded div {
+            position : absolute;
+            /* //_{^@ie5win */
+            bottom   : 0;
+            /* //_}^@ie5win */
+            /* //_{@ie5win */
+            top      : 0;
+            /* //_}@ie5win */
+            left     : 0;
+            width    : 100%;
+        }
+            .Cover h2 {
+            /* //_{#can-inline-block */
+                display      : inline-block;
+            /* //_}#can-inline-block */
+            /* //_{@ie6,@ie7 */
+                display      : inline;
+                zoom         : 1;
+            /* //_}@ie6,@ie7 */
+            /* //_{@ie5win,@ie55 */
+                display      : inline;
+                height       : 2.2em;
+            /* //_}@ie5win,@ie55 */
+                background   : $COLOR_ACCENT;
+                border-color : $COLOR_ACCENT;
+                color        : $COLOR_Default_fill;
+                font-size    : 0.825em;
+                padding      : 0.6em;
+                border-width : 1px; /* for high contrast mode */
+            }
+            /* //_{#can-content */
+            .Cover h2:after {
+                display : none; /* for iOS4 content : none だけでは消えない */
+            }
+            /* //_}#can-content */
+            .Cover h3 {
+                font-size  : 1.33em;
+                padding    : 0.385em;
+                margin     : 0;
+                color      : #fff;
+            /* //_{^@ie9 */
+                /* clean-css ignore:start */
+                background : #000;
+                /* clean-css ignore:end */
+            /* //_}^@ie9 */
+                /* //_{@modern,@ie9 */
+                background : rgba( 0, 0, 0, .65);
+                /* //_}@modern,@ie9 */
+            }
+    .Cover-meta {
+        display    : block;
+        color      : $COLOR_Default_casual_text;
+        margin     : 0 0.5em;
+    }
+    /* //_{#can-inline-block */
+        .Cover-meta span {
+            display : inline-block;
+        }
+    //* //_}#can-inline-block */
+    .Cover p {
+        margin     : 0.6em 0.5em;
+    }
+    .Cover-btn {
+        text-align : right;
+
+        @extend %more-icon;
+    }
+
+/*  WSXGA
+--------------------------------------------------------------------------------------*/
+@include media(WSXGA) {
+    .Cover img {
+        width    : auto;
+        float    : left;
+        margin   : 0 1em 1em 0;
+    }
+        .Cover .img-loaded div {
+            position   : static;
+            padding    : 1em 0;
+        }
+        .Cover-img div {
+            padding    : 1em;
+        }
+            .Cover h2 {
+                font-size  : 1em;
+                padding    : 0.5em;
+            }
+            .Cover h3 {
+                background : transparent;
+                color      : $COLOR_Default_text;
+                padding    : 0.77em 0.77em 0 0;
+            }
+    .Cover-meta, .Cover p {
+        margin-right : 1em;
+    }
+}
+
+/*  WQXGA
+--------------------------------------------------------------------------------------*/
+@include media(WQXGA) {
+    .Cover img {
+        margin   : 0 2em 1em 0;
+    }
+        .Cover .img-loaded div {
+            padding    : 2em 0;
+        }
+            .Cover h3 {
+                font-size : 1.5em;
+                padding   : 0.67em 1.33em 0 0;
+            }
+    .Cover-meta, .Cover p {
+        margin-right : 2em;
+    }
+}
+
+/*  Phablet
+--------------------------------------------------------------------------------------*/
+@include media(phablet) {
+    .Cover h3 {
+        font-size  : 1em;
+        padding    : 0.5em;
+    }
+}
+
+/*  Phone
+--------------------------------------------------------------------------------------*/
+@include media(phone) {
+    .Cover {
+        margin : 1em 0 0;
+    }
+        .Cover-1st {
+            padding      : 0 0 1em;
+            border-width : 0 0 1px;
+            margin       : 0 0 1em;
+        }
+            .Cover h3 {
+                font-size  : 1.33em;
+                padding    : 0.77em 0.385em;
+            }
+}
+
+/*  Phone-
+--------------------------------------------------------------------------------------*/
+@include media(smallphone) {
+    .Cover img {
+        width    : auto;
+        margin   : 0 1em 1em 0;
+    }
+        .Cover .img-loaded div {
+            position   : static;
+            padding    : 0;
+        }
+            .Cover h2 {
+                float      : left;
+                display    : inline-block;
+                font-size  : 1em;
+                padding    : 0.5em;
+                margin     : 0 .5em .5em 0;
+            }
+            .Cover h3 {
+                background : transparent;
+                color      : $COLOR_Default_text;
+                font-size  : 1.5em;
+                padding    : 0 0 0.33em;
+            }
+    .Cover-meta, .Cover p {
+        margin-left  : 0;
+        margin-right : 0;
+    }
+}
+
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@include media(watch) {
+    .Cover h3 {
+        color   : $COLOR_Watch_text;
+    }    
+    .Cover-meta {
+        color   : $COLOR_Watch_casual_text;
+    }
+}
+
+/*  Print
+--------------------------------------------------------------------------------------*/
+@include media(print) {
+    .Cover .img-loaded div {
+        position : static;
+    }
+        .Cover h2 {
+            border-width : 1px;
+            border-color : #000;
+            margin-top   : 1em;
+        }
+        .Cover h2, .Cover h3 {
+            background : #fff;
+            color      : #000;
+        }
+    .Cover-btn {
+        display : none;
+    }
+}

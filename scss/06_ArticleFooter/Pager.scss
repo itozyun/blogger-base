@@ -11,109 +11,131 @@
     @include article-footer-item;
 
     position    : relative;
-    color       : $COLOR_BdM_fill; /* , を消す */
+    color       : $COLOR_Default_fill; /* , を消す */
     height      : 4em;
+
+    @include highContrast {
+        text-align : center;
+        height     : auto;
+        padding    : 1em 0;
+    }
 }
-    .Pager-next { left  : 0; }
+    .Pager-next { left  :   0; }
     .Pager-top  { left  : 34%; text-align : center; }
-    .Pager-prev { right : 0;   text-align : right; }
+    .Pager-prev { right :   0; text-align : right; }
 
         .Pager span {
-            position        : absolute;
-            top             : 1em;
-            display         : block;
-            width           : 32%;
+            position      : absolute;
+            top           : 1em;
+            display       : block;
+            width         : 32%;
             /* http://tacamy.hatenablog.com/entry/2014/02/19/141948 */
-            overflow        : hidden;
-            white-space     : nowrap;
-            text-overflow   : ellipsis;
+            overflow      : hidden;
+            white-space   : nowrap;
+            text-overflow : ellipsis;
+
+            @include highContrast {
+                position : static;
+                display  : inline;
+                /* //_{@ie55,@ie5win */
+                width    : auto;
+                /* //_}@ie55,@ie5win */
+            }
         }
-            .Pager-next a {
-                padding         : 0 0 0 1.5em;
-            }
-            .Pager-prev a {
-                padding         : 0 1.5em 0 0;
-            }
-                .Pager i {
-                    position     : absolute;
-                    top          : .5em;
-                
-                    border-style : solid;
-                
-                    /* //_{^#ie7-win */
+                .Pager i { /* i を絶対配置にすると、Opera mini で表示されない */
+                    /* //_{#can-inline-block */
                     display      : inline-block;
-                    /* //_}^#ie7-win */
+                    /* //_}#can-inline-block */
                     /* //_{@ie6,@ie7,@ie55,@ie5win */
                     height       : 0;
                     width        : 0;
                     /* //_}@ie6,@ie7,@ie55,@ie5win */
                     /* //_{@ie55,@ie5win */
                     line-height  : 0;
-                    font-size    : 0;
                     /* //_}@ie55,@ie5win */
+
+                /* //_{#ie7-win */
+                    position     : relative;
+                    /* //_{@ie7 */
+                        zoom     : 1;
+                    /* //_}@ie7 */                    
+                    /* //_{@ie6,@ie7 */
+                        top      : -.5em;
+                    /* //_}@ie6,@ie7 */
+                    /* //_{@ie55,@ie5win */
+                        top      : .5em;
+                    /* //_}@ie55,@ie5win */
+                /* //_}#ie7-win */
+
+                    @include highContrast {
+                        display : none;
+                    }
                 }
                 .Pager-next i {
                     border-width : 0.5em 0.7em 0.5em 0;
-                    left         : 0;
+                    margin-right : 0.5em;
                 }
                 .Pager-prev i {
                     border-width : 0.5em 0 0.5em 0.7em;
-                    right        : 0;
+                    margin-left  : 0.5em;
                 }
                 .Pager i {
                     /* //_{#can-transparent */
-                    border-color : transparent $COLOR_BdM_casual_text;
+                    border-color : transparent $COLOR_Default_casual_text;
                     /* //_}#can-transparent */
                 
                     /* //_{^#can-transparent */
-                    border-color : $COLOR_BdM_fill $COLOR_BdM_casual_text;
+                    border-color : $COLOR_Default_fill $COLOR_Default_casual_text;
                     /* //_}^#can-transparent */
                 }
-                .Pager :active i, .Pager :focus i {
+                .Pager :active i
+                /* //_{#can-focus-psedo-class */
+                , .Pager :focus i
+                /* //_}#can-focus-psedo-class */
+                {
                     /* //_{#can-transparent */
-                    border-color : transparent $COLOR_BdM_fill;
+                    border-color : transparent #fff;
                     /* //_}#can-transparent */
                 
                     /* //_{^#can-transparent */
-                    border-color : $COLOR_ACCENT $COLOR_BdM_fill;
+                    border-color : $COLOR_ACCENT #fff;
                     /* //_}^#can-transparent */
                 }
 
                 .Pager-top i {
-                    position     : static;
-    
                     border-width : 0 0.45em 0.9em;
                     margin-right : 0.5em;
 
                     /* //_{#can-transparent */
-                    border-color : $COLOR_BdM_casual_text transparent;
+                    border-color : $COLOR_Default_casual_text transparent;
                     /* //_}#can-transparent */
 
                     /* //_{^#can-transparent */
-                    border-color : $COLOR_BdM_casual_text $COLOR_BdM_fill;
+                    border-color : $COLOR_Default_casual_text $COLOR_Default_fill;
                     /* //_}^#can-transparent */
                 }
-                .Pager-top :active i, .Pager-top :focus i {
+                .Pager-top :active i
+                /* //_{#can-focus-psedo-class */
+                , .Pager-top :focus i
+                /* //_}#can-focus-psedo-class */
+                {
                     /* //_{#can-transparent */
-                    border-color : $COLOR_BdM_fill transparent;
+                    border-color : #fff transparent;
                     /* //_}#can-transparent */
                 
                     /* //_{^#can-transparent */
-                    border-color : $COLOR_BdM_fill $COLOR_ACCENT;
+                    border-color : #fff $COLOR_ACCENT;
                     /* //_}^#can-transparent */
                 }
 
 /*  Phone
 --------------------------------------------------------------------------------------*/
 @include media(phone) {
-    .Pager-next a {
-        padding      : 0 0 0 1em;
-    }
-    .Pager-prev a {
-        padding      : 0 1em 0 0;
-    }
-    .Pager-top i {
+    .Pager-next i, .Pager-top i {
         margin-right : .2em;
+    }
+    .Pager-prev i {
+        margin-left : .2em;
     }
 }
 
@@ -121,19 +143,13 @@
 --------------------------------------------------------------------------------------*/
 @include media(watch) {
     .Pager {
-        color : $COLOR_WTC_fill; /* , を消す */
+        color : $COLOR_Watch_fill; /* , を消す */
     }
     .Pager i {
-        border-color : transparent $COLOR_WTC_casual_text;
-    }
-    .Pager :active i, .Pager :focus i {
-        border-color : transparent $COLOR_WTC_text;
+        border-color : transparent $COLOR_Watch_casual_text;
     }
     .Pager-top i {
-        border-color : $COLOR_WTC_casual_text transparent;
-    }
-    .Pager-top :active i, .Pager-top :focus i {
-        border-color : $COLOR_WTC_text transparent;
+        border-color : $COLOR_Watch_casual_text transparent;
     }
 }
 

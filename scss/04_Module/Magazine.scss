@@ -1,0 +1,186 @@
+/* //_{+Magazine
+ * [module] Magazine
+ *  出現位置は #lB .lMi 下で固定
+ *
+ * .Magazine
+ *   .Magazine-sep (.Magazine-only)
+ *     .Magazine-item
+ *       .Magazine-date
+ *         time
+ *           .Magazine-yy
+ *           .Magazine-y
+ *           .Magazine-mm
+ *           .Magazine-m
+ *           .Magazine-dd
+ *       .Magazine-main
+ *         h3
+ *         .Magazine-labels
+ *         .aBodyRoot
+ *           .box | *
+ *         .Magazine-jump
+ *           .btn
+ *              i
+--------------------------------------------------------------------------------------*/
+.Magazine-item {
+    @include clearfix;
+    @include unbreak-inside;
+    padding : 1em 0;
+    @include lineHeight(1.2, 1);
+}
+    .Magazine-date {
+        @include lineHeight(1, 1);
+
+        display     : block;
+        float       : left;
+        font-weight : bold;
+        font-family : monospace;
+    }
+        .Magazine-yy {
+            display   : block;
+            font-size : 2em;
+        }
+        .Magazine-mm {
+            display   : block;
+            font-size : 4em;
+        }
+        .Magazine-dd {
+            font-size : 4em;
+        }
+        .Magazine-y, .Magazine-m {
+            display : none;
+        }
+
+    .Magazine-main {
+        @include clearfix;
+        margin-left  : 5.5em;
+        border-width : 0 0 0 .5em;
+        padding-left : 1.5em;
+        border-color : $COLOR_Default_text;
+    }
+        .Magazine h3 {
+            font-size   : 2em;
+            font-weight : bold;
+            margin      : 0.2em 0 0;
+            padding     : 0;
+        }
+        .Magazine-label {
+            word-break : break-all;
+            margin     : .5em 0 .8em;
+        }
+        .Magazine .aBodyRoot {
+            font-size   : 87.5%;
+            width       : 80%;
+            float       : left;
+            line-height : 1.6;
+        }
+            .Magazine .box {
+                margin : 0;
+            }
+            .Magazine {
+                p, pre, dl, blockquote {
+                    margin-left  : 0;
+                    margin-right : 1.5em;
+                }
+            }
+        .Magazine-jump {
+            width   : 20%;
+            float   : right;
+            @extend %more-icon;
+        }
+            .Magazine-jump .btn {
+                margin : 0 0 1em;
+            }
+
+/*  WSXGA
+--------------------------------------------------------------------------------------*/
+@include media(WSXGA) {
+    .Magazine-sep {
+        display      : table;
+        table-layout : fixed;
+        margin       : 1em 0;
+    }
+        .Magazine-item {
+            display        : table-cell;
+            vertical-align : top;
+            width          : 50%;
+            padding        : 1em 0 1em 1em;
+        }
+        .Magazine-item:first-child {
+            padding : 1em 1em 1em 0;
+        }
+        .Magazine-only .aBodyRoot {
+            font-size : 1em;
+        }
+}
+
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@include media(tablet) {
+    .Magazine img {
+        margin-left : 0;
+    }
+}
+
+/*  Phablet
+--------------------------------------------------------------------------------------*/
+@include media(phablet) {
+    .Magazine {
+        margin       : 1em 0 0;
+        border-width : .5em 0 0;
+        border-color : $COLOR_Default_text;
+    }
+        .Magazine-date {
+            float       : none;
+            font-family : inherit;
+        }
+        .Magazine-yy {
+            display   : inline;
+            font-size : 1em;
+        }
+        .Magazine-mm {
+            display   : inline;
+            font-size : 1em;
+        }
+        .Magazine-dd {
+            font-size : 1em;
+        }
+        .Magazine-y, .Magazine-m {
+            display   : inline;
+        }
+
+        .Magazine-main {
+            margin       : 0 0 1em;
+            float        : none;
+            border-width : 0 0 .5em;
+            padding      : 0 0 1em;
+        }
+            .Magazine h3 {
+                font-size : 1.3em;
+            }
+            .Magazine .aBodyRoot,
+            .Magazine-jump {
+                width : auto;
+                float : none;
+            }
+            .Magazine-jump .btn {
+                margin : 0 1em 0 0;
+            }
+}
+/*  Watch
+--------------------------------------------------------------------------------------*/
+@include media(watch) {
+    .Magazine,
+    .Magazine-main {
+        border-color : $COLOR_Watch_text;
+    }
+}
+
+/*  Print
+--------------------------------------------------------------------------------------*/
+@include media(print) {
+    .Magazine .aBodyRoot {
+        width : auto;
+    }
+    .Magazine-jump { display : none; }
+}
+/* //_}+Magazine */

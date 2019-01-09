@@ -3,34 +3,20 @@
  *
  *  div.CmtForm
 --------------------------------------------------------------------------------------*/
-/* //_{#ie7-win */
-.CmtForm {
-    display : none;
-}
-/* //_}#ie7-win */
-
-/* //_{^#ie7-win */
+/* //_{@modern,@ie9 */
 .CmtForm { 
-    border-style  : solid;
-
     padding       : 1em 0;
     text-align    : center;
 }
 
     .CmtForm iframe {
-        width       : 100%;
-    /* //_{^@ie6 */
-        height      : 400px;
-    /* //_}^@ie6 */
-    /* //_{@ie6 */
-        height      : 430px;
-        margin-left : -18px;
-    /* //_}@ie6 */
+        width  : 100%;
+        height : 400px;
     }
     .CmtForm h2 {
         text-align : left;
     }
-/* //_}^#ie7-win */
+/* //_}@modern,@ie9 */
 
 /*  Phone
 --------------------------------------------------------------------------------------*/

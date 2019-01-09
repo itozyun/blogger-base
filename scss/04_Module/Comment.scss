@@ -22,11 +22,11 @@
         margin-right : 5%;
     }
     .Comment div {
-        color     : $COLOR_BdM_casual_text;
+        color     : $COLOR_Default_casual_text;
         font-size : 93%;
     }
     .Comment p { margin-top : 0 }
-    .Comment p a { @include hideUnderLineOnHover }
+    /* .Comment p a { @include hideUnderLineOnHover } */
 
 /*  Phone
 --------------------------------------------------------------------------------------*/
