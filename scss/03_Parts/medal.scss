@@ -2,14 +2,13 @@
  *  出現位置は RichLink 内
  *
  *  :.lM
- *     .RichLink
+ *     .RichLink-item
  *       h3
- *         .medal
- *           img, i
+ *         img, span.medal
+ *       div, p
  *  :.lS
- *      .RichLink
- *        .medal
- *          img, i
+ *      .RichLink-item
+*         img, span.medal
  *        b
 --------------------------------------------------------------------------------------*/
 .medal, .medal-gold, .medal-silver, .medal-bronze {
@@ -32,10 +31,17 @@
 /*  color
 --------------------------------------------------------------------------------------*/
 .medal {
-    border-color : #333;
-    background   : #333;
-    color        : #eee;
+    border-color : $COLOR_Default_fill;
+    background   : $COLOR_Default_fill;
+    color        : $COLOR_Default_text;
 }
+
+:link .medal, :visited .medal {
+    border-color : $COLOR_Default_text;
+    background   : $COLOR_Default_text;
+    color        : $COLOR_Default_fill;
+}
+
 .medal-gold {
     border-color : #e7bd2c;
     background   : #e7bd2c;
@@ -50,4 +56,18 @@
     border-color : #C47222;
     background   : #C47222;
     color        : rgb(230, 214, 169);
+}
+
+@include media(watch) {
+    .medal {
+        border-color : $COLOR_Watch_fill;
+        background   : $COLOR_Watch_fill;
+        color        : $COLOR_Watch_text;
+    }
+    
+    :link .medal, :visited .medal {
+        border-color : $COLOR_Watch_text;
+        background   : $COLOR_Watch_text;
+        color        : $COLOR_Watch_fill;
+    }
 }
