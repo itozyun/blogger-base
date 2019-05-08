@@ -202,9 +202,9 @@
     }
 }
 
-/*  Watch
+/*  Dark theme
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(dark_theme) {
     .Cover h3 {
         color   : $COLOR_Watch_text;
     }    

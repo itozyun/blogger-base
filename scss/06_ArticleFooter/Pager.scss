@@ -139,9 +139,9 @@
     }
 }
 
-/*  Watch
+/*  Dark theme
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(dark_theme) {
     .Pager {
         color : $COLOR_Watch_fill; /* , を消す */
     }

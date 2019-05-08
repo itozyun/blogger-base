@@ -58,7 +58,9 @@
     color        : rgb(230, 214, 169);
 }
 
-@include media(watch) {
+/*  Dark theme
+--------------------------------------------------------------------------------------*/
+@include media(dark_theme) {
     .medal {
         border-color : $COLOR_Watch_fill;
         background   : $COLOR_Watch_fill;

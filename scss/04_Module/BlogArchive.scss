@@ -57,9 +57,9 @@
             /* //_}^#can-inline-block */
             }
 
-/*  Watch
+/*  Dark theme
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(dark_theme) {
     .BlogArchive dd {
         color : $COLOR_Watch_fill; /* , を消す */
     }

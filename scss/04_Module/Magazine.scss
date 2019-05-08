@@ -129,27 +129,30 @@
         border-width : .5em 0 0;
         border-color : $COLOR_Default_text;
     }
-        .Magazine-date {
-            float       : none;
-            font-family : inherit;
+        .Magazine-item {
+            padding : 1em 0 0;
         }
-        .Magazine-yy {
-            display   : inline;
-            font-size : 1em;
-        }
-        .Magazine-mm {
-            display   : inline;
-            font-size : 1em;
-        }
-        .Magazine-dd {
-            font-size : 1em;
-        }
-        .Magazine-y, .Magazine-m {
-            display   : inline;
-        }
+            .Magazine-date {
+                float       : none;
+                font-family : inherit;
+            }
+            .Magazine-yy {
+                display   : inline;
+                font-size : 1em;
+            }
+            .Magazine-mm {
+                display   : inline;
+                font-size : 1em;
+            }
+            .Magazine-dd {
+                font-size : 1em;
+            }
+            .Magazine-y, .Magazine-m {
+                display   : inline;
+            }
 
         .Magazine-main {
-            margin       : 0 0 1em;
+            margin       : 0;
             float        : none;
             border-width : 0 0 .5em;
             padding      : 0 0 1em;
@@ -166,9 +169,10 @@
                 margin : 0 1em 0 0;
             }
 }
-/*  Watch
+
+/*  Dark theme
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(dark_theme) {
     .Magazine,
     .Magazine-main {
         border-color : $COLOR_Watch_text;

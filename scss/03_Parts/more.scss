@@ -58,7 +58,9 @@
         /* //_}^#can-transparent */
     }
 
-    @include media(watch) {
+    /*  Dark theme
+    --------------------------------------------------------------------------------------*/
+    @include media(dark_theme) {
         & :link i {
             border-color : transparent $COLOR_Watch_fill;
         }

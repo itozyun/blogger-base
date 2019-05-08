@@ -50,17 +50,17 @@
         /* //_}^#can-inline-block */
         }
 
-/*  Phone
+/*  Phablet
 --------------------------------------------------------------------------------------*/
-@include media(phone) {
+@include media(phablet) {
     .Label div {
         text-align : center;
     }
 }
 
-/*  Watch
+/*  Dark theme
 --------------------------------------------------------------------------------------*/
-@include media(watch) {
+@include media(dark_theme) {
     .Label div {
         color : $COLOR_Watch_fill; /* , を消す */
     }
