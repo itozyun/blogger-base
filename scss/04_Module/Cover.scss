@@ -1,8 +1,8 @@
 /* [module] Cover
- *  出現位置は #lB .lMi 下で固定
+ *  出現位置は #lB .lM1|.lM2 下で固定
  *
  * .Cover
- *   div.Cover-1st|.Cover-2nd
+ *   article
  *     div.Cover-img
  *       img
  *       div
@@ -17,14 +17,14 @@
 --------------------------------------------------------------------------------------*/
 .Cover {
     @include clearfix;
-    margin  : 1.5em 0 0;
-    padding : 0 1px 1em 0; /* 1px : 0pxだとEdgeでボタンにフォーカスした際に要素がズレるのを回避 */
+    margin  : 3.52em 0;
+    /* padding : 0 1px 1em 0;  1px -> 0px だとEdgeでボタンにフォーカスした際に要素がズレるのを回避 */
     @include lineHeight(1.4, 1);
 }
     .Cover-img {
-        position      : relative;
-        height        : 100%;
-        margin-bottom : 0.6em;
+        position  : relative;
+        height    : 100%;
+        margin    : 0 0 0.6em;
     }
         .Cover img {
             margin  : 0;
@@ -68,7 +68,7 @@
             /* //_}#can-content */
             .Cover h3 {
                 font-size  : 1.33em;
-                padding    : 0.385em;
+                padding    : 0.37em;
                 margin     : 0;
                 color      : #fff;
             /* //_{^@ie9 */
@@ -109,7 +109,7 @@
     }
         .Cover .img-loaded div {
             position   : static;
-            padding    : 1em 0;
+            padding    : 0 0 1em;
         }
         .Cover-img div {
             padding    : 1em;
@@ -121,7 +121,7 @@
             .Cover h3 {
                 background : transparent;
                 color      : $COLOR_Default_text;
-                padding    : 0.77em 0.77em 0 0;
+                padding    : 0.77em 0 0 0;
             }
     .Cover-meta, .Cover p {
         margin-right : 1em;
@@ -135,41 +135,30 @@
         margin   : 0 2em 1em 0;
     }
         .Cover .img-loaded div {
-            padding    : 2em 0;
+            padding    : 0 0 2em;
         }
             .Cover h3 {
                 font-size : 1.5em;
-                padding   : 0.67em 1.33em 0 0;
+                padding   : 0.67em 0 0 0;
             }
     .Cover-meta, .Cover p {
         margin-right : 2em;
+    }
+}
+/*  Tablet
+--------------------------------------------------------------------------------------*/
+@include media(tablet_print) {
+    .Cover {
+        margin : 2em auto;
     }
 }
 
 /*  Phablet
 --------------------------------------------------------------------------------------*/
 @include media(phablet) {
-    .Cover h3 {
-        font-size  : 1em;
-        padding    : 0.5em;
-    }
-}
-
-/*  Phone
---------------------------------------------------------------------------------------*/
-@include media(phone) {
     .Cover {
-        margin : 1em 0 0;
+        max-width : 400px;
     }
-        .Cover-1st {
-            padding      : 0 0 1em;
-            border-width : 0 0 1px;
-            margin       : 0 0 1em;
-        }
-            .Cover h3 {
-                font-size  : 1.33em;
-                padding    : 0.77em 0.385em;
-            }
 }
 
 /*  Phone-
