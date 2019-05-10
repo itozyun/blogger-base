@@ -11,20 +11,11 @@
 
     .CmtForm iframe {
         width  : 100%;
+        margin : 0;
         height : 400px;
-    }
-    .CmtForm h2 {
-        text-align : left;
     }
 /* //_}@modern,@ie9 */
 
-/*  Phone
---------------------------------------------------------------------------------------*/
-@include media(phone) {
-    .CmtForm h2 {
-        text-align : center;
-    }
-}
 
 /*  Print
 --------------------------------------------------------------------------------------*/
