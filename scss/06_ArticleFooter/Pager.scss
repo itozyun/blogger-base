@@ -88,7 +88,7 @@
                     border-color : $COLOR_Default_fill $COLOR_Default_casual_text;
                     /* //_}^#can-transparent */
                 }
-                .Pager :active i
+                .Pager a:active i
                 /* //_{#can-focus-psedo-class */
                 , .Pager :focus i
                 /* //_}#can-focus-psedo-class */
@@ -114,7 +114,7 @@
                     border-color : $COLOR_Default_casual_text $COLOR_Default_fill;
                     /* //_}^#can-transparent */
                 }
-                .Pager-top :active i
+                .Pager-top a:active i
                 /* //_{#can-focus-psedo-class */
                 , .Pager-top :focus i
                 /* //_}#can-focus-psedo-class */
