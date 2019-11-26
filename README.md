@@ -1,5 +1,9 @@
 # blogger-base
 
+This project has been [merged](https://github.com/itozyun/web-doc-base/commit/0f211d8f99658c31cbf7f08314ea7694a9f2ddb5) into [web-doc-base](https://github.com/itozyun/web-doc-base). Development on this repository has ended.
+
+このプロジェクトは [web-doc-base](https://github.com/itozyun/web-doc-base) に[マージ](https://github.com/itozyun/web-doc-base/commit/0f211d8f99658c31cbf7f08314ea7694a9f2ddb5)されました。このリポジトリでの開発は終了しました。
+
 ## Overview - 概要
 
 Blogger テンプレートの親プロジェクトです。
@@ -46,4 +50,8 @@ This project has been referred to the next project.
 
 ### Result of Verification
 
-(^-^;)
+Please see [OutCloud > Blog template specs](https://outcloud.blogspot.com/p/spec.html).
+
+### 検証結果
+
+[OutCloud > ブログテンプレートのスペック](https://outcloud.blogspot.com/p/spec.html)を確認ください.
